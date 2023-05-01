@@ -1,0 +1,136 @@
+<footer class="we-footer">
+  <div class="we-footer-newsletter">
+    <div class="we-container">
+      <div class="we-row">
+        <div class="we-col">
+          <h2 class="main-title">
+            Subscribe to our Newsletter
+          </h2>
+          <h4 class="sub-title">
+            Stay up to date with the latest news, announcements, and articles.
+          </h4>
+        </div>
+        <div class="we-col">
+          <form class="form-newsletter">
+            <div class="form-wrap">
+              <div class="form-group">
+                <label class="form-label"></label>
+                <input class="form-input"
+                  type="email"
+                  placeholder="Eneter your email address"/>
+              </div>
+              <div class="form-group">
+                <input class="form-submit"
+                  type="submit"
+                  value="Subscribe"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="we-footer-primary">
+    <div class="we-container">
+      <div class="we-row">
+        <div class="we-col">
+          <a class="we-footer-main-logo-link"
+            [href]="footerLogos.main.url"
+            [title]="footerLogos.main.title">
+            <img class="we-footer-main-logo-img"
+              [alt]="footerLogos.main.title"
+              [title]="footerLogos.main.title"
+              [src]="footerLogos.main.imgSrc"/>
+          </a>
+          <h4>Connect With Us</h4>
+          <ul class="we-social-media-list">
+            <ng-container *ngFor="let item of socialMediaLinks;">
+              <li class="we-social-media-item --{{ item.platform }}">
+                <a class="we-social-media-links"
+                  [href]="item.url">
+                  <svg class="we-social-media-icon we-svg"
+                    *ngIf="item.platform.toLowerCase() == 'facebook'"
+                    width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20.8636" cy="20.8876" r="20.8636" fill="#00529F"></circle>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.0341 9.24121C22.3524 9.24121 20.7395 9.90927 19.5504 11.0984C18.3612 12.2876 17.6932 13.9004 17.6932 15.5821V17.6958H15.5795C14.9959 17.6958 14.5227 18.1689 14.5227 18.7526V22.9798C14.5227 23.5635 14.9959 24.0367 15.5795 24.0367H17.6932V31.4344C17.6932 32.0181 18.1663 32.4912 18.75 32.4912H22.9773C23.5609 32.4912 24.0341 32.0181 24.0341 31.4344V24.0367H26.1477C26.6326 24.0367 27.0554 23.7066 27.173 23.2362L28.2298 19.0089C28.3087 18.6932 28.2378 18.3587 28.0375 18.1022C27.8372 17.8457 27.53 17.6958 27.2045 17.6958H24.0341V15.5821H27.2045C27.7882 15.5821 28.2613 15.109 28.2613 14.5253V10.298C28.2613 9.71436 27.7882 9.24121 27.2045 9.24121H24.0341ZM21.0449 12.593C21.8377 11.8002 22.9129 11.3548 24.0341 11.3548H26.1477V13.4685H24.0341C23.4735 13.4685 22.9359 13.6912 22.5395 14.0876C22.1431 14.4839 21.9204 15.0215 21.9204 15.5821V18.7526C21.9204 19.3362 22.3936 19.8094 22.9773 19.8094H25.851L25.3226 21.923H22.9773C22.3936 21.923 21.9204 22.3962 21.9204 22.9798V30.3776H19.8068V22.9798C19.8068 22.3962 19.3336 21.923 18.75 21.923H16.6363V19.8094H18.75C19.3336 19.8094 19.8068 19.3362 19.8068 18.7526V15.5821C19.8068 14.461 20.2522 13.3858 21.0449 12.593Z" fill="#FFFFFF"></path>
+                  </svg>
+                  <svg class="we-social-media-icon we-svg"
+                    *ngIf="item.platform.toLowerCase() == 'twitter'"
+                    width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="21.1363" cy="20.8768" r="20.8636" fill="#39CFFE"></circle>
+                    <g clip-path="url(#clip0_727_6917)">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M27.3022 11.8764C26.2998 11.6163 25.2445 11.6817 24.2791 12.0638C23.3138 12.446 22.4848 13.1263 21.9045 14.0129C21.3305 14.8897 21.027 15.9265 21.0338 16.9857C19.8765 16.8955 18.7444 16.5709 17.7026 16.0271C16.3928 15.3435 15.2664 14.3345 14.4237 13.0901L13.6705 13.6387L12.8472 13.2118C12.8399 13.227 12.833 13.2423 12.8265 13.2577L12.8238 13.2642L12.8131 13.2899C12.8044 13.3111 12.7925 13.3405 12.778 13.3777C12.749 13.452 12.7093 13.5574 12.6628 13.6907C12.57 13.957 12.4495 14.3362 12.3335 14.8016C12.1024 15.7281 11.8827 17.0199 11.9456 18.4547C12.0086 19.8937 12.3574 21.4961 13.2812 23.0088C13.9737 24.1427 14.9698 25.1938 16.3533 26.0792C14.9558 26.7469 13.4188 27.0671 11.8661 27.0031C11.4402 26.9855 11.0584 27.2735 10.9433 27.6991C10.8282 28.1247 11.0099 28.5766 11.3825 28.7913C15.7791 31.3243 20.7128 31.3479 24.5731 29.2171C28.4558 27.0739 31.1591 22.8022 31.1591 16.9796L31.1591 16.9764C31.1586 16.8215 31.1515 16.6668 31.1378 16.5128C32.0266 15.4901 32.6586 14.2526 32.9739 12.91L32.0795 12.6841L31.549 11.9041C30.8969 12.3811 30.1878 12.7668 29.4402 13.0517C28.8324 12.488 28.0993 12.0832 27.3022 11.8764ZM13.7846 18.368C13.7388 17.3244 13.8738 16.3543 14.0429 15.5894C14.8645 16.4569 15.8205 17.182 16.8749 17.7324C18.4559 18.5576 20.2091 18.9646 21.9784 18.917C22.4773 18.9036 22.875 18.4803 22.875 17.9628V17.0082L22.8749 16.9954C22.8661 16.315 23.059 15.6482 23.4276 15.0852C23.7961 14.5221 24.3225 14.0901 24.9356 13.8474C25.5486 13.6048 26.2188 13.5632 26.8553 13.7284C27.4919 13.8936 28.0642 14.2575 28.4948 14.771C28.7324 15.0543 29.108 15.1668 29.4547 15.0586C29.6679 14.992 29.8789 14.9188 30.0874 14.839C29.9136 15.0745 29.7237 15.298 29.5187 15.5077C29.2999 15.7314 29.2032 16.0536 29.2609 16.3665C29.2983 16.5691 29.3174 16.7749 29.3182 16.9812C29.3177 22.1349 26.9586 25.7377 23.7082 27.5318C21.3167 28.8519 18.3926 29.22 15.4746 28.4491C16.6474 28.0989 17.7671 27.5574 18.7897 26.8375C19.0662 26.6429 19.2193 26.3081 19.1895 25.9628C19.1598 25.6176 18.952 25.3162 18.6466 25.1755C16.7227 24.2888 15.5484 23.1532 14.8364 21.9873C14.1206 20.8153 13.8365 19.5541 13.7846 18.368Z" fill="#FFFFFF"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_727_6917">
+                        <rect width="22.0909" height="22.9091" fill="white" transform="translate(10.9091 9.82056)"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </a>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+        <div class="we-col">
+          <ng-container *ngFor="let item of footerMenuList">
+            <div class="we-footer-menu-wrap">
+              <h4 class="we-footer-menu-title">{{ item.title }}</h4>
+              <ul class="we-footer-menu-list">
+                <ng-container *ngFor="let menuItem of item.items">
+                  <li class="we-footer-menu-item">
+                    <a class="we-footer-menu-link"
+                      [href]="menuItem.url">{{ menuItem.name }}</a>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </ng-container>
+        </div>
+        <div class="we-col">
+          <a class="we-footer-sub-logo-link"
+            [href]="footerLogos.sub.url"
+            [title]="footerLogos.sub.title">
+            <img class="we-footer-sub-logo-img"
+              [alt]="footerLogos.sub.title"
+              [title]="footerLogos.sub.title"
+              [src]="footerLogos.sub.imgSrc"/>
+          </a>
+          <p class="we-address">
+            {{ contactDetails.address }}
+          </p>
+          <p class="we-phone">
+            Phone: {{ contactDetails.phone }}
+          </p>
+          <p class="we-fax">
+            Fax: {{ contactDetails.fax }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="we-footer-copyright">
+    <div class="we-container">
+      <p class="we-copyright-text">© {{ copyrightYear }} All Rights Reserved</p>
+      <div class="we-row">
+        <a class="we-link"
+          href="/"
+          title="Privacy Policy">
+          Privacy Policy
+        </a>
+        <hr>
+        <a class="we-link"
+          href="/"
+          title="Cookie Policy">
+          Cookie Policy
+        </a>
+        <hr>
+        <a class="we-link"
+          href="/"
+          title="Terms and Condition">
+          Terms and Condition
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
