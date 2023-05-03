@@ -1,7 +1,8 @@
 .we-footer {
+  position: relative;
   display: block;
   background-color: var(--whiteColor);
-  padding: 80px 30px 100px;
+  padding: 80px 25px 100px;
   border-top: 12px solid #A3C1D3;
 
   .we-footer-newsletter {
@@ -160,8 +161,17 @@
               gap: 0 7px;
 
               .we-social-media-item {
-                .we-social-media-icon {
-                  display: block;
+                .we-social-media-link {
+                  opacity: 1;
+                  transition: opacity var(--hoverTransitionDuration) ease-in-out;
+
+                  .we-social-media-icon {
+                    display: block;
+                  }
+
+                  &:hover {
+                    opacity: 0.9;
+                  }
                 }
               }
             }
@@ -215,6 +225,10 @@
                     font-weight: 600;
                     font-size: 14px;
                     line-height: 1.15em;
+
+                    &:hover {
+                      color: var(--secondaryColor); 
+                    }
                   }
                 }
               }
@@ -282,6 +296,10 @@
           font-size: 14px;
           line-height: 0.9em;
           padding: 5px 0;
+
+          &:hover {
+            color: var(--secondaryColor);
+          }
         }
 
         hr {

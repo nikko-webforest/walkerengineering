@@ -250,6 +250,10 @@ export class HeaderComponent implements OnInit {
                   name: 'Sub-Category 4',
                   url: '',
                 },
+                {
+                  name: 'Sub-Category 5',
+                  url: '',
+                },
               ],
             },
             {
@@ -262,14 +266,6 @@ export class HeaderComponent implements OnInit {
                 },
                 {
                   name: 'Sub-Category 2',
-                  url: '',
-                },
-                {
-                  name: 'Sub-Category 3',
-                  url: '',
-                },
-                {
-                  name: 'Sub-Category 4',
                   url: '',
                 },
               ],
@@ -501,10 +497,9 @@ export class HeaderComponent implements OnInit {
       this.showMegaMenu = !this.showMegaMenu;
     }
     else {
+      this.headerNavigation01ActiveItem = (id + 1);
       this.showMegaMenu = true;
     }
-
-    this.headerNavigation01ActiveItem = (id + 1);
 
     // console.log(dropdownItems?.hasOwnProperty('mainCategories'));
 

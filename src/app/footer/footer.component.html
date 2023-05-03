@@ -11,7 +11,8 @@
           </h4>
         </div>
         <div class="we-col">
-          <form class="form-newsletter">
+          <form class="form-newsletter"
+            action="">
             <div class="form-wrap">
               <div class="form-group">
                 <label class="form-label"></label>
@@ -46,7 +47,7 @@
           <ul class="we-social-media-list">
             <ng-container *ngFor="let item of socialMediaLinks;">
               <li class="we-social-media-item --{{ item.platform }}">
-                <a class="we-social-media-links"
+                <a class="we-social-media-link"
                   [href]="item.url">
                   <svg class="we-social-media-icon we-svg"
                     *ngIf="item.platform.toLowerCase() == 'facebook'"

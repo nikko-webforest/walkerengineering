@@ -44,7 +44,7 @@
         <ng-container *ngFor="let item of headerNavigation01List; let i = index;">
           <div class="we-nav-item"
             [class.--has-dropdown]="item.dropdownItems.length"
-            [class.--active]="(i + 1) == headerNavigation01ActiveItem"
+            [class.--active]="(i + 1) == headerNavigation01ActiveItem && showMegaMenu"
             [id]="(i + 1)"
             (click)="showDropdown(i, item.dropdownItems[0]);">
             <div class="we-nav-item-label"

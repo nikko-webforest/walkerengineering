@@ -1,14 +1,16 @@
 .we-header {
   position: sticky;
+  z-index: 9999;
   top: 0;
   display: block;
   background-color: var(--whiteColor);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.08);
 
   .we-header-primary {
     max-width: var(--container);
     width: 100%;
     margin: 0 auto;
-    padding: 30px 0 5px;
+    padding: 30px 25px 5px;
 
     .we-row {
       justify-content: space-between;
@@ -134,7 +136,7 @@
     max-width: var(--container);
     width: 100%;
     margin: 0 auto;
-    padding: 5px 0 30px;
+    padding: 5px 25px 30px;
 
     .we-row {
       justify-content: space-between;
@@ -174,6 +176,8 @@
 
             .we-nav-item-icon {
               display: block;
+              rotate: 0deg;
+              transition: rotate var(--clickTransitionDuration) ease-in-out;
 
               path {
                 fill: var(--primaryColor);
@@ -190,6 +194,22 @@
               }
 
               .we-nav-item-icon {
+                path {
+                  fill: var(--secondaryColor);
+                }
+              }
+            }
+          }
+
+          &.--active {
+            .we-nav-item-label {
+              .we-nav-item-name {
+                color: var(--secondaryColor);
+              }
+
+              .we-nav-item-icon {
+                rotate: 180deg;
+
                 path {
                   fill: var(--secondaryColor);
                 }
@@ -306,6 +326,18 @@
                     path {
                       fill: var(--primaryColor);
                       transition: fill var(--hoverTransitionDuration) ease-in-out;
+                    }
+                  }
+
+                  &:hover {
+                    .category-name {
+                      color: var(--secondaryColor);
+                    }
+
+                    .category-icon {
+                      path {
+                        fill: var(--secondaryColor);
+                      }
                     }
                   }
 
