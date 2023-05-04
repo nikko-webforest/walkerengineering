@@ -1,5 +1,6 @@
-<app-header></app-header>
-<div style="height: 1000px;">
+<app-header 
+    *ngIf="type === 'header'"
+    [headerNavigation01List]="menu1"
+    [headerNavigation02List]="menu2"></app-header>
 
-</div>
-<app-footer></app-footer>
+<app-footer *ngIf="type === 'footer'"></app-footer>
