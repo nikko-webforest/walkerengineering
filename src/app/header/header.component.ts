@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener, ElementRef, Host } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -457,15 +457,22 @@ export class HeaderComponent implements OnInit {
 
   headerLogos: any = {
     main: {
-      title: 'test title',
-      url: 'test url',
-      imgSrc: 'test src',
+      title: 'AIRSEP Walker Engineering Enterprises',
+      url: '/',
+      imgSrc: 'assets/WE_Header_Main_logo-v01.png',
     },
     sub: {
-      title: 'test title',
-      url: 'test url',
-      imgSrc: 'test src',
+      title: 'WALKER Performance Filtration',
+      url: '/',
+      imgSrc: 'assets/WE_Header_Sub_logo-v01.png',
     }
+  };
+
+  contactDetails: any = {
+    address: 'Walker Engineering 9255 San Fernando Rd. Sun Valley, CA 91352',
+    phone: '1-818-252-7788',
+    fax: '1-818-252-7788',
+    email: '',
   };
 
   headerNavigation01ActiveItem: number = 0;
@@ -473,22 +480,27 @@ export class HeaderComponent implements OnInit {
   selectedMainCategory: string = '';
 
   constructor(
-    private eRef: ElementRef
+    // private eRef: ElementRef
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  @HostListener('document:click', ['$event'])
-  clickOutside(event: any) {
-    if( this.eRef.nativeElement.contains(event.target) ){
-      // console.log('inside');
-    }
-    else {
-      // console.log('outside');
-      this.showMegaMenu = false;
-      this.headerNavigation01ActiveItem = 0;
-    }
+  // @HostListener('document:click', ['$event'])
+  // clickOutside(event: any) {
+  //   if( this.eRef.nativeElement.contains(event.target) ){
+  //     // console.log('inside');
+  //   }
+  //   else {
+  //     // console.log('outside');
+  //     this.showMegaMenu = false;
+  //     this.headerNavigation01ActiveItem = 0;
+  //   }
+  // }
+
+  mouseOutside() {
+    console.log('outside');
+    this.showMegaMenu = false;
+    this.headerNavigation01ActiveItem = 0;
   }
 
   showDropdown(id: any, dropdownItems: any) {

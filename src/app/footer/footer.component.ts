@@ -131,14 +131,14 @@ export class FooterComponent implements OnInit {
 
   footerLogos: any = {
     main: {
-      title: 'test title',
-      url: 'test url',
-      imgSrc: 'test src',
+      title: 'Airsep',
+      url: '/',
+      imgSrc: 'assets/WE_Footer_Main_logo-v01.png',
     },
     sub: {
-      title: 'test title',
-      url: 'test url',
-      imgSrc: 'test src',
+      title: 'Performance',
+      url: '/',
+      imgSrc: 'assets/WE_Footer_Sub_logo-v01.png',
     }
   };
 
@@ -156,15 +156,15 @@ export class FooterComponent implements OnInit {
   contactDetails: any = {
     address: 'Walker Engineering 9255 San Fernando Rd. Sun Valley, CA 91352',
     phone: '1-818-252-7788',
-    fax: '1-818-252-7788'
+    fax: '1-818-252-7788',
+    email: '',
   };
 
   copyrightYear: any = this.getCurrentYear();
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getCurrentYear() {
     var year = new Date();
