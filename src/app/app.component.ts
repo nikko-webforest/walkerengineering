@@ -5,14 +5,15 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent  implements OnInit {
 
-  
   title = 'Walker Engineering Group';
 
   constructor() {} 
   
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
+  
 }
