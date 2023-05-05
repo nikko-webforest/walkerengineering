@@ -98,7 +98,8 @@ input[type='button'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  transition: all $hoverTransitionDuration ease-in-out;
+  transition:
+    all $hoverTransitionDuration ease-in-out 0ms;
   cursor: pointer;
 }
 
@@ -160,6 +161,34 @@ img {
   .h-auto {
     height: auto;
   }
+}
+
+.we-svg {
+  display: block;
+}
+
+.we-scroll-bar {
+	// width & height
+	&::-webkit-scrollbar {
+		width: 4px;
+		height: 4px;
+	}
+
+	// Track
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	// Handle
+	&::-webkit-scrollbar-thumb {
+		background-color: #D6D6D6;
+		border-radius: 4px;
+	}
+
+	// Handle on hover
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: #888888;
+	}
 }
 
 /*=============*/

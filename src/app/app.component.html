@@ -1,6 +1,13 @@
 <app-header 
     *ngIf="type === 'header'"
-    [headerNavigation01List]="menu1"
-    [headerNavigation02List]="menu2"></app-header>
+    [headerNavigation01List]="headerMenu1"
+    [headerNavigation02List]="headerMenu2"
+    [contactDetails]="contactDetails">
+</app-header>
 
-<app-footer *ngIf="type === 'footer'"></app-footer>
+<app-footer *ngIf="type === 'footer'"
+    [footerMenuList]="footerMenu1"
+    [contactDetails]="contactDetails"
+    [socialMediaList]="socialMediaList"
+    [copyrightYear]="copyrightYear">
+</app-footer>

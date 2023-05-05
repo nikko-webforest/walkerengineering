@@ -163,7 +163,8 @@
               .we-social-media-item {
                 .we-social-media-link {
                   opacity: 1;
-                  transition: opacity var(--hoverTransitionDuration) ease-in-out;
+                  transition:
+                    opacity var(--hoverTransitionDuration) ease-in-out 0ms;
 
                   .we-social-media-icon {
                     display: block;

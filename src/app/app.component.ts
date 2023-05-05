@@ -11,7 +11,7 @@ export class AppComponent  implements OnInit {
   title = 'Walker Engineering Group';
 
   @Input() type: any = 'header';
-  @Input() menu1: any = [
+  @Input() headerMenu1: any = [
     {
       name: 'By Category',
       url: '',
@@ -53,7 +53,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Category 1',
+              name: 'Marine',
               url: '',
               subCategories: [
                 {
@@ -71,7 +71,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Category 2',
+              name: 'Over the Road',
               url: '',
               subCategories: [
                 {
@@ -93,7 +93,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Category 3',
+              name: 'Industrial',
               url: '',
               subCategories: [
                 {
@@ -119,7 +119,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Category 4',
+              name: 'Military',
               url: '',
               subCategories: [
                 {
@@ -159,7 +159,7 @@ export class AppComponent  implements OnInit {
         {
           mainCategories: [
             {
-              name: 'Application 1',
+              name: 'Marine',
               url: '',
               subCategories: [
                 {
@@ -193,7 +193,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Application 2',
+              name: 'Power Generation',
               url: '',
               subCategories: [
                 {
@@ -211,7 +211,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Application 3',
+              name: 'Industrial',
               url: '',
               subCategories: [
                 {
@@ -233,7 +233,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Application 4',
+              name: 'Military',
               url: '',
               subCategories: [
                 {
@@ -259,7 +259,7 @@ export class AppComponent  implements OnInit {
               ],
             },
             {
-              name: 'Application 5',
+              name: 'Racing',
               url: '',
               subCategories: [
                 {
@@ -445,16 +445,152 @@ export class AppComponent  implements OnInit {
       dropdownItems: [],
     },
   ];
-  @Input() menu2: any = [
+  @Input() headerMenu2: any = [
     {
-      name: 'AIRSEP',
-      url: '/'
+      name: 'Shop AIRSEP',
+      url: '/',
     },
     {
-      name: 'PERFORMANCE',
-      url: '/'
+      name: 'Shop PERFORMANCE',
+      url: '/',
     }
   ];
+  @Input() footerMenu1: any = [
+    {
+      title: 'Products',
+      items: [
+        {
+          name: 'Airsep',
+          url: '/',
+        },
+        {
+          name: 'Everquiet Air Filter Sillencer',
+          url: '/',
+        },
+        {
+          name: 'AIRSEP High Performance Air Filters',
+          url: '/',
+        },
+        {
+          name: 'Replacement Filters and Parts',
+          url: '/',
+        },
+        {
+          name: 'Diesel Engine Accessories',
+          url: '/',
+        },
+        {
+          name: 'Industrial Process Filters',
+          url: '/'
+        },
+      ]
+    },
+    {
+      title: 'Service',
+      items: [
+        {
+          name: 'Custom Filter Request',
+          url: '/',
+        },
+      ]
+    },
+    {
+      title: 'Applications',
+      items: [
+        {
+          name: 'Marine',
+          url: '/',
+        },
+        {
+          name: 'Power Generation',
+          url: '/',
+        },
+        {
+          name: 'Military',
+          url: '/',
+        },
+        {
+          name: 'Industrial',
+          url: '/',
+        },
+        {
+          name: 'Racing',
+          url: '/',
+        },
+      ]
+    },
+    {
+      title: 'Support',
+      items: [
+        {
+          name: 'Contact Us',
+          url: '/',
+        },
+        {
+          name: 'FAQ',
+          url: '/',
+        },
+        {
+          name: 'Technical Information',
+          url: '/',
+        },
+        {
+          name: 'Troubleshooting',
+          url: '/',
+        },
+        {
+          name: 'Limited Warranty',
+          url: '/',
+        },
+        {
+          name: 'Warning',
+          url: '/',
+        },
+      ]
+    },
+    {
+      title: 'Information',
+      items: [
+        {
+          name: 'About Us',
+          url: '/',
+        },
+        {
+          name: 'Quality IS09001',
+          url: '/',
+        },
+        {
+          name: 'News',
+          url: '/',
+        },
+        {
+          name: 'Videos',
+          url: '/',
+        },
+        {
+          name: 'Ad Library',
+          url: '/',
+        },
+      ]
+    },
+  ]
+  @Input() contactDetails: any = {
+    address: 'Walker Engineering 9255 San Fernando Rd. Sun Valley, CA 91352',
+    phone: '1-818-252-7788',
+    fax: '1-818-252-7788',
+    email: '',
+  };
+  @Input() socialMediaList: any = [
+    {
+      platform: 'facebook',
+      url: 'https://www.facebook.com/',
+    },
+    {
+      platform: 'twitter',
+      url: 'https://twitter.com/',
+    }
+  ];
+  @Input() copyrightYear: any = '2023';
 
   constructor() {} 
   
