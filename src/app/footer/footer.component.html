@@ -33,8 +33,8 @@
   </div>
   <div class="we-footer-primary">
     <div class="we-container">
-      <div class="we-row">
-        <div class="we-col">
+      <div class="we-main-grid">
+        <div class="we-main-grid-item">
           <a class="we-footer-main-logo-link"
             [href]="footerLogos.main.url"
             [title]="footerLogos.main.title">
@@ -43,6 +43,8 @@
               [title]="footerLogos.main.title"
               [src]="footerLogos.main.imgSrc"/>
           </a>
+        </div>
+        <div class="we-main-grid-item">
           <h4>Connect With Us</h4>
           <ul class="we-social-media-list">
             <ng-container *ngFor="let item of socialMediaList;">
@@ -74,22 +76,26 @@
             </ng-container>
           </ul>
         </div>
-        <div class="we-col">
+        <div class="we-main-grid-item">
           <ng-container *ngFor="let item of footerMenuList">
             <div class="we-footer-menu-wrap">
-              <h4 class="we-footer-menu-title">{{ item.title }}</h4>
+              <h4 class="we-footer-menu-title"
+                [innerText]="item.title">
+              </h4>
               <ul class="we-footer-menu-list">
                 <ng-container *ngFor="let menuItem of item.items">
                   <li class="we-footer-menu-item">
                     <a class="we-footer-menu-link"
-                      [href]="menuItem.url">{{ menuItem.name }}</a>
+                      [href]="menuItem.url"
+                      [innerText]="menuItem.name">
+                    </a>
                   </li>
                 </ng-container>
               </ul>
             </div>
           </ng-container>
         </div>
-        <div class="we-col">
+        <div class="we-main-grid-item">
           <a class="we-footer-sub-logo-link"
             [href]="footerLogos.sub.url"
             [title]="footerLogos.sub.title">
@@ -98,14 +104,16 @@
               [title]="footerLogos.sub.title"
               [src]="footerLogos.sub.imgSrc"/>
           </a>
-          <p class="we-address">
-            {{ contactDetails.address }}
+        </div>
+        <div class="we-main-grid-item">
+          <p class="we-address"
+            [innerText]="contactDetails.address">
           </p>
-          <p class="we-phone">
-            Phone: {{ contactDetails.phone }}
+          <p class="we-phone"
+            [innerText]="'Phone: '+contactDetails.phone">
           </p>
-          <p class="we-fax">
-            Fax: {{ contactDetails.fax }}
+          <p class="we-fax"
+            [innerText]="'Fax: '+contactDetails.fax">
           </p>
         </div>
       </div>
@@ -113,24 +121,26 @@
   </div>
   <div class="we-footer-copyright">
     <div class="we-container">
-      <p class="we-copyright-text">© {{ copyrightYear }} All Rights Reserved</p>
+      <p class="we-copyright-text"
+        [innerText]="'© '+ copyrightYear +' All Rights Reserved'">
+      </p>
       <div class="we-row">
         <a class="we-link"
           href="/"
-          title="Privacy Policy">
-          Privacy Policy
+          title="Privacy Policy"
+          [innerText]="'Privacy Policy'">
         </a>
         <hr>
         <a class="we-link"
           href="/"
-          title="Cookie Policy">
-          Cookie Policy
+          title="Cookie Policy"
+          [innerText]="'Cookie Policy'">
         </a>
         <hr>
         <a class="we-link"
           href="/"
-          title="Terms and Condition">
-          Terms and Condition
+          title="Terms and Condition"
+          [innerText]="'Terms and Condition'">
         </a>
       </div>
     </div>

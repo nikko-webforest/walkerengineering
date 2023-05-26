@@ -6,11 +6,11 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent  implements OnInit {
+export class AppComponent implements OnInit {
 
   title = 'Walker Engineering Group';
 
-  @Input() type: any = 'header';
+  @Input() type: any = 'footer';
   @Input() headerMenu1: any = [
     {
       name: 'By Category',

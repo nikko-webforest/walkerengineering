@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
   headerNavigation01ActiveItem: number = 0;
   showMegaMenu: boolean = false;
   selectedMainCategory: string = '';
+  mobileMenuShow: boolean = false;
 
   productsAll: any = [
     {
@@ -1999,7 +2000,7 @@ export class HeaderComponent implements OnInit {
   //   }
   // }
 
-  showDropdown(id: any, dropdownItems: any) {
+  toggleMegaMenu(id: any, dropdownItems: any) {
 
     if( this.headerNavigation01ActiveItem == (id + 1) ){
       this.showMegaMenu = !this.showMegaMenu;
@@ -2029,7 +2030,7 @@ export class HeaderComponent implements OnInit {
     // console.log(id);
   }
 
-  hideDropdown() {
+  hideMegaMenu() {
     console.log('outside');
     this.showMegaMenu = false;
     this.headerNavigation01ActiveItem = 0;
@@ -2051,7 +2052,7 @@ export class HeaderComponent implements OnInit {
       if( item.title.toLowerCase().includes(this.productSearchKeyword.toLowerCase()) && this.productSearchKeyword != '' ){
         this.productsSearchList.push(item);
       }
-    })
+    });
   }
 
   calculateDiscount(beforePrice: any, currentPrice: any) {
@@ -2061,6 +2062,40 @@ export class HeaderComponent implements OnInit {
 
   addToCart() {
 
+  }
+
+  // mobile
+  toggleMobileMenu() {
+    this.mobileMenuShow = !this.mobileMenuShow;
+    this.mobileDropdownIndex = 0;
+    this.mobileMainCategoryDropdownIndex = 0;
+  }
+
+  mobileDropdownIndex: number = 0;
+
+  toggleMobileDropdown(dropdownIndex: number) {
+    console.log(dropdownIndex);
+
+    this.mobileMainCategoryDropdownIndex = 0;
+    if( this.mobileDropdownIndex == dropdownIndex ){
+      this.mobileDropdownIndex = 0;
+    }
+    else {
+      this.mobileDropdownIndex = dropdownIndex;
+    }
+  }
+
+  mobileMainCategoryDropdownIndex: number = 0;
+
+  toggleMainCategoryDropdown(mainCategoryDropdownIndex: number) {
+    console.log(mainCategoryDropdownIndex);
+
+    if( this.mobileMainCategoryDropdownIndex == mainCategoryDropdownIndex ){
+      this.mobileMainCategoryDropdownIndex = 0;
+    }
+    else {
+      this.mobileMainCategoryDropdownIndex = mainCategoryDropdownIndex;
+    }
   }
 
 }
