@@ -2002,6 +2002,9 @@ export class HeaderComponent implements OnInit {
 
   toggleMegaMenu(id: any, dropdownItems: any) {
 
+    console.log('this.headerNavigation01ActiveItem = '+this.headerNavigation01ActiveItem);
+    console.log('this.selectedMainCategory = '+this.selectedMainCategory);
+    // if 
     if( this.headerNavigation01ActiveItem == (id + 1) ){
       this.showMegaMenu = !this.showMegaMenu;
     }
@@ -2009,21 +2012,23 @@ export class HeaderComponent implements OnInit {
       this.headerNavigation01ActiveItem = (id + 1);
       this.showMegaMenu = true;
     }
+    
+    this.selectedMainCategory = '';
 
     // console.log(dropdownItems?.hasOwnProperty('mainCategories'));
 
-    if( dropdownItems?.hasOwnProperty('mainCategories') == true ){
-      dropdownItems.mainCategories.forEach((itemA: any, indexA: any) => {
-        // console.log(itemA);
-        // console.log(itemA?.name);
-        if( indexA == 0 ){
-          this.selectedMainCategory = itemA.name.toLowerCase();
-        }
-      });
-    }
-    else {
-      this.selectedMainCategory = '';
-    }
+    // if( dropdownItems?.hasOwnProperty('mainCategories') == true ){
+    //   dropdownItems.mainCategories.forEach((itemA: any, indexA: any) => {
+    //     // console.log(itemA);
+    //     // console.log(itemA?.name);
+    //     if( indexA == 0 ){
+    //       this.selectedMainCategory = itemA.name.toLowerCase();
+    //     }
+    //   });
+    // }
+    // else {
+    //   this.selectedMainCategory = '';
+    // }
     
     // console.log(this.selectedMainCategory);
     // console.log(dropdownItems);
