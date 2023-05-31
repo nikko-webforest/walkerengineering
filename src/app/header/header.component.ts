@@ -1,12 +1,16 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, HostListener } from '@angular/core';
 import { ProductsService } from '../services/products.service';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class HeaderComponent implements OnInit {
+
   @Input() headerNavigation01List: any;
 
   @Input() headerNavigation02List: any;
@@ -26,106 +30,115 @@ export class HeaderComponent implements OnInit {
     },
   };
 
-  headerNavigation01ActiveItem: number = 0;
-  showMegaMenu: boolean = false;
-  selectedMainCategory: string = '';
-  mobileMenuShow: boolean = false;
+  headerDesktopNav: any = {
+    activeMenuIndex: 0,
+    activeMainCategoryLabel: '',
+    showMegaMenu: false,
+  };
+
+  headerMobileNav: any = {
+    showMenu: false,
+    activeMenuIndex: 0,
+    activeMainCategoryIndex: 0,
+  };
+
   fetchedProducts: any = [];
 
-  productsSearchList: any = [];
+  productSearch: any = {
+    keyword: '',
+    list: [],
+  };
 
-  productSearchKeyword: string = '';
-
-  constructor(private productsService: ProductsService) {} // private eRef: ElementRef
+  constructor (
+    private productsService: ProductsService
+  ) {} // private eRef: ElementRef
 
   ngOnInit(): void {
     this.fetchProducts();
+    this.fetchCommonCurrency();
+  }
+  
+  screenWidth: any;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: undefined) {
+    this.screenWidth = window.innerWidth;
+    // console.log('screenWidth = '+this.screenWidth);
   }
 
-  // @HostListener('document:click', ['$event'])
-  // clickOutside(event: any) {
-  //   if( this.eRef.nativeElement.contains(event.target) ){
-  //     // console.log('inside');
-  //   }
-  //   else {
-  //     // console.log('outside');
-  //     this.showMegaMenu = false;
-  //     this.headerNavigation01ActiveItem = 0;
-  //   }
-  // }
-
   toggleMegaMenu(id: any, dropdownItems: any) {
-    console.log(
-      'this.headerNavigation01ActiveItem = ' + this.headerNavigation01ActiveItem
-    );
-    console.log('this.selectedMainCategory = ' + this.selectedMainCategory);
-    // if
-    if (this.headerNavigation01ActiveItem == id + 1) {
-      this.showMegaMenu = !this.showMegaMenu;
-    } else {
-      this.headerNavigation01ActiveItem = id + 1;
-      this.showMegaMenu = true;
+    // console.log('this.headerDesktopNav.activeMenuIndex = ' + this.headerDesktopNav.activeMenuIndex);
+    // console.log('this.headerDesktopNav.activeMainCategoryLabel = ' + this.headerDesktopNav.activeMainCategoryLabel);
+    
+    if (this.headerDesktopNav.activeMenuIndex == id + 1) {
+      this.headerDesktopNav.showMegaMenu = !this.headerDesktopNav.showMegaMenu;
+    }
+    else {
+      this.headerDesktopNav.activeMenuIndex = id + 1;
+      this.headerDesktopNav.showMegaMenu = true;
     }
 
-    this.selectedMainCategory = '';
-
-    // console.log(dropdownItems?.hasOwnProperty('mainCategories'));
-
-    // if( dropdownItems?.hasOwnProperty('mainCategories') == true ){
-    //   dropdownItems.mainCategories.forEach((itemA: any, indexA: any) => {
-    //     // console.log(itemA);
-    //     // console.log(itemA?.name);
-    //     if( indexA == 0 ){
-    //       this.selectedMainCategory = itemA.name.toLowerCase();
-    //     }
-    //   });
-    // }
-    // else {
-    //   this.selectedMainCategory = '';
-    // }
-
-    // console.log(this.selectedMainCategory);
-    // console.log(dropdownItems);
-    // console.log(id);
+    this.headerDesktopNav.activeMainCategoryLabel = '';
   }
 
   hideMegaMenu() {
-    console.log('outside');
-    this.showMegaMenu = false;
-    this.headerNavigation01ActiveItem = 0;
+    // console.log('outside');
+    this.headerDesktopNav.activeMenuIndex = 0;
+    this.headerDesktopNav.activeMainCategoryLabel = '';
+    this.headerDesktopNav.showMegaMenu = false;
   }
 
   selectMainCategory(category: string) {
-    this.selectedMainCategory = category.toLowerCase();
+    this.headerDesktopNav.activeMainCategoryLabel = category.toLowerCase();
   }
 
   openLink(link: any) {
-    if (link != '') {
-      window.location.href = link;
-    }
+    if (link != '') window.location.href = link;
+  }
+
+  openProductLink(link: any) {
+    if (link != '') window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
   }
 
   fetchProducts() {
     this.productsService.getAllProducts().subscribe((results: any) => {
-      console.log(results.data.products.nodes[0]);
+      // console.log(results.data.products.nodes[0]);
       this.fetchedProducts = results.data.products.nodes;
     });
   }
 
-  productSearch() {
-    this.productsSearchList = [];
+  doProductSearch() {
+    this.productSearch.list = [];
 
     this.fetchedProducts.forEach((item: any, index: any) => {
-      if (
-        item.title
-          .toLowerCase()
-          .includes(this.productSearchKeyword.toLowerCase()) &&
-        this.productSearchKeyword != ''
-      ) {
-        this.productsSearchList.push(item);
+      if (item.title.toLowerCase().includes(this.productSearch.keyword.toLowerCase()) && this.productSearch.keyword != '') {
+        this.productSearch.list.push(item);
       }
     });
-    console.log(this.productsSearchList);
+
+    // console.log(this.productSearch.list);
+  }
+
+  commonCurrency: any;
+  
+  fetchCommonCurrency() {
+    fetch('../assets/common-currency.json')
+    .then(response => response.json())
+    .then(result => {
+      // console.log('Fetch Common Currency Symbol SUCCESS...');
+      // console.log(result);
+      this.commonCurrency = result;
+    })
+    .catch(error => {
+      // console.log('Fetch Common Currency Symbol FAILED...');
+      // console.log(error);
+    });
+  }
+
+  getCurrencySymbol(currencyCode: any) {
+    // console.log('currencyCode = '+currencyCode);
+    // console.log(this.commonCurrency[currencyCode].symbol);
+    return this.commonCurrency[currencyCode].symbol;
   }
 
   calculateDiscount(beforePrice: any, currentPrice: any) {
@@ -137,33 +150,31 @@ export class HeaderComponent implements OnInit {
 
   // mobile
   toggleMobileMenu() {
-    this.mobileMenuShow = !this.mobileMenuShow;
-    this.mobileDropdownIndex = 0;
-    this.mobileMainCategoryDropdownIndex = 0;
+    this.headerMobileNav.showMenu = !this.headerMobileNav.showMenu;
+    this.headerMobileNav.activeMenuIndex = 0;
+    this.headerMobileNav.activeMainCategoryIndex = 0;
   }
 
-  mobileDropdownIndex: number = 0;
-
   toggleMobileDropdown(dropdownIndex: number) {
-    console.log(dropdownIndex);
+    // console.log(dropdownIndex);
 
-    this.mobileMainCategoryDropdownIndex = 0;
-    if (this.mobileDropdownIndex == dropdownIndex) {
-      this.mobileDropdownIndex = 0;
-    } else {
-      this.mobileDropdownIndex = dropdownIndex;
+    this.headerMobileNav.activeMainCategoryIndex = 0;
+    if (this.headerMobileNav.activeMenuIndex == dropdownIndex) {
+      this.headerMobileNav.activeMenuIndex = 0;
+    }
+    else {
+      this.headerMobileNav.activeMenuIndex = dropdownIndex;
     }
   }
 
-  mobileMainCategoryDropdownIndex: number = 0;
-
   toggleMainCategoryDropdown(mainCategoryDropdownIndex: number) {
-    console.log(mainCategoryDropdownIndex);
+    // console.log(mainCategoryDropdownIndex);
 
-    if (this.mobileMainCategoryDropdownIndex == mainCategoryDropdownIndex) {
-      this.mobileMainCategoryDropdownIndex = 0;
-    } else {
-      this.mobileMainCategoryDropdownIndex = mainCategoryDropdownIndex;
+    if (this.headerMobileNav.activeMainCategoryIndex == mainCategoryDropdownIndex) {
+      this.headerMobileNav.activeMainCategoryIndex = 0;
+    }
+    else {
+      this.headerMobileNav.activeMainCategoryIndex = mainCategoryDropdownIndex;
     }
   }
 }

@@ -11,12 +11,22 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
   providers: [],
   entryComponents: [AppComponent],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {
   constructor(private injector: Injector) {
     const el = createCustomElement(AppComponent, { injector: this.injector });
