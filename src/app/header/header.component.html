@@ -128,7 +128,7 @@
                           <div
                             class="product-before-price"
                             [innerText]="
-                              product.variants.nodes[0].compareAtPricemount
+                              product.variants.nodes[0].compareAtPrice
                             "
                           ></div>
                           <button
@@ -154,7 +154,7 @@
                     </div>
                   </div>
                 </ng-container>
-                <ng-container *ngIf="product.variants.length > 1">
+                <ng-container *ngIf="product.variants.nodes.length > 1">
                   <ng-container
                     *ngFor="
                       let variant of product.variants.nodes;
@@ -509,13 +509,15 @@
                 <div
                   class="we-search-results-item"
                   [attr.data-product-id]="product.id"
-                  [attr.data-product-variants-length]="product.variants.length"
+                  [attr.data-product-variants-length]="
+                    product.variants.nodes.length
+                  "
                   [attr.data-product-compare-at-price]="
                     product.variants[0].compareAtPrice
                   "
-                  [attr.data-product-price]="product.variants[0].price"
+                  [attr.data-product-price]="product.variants.nodes[0].price"
                   [attr.data-product-variant-availability]="
-                    product.variants[0].available
+                    product.variants.nodes[0].availableForSale
                   "
                   (click)="openLink(product.handle)"
                 >
@@ -533,16 +535,17 @@
                         <div class="we-inner-col">
                           <ng-container
                             *ngIf="
-                              product.variants[0].compareAtPrice != null &&
-                              product.variants[0].compareAtPrice != '0.00'
+                              product.variants.nodes[0].compareAtPrice !=
+                                null &&
+                              product.variants.nodes[0].compareAtPrice != '0.00'
                             "
                           >
                             <div
                               class="product-discount"
                               [innerText]="
                                 calculateDiscount(
-                                  product.variants[0].compareAtPrice,
-                                  product.variants[0].price.amount
+                                  product.variants.nodes[0].compareAtPrice,
+                                  product.variants.nodes[0].price.amount
                                 )
                               "
                             ></div>
@@ -575,11 +578,11 @@
                       <div class="we-inner-row">
                         <div
                           class="product-current-price"
-                          [innerText]="product.variants[0].price"
+                          [innerText]="product.variants.nodes[0].price"
                         ></div>
                         <div
                           class="product-before-price"
-                          [innerText]="product.variants[0].compareAtPrice"
+                          [innerText]="product.variants.nodes[0].compareAtPrice"
                         ></div>
                         <button
                           class="we-button--add-to-cart"
@@ -604,10 +607,10 @@
                   </div>
                 </div>
               </ng-container>
-              <ng-container *ngIf="product.variants.length > 1">
+              <ng-container *ngIf="product.variants.nodes.length > 1">
                 <ng-container
                   *ngFor="
-                    let variant of product.variants;
+                    let variant of product.variants.nodes;
                     let variantIndex = index
                   "
                 >
@@ -615,10 +618,12 @@
                     class="we-search-results-item"
                     [attr.data-product-id]="product.id"
                     [attr.data-product-variants-length]="
-                      product.variants.length
+                      product.variants.nodes.length
                     "
                     [attr.data-product-variant-index]="variantIndex"
-                    [attr.data-product-variant-availability]="variant.available"
+                    [attr.data-product-variant-availability]="
+                      variant.availableForSale
+                    "
                     (click)="openLink(product.handle)"
                   >
                     <div class="we-row">
@@ -629,7 +634,7 @@
                               class="product-img"
                               [alt]="product.title"
                               [title]="product.title"
-                              [src]="product.images[0].src"
+                              [src]="product.images.nodes[0].url"
                             />
                           </div>
                           <div class="we-inner-col">
@@ -679,7 +684,7 @@
                         <div class="we-inner-row">
                           <div
                             class="product-current-price"
-                            [innerText]="variant.price"
+                            [innerText]="variant.price.amount"
                           ></div>
                           <div
                             class="product-before-price"
