@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  productsEndpoint:
+    'https://walker-engineering-group.myshopify.com/api/2023-04/graphql.json',
+  shopifyAccessToken: 'f86e2967b63269d7b313c81ce1b43824',
 };
 
 /*

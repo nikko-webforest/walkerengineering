@@ -1,82 +1,152 @@
-<header class="we-header"
-  (mouseleave)="hideMegaMenu();">
+<header class="we-header" (mouseleave)="hideMegaMenu()">
   <div class="we-header-primary">
     <div class="we-container">
       <div class="we-row">
-        <a class="we-main-logo-link"
+        <a
+          class="we-main-logo-link"
           [title]="headerLogos.main.title"
-          [href]="headerLogos.main.url">
-          <img class="we-main-logo-img"
+          [href]="headerLogos.main.url"
+        >
+          <img
+            class="we-main-logo-img"
             [alt]="headerLogos.main.title"
             [title]="headerLogos.main.title"
-            [src]="headerLogos.main.imgSrc"/>
+            [src]="headerLogos.main.imgSrc"
+          />
         </a>
         <div class="we-search-wrap">
           <div class="we-search-bar">
-            <input class="we-search-input"
+            <input
+              class="we-search-input"
               type="text"
               placeholder="SEARCH KEYWORD HERE"
               [(ngModel)]="productSearchKeyword"
-              (keyup)="productSearch()"/>
-            <svg class="we-search-icon we-svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.8674 15.7233H16.7381L16.3379 15.3373C17.7387 13.7078 18.582 11.5923 18.582 9.29102C18.582 4.15952 14.4225 0 9.29102 0C4.15952 0 0 4.15952 0 9.29102C0 14.4225 4.15952 18.582 9.29102 18.582C11.5923 18.582 13.7078 17.7387 15.3373 16.3379L15.7233 16.7381V17.8674L22.8702 25L25 22.8702L17.8674 15.7233ZM9.29102 15.7233C5.73185 15.7233 2.85878 12.8502 2.85878 9.29102C2.85878 5.73185 5.73185 2.85878 9.29102 2.85878C12.8502 2.85878 15.7233 5.73185 15.7233 9.29102C15.7233 12.8502 12.8502 15.7233 9.29102 15.7233Z" fill="#8A8A8A"></path>
+              (keyup)="productSearch()"
+            />
+            <svg
+              class="we-search-icon we-svg"
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.8674 15.7233H16.7381L16.3379 15.3373C17.7387 13.7078 18.582 11.5923 18.582 9.29102C18.582 4.15952 14.4225 0 9.29102 0C4.15952 0 0 4.15952 0 9.29102C0 14.4225 4.15952 18.582 9.29102 18.582C11.5923 18.582 13.7078 17.7387 15.3373 16.3379L15.7233 16.7381V17.8674L22.8702 25L25 22.8702L17.8674 15.7233ZM9.29102 15.7233C5.73185 15.7233 2.85878 12.8502 2.85878 9.29102C2.85878 5.73185 5.73185 2.85878 9.29102 2.85878C12.8502 2.85878 15.7233 5.73185 15.7233 9.29102C15.7233 12.8502 12.8502 15.7233 9.29102 15.7233Z"
+                fill="#8A8A8A"
+              ></path>
             </svg>
           </div>
-          <div class="we-search-results we-scroll-bar"
-            *ngIf="productsSearchList.length">
-            <div class="we-search-results-count"
-              [innerText]="'Search Results ('+productsSearchList.length+')'">
-            </div>
+          <div
+            class="we-search-results we-scroll-bar"
+            *ngIf="productsSearchList.length"
+          >
+            <div
+              class="we-search-results-count"
+              [innerText]="'Search Results (' + productsSearchList.length + ')'"
+            ></div>
             <div class="we-search-results-list">
-              <ng-container *ngFor="let product of productsSearchList;">
-                <ng-container *ngIf="product.variants.length == 1;">
-                  <div class="we-search-results-item"
+              <ng-container *ngFor="let product of productsSearchList">
+                <ng-container *ngIf="product.variants.nodes.length == 1">
+                  <div
+                    class="we-search-results-item"
                     [attr.data-product-id]="product.id"
-                    [attr.data-product-variants-length]="product.variants.length"
-                    [attr.data-product-compare-at-price]="product.variants[0].compare_at_price"
-                    [attr.data-product-price]="product.variants[0].price"
-                    [attr.data-product-variant-availability]="product.variants[0].available"
-                    (click)="openLink(product.handle);">
+                    [attr.data-product-variants-length]="
+                      product.variants.nodes.length
+                    "
+                    [attr.data-product-compare-at-price]="
+                      product.variants.nodes[0].compareAtPrice
+                    "
+                    [attr.data-product-price]="product.variants.nodes[0].price"
+                    [attr.data-product-variant-availability]="
+                      product.variants.nodes[0].availableForSale
+                    "
+                    (click)="openLink(product.handle)"
+                  >
                     <div class="we-row">
                       <div class="we-col">
                         <div class="we-inner-row">
                           <div class="we-inner-col">
-                            <img class="product-img"
+                            <img
+                              class="product-img"
                               [alt]="product.title"
                               [title]="product.title"
-                              [src]="product.images[0].src"/>
+                              [src]="product.images.nodes[0].url"
+                            />
                           </div>
                           <div class="we-inner-col">
-                            <ng-container *ngIf="product.variants[0].compare_at_price != null && product.variants[0].compare_at_price != '0.00'">
-                              <div class="product-discount"
-                                [innerText]="calculateDiscount(product.variants[0].compare_at_price, product.variants[0].price)">
-                              </div>
+                            <ng-container
+                              *ngIf="
+                                product.variants.nodes[0].compareAtPrice !=
+                                  null &&
+                                product.variants.nodes[0].compareAtPrice !=
+                                  '0.00'
+                              "
+                            >
+                              <div
+                                class="product-discount"
+                                [innerText]="
+                                  calculateDiscount(
+                                    product.variants.nodes[0].compareAtPrice,
+                                    product.variants.nodes[0].price.amount
+                                  )
+                                "
+                              ></div>
                             </ng-container>
-                            <div class="product-name"
-                              [innerText]="product.title">
-                            </div>
+                            <div
+                              class="product-name"
+                              [innerText]="product.title"
+                            ></div>
                             <div class="product-rating">
-                              <svg class="product-rating-icon we-svg" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z" fill="#00529F"/>
+                              <svg
+                                class="product-rating-icon we-svg"
+                                width="13"
+                                height="12"
+                                viewBox="0 0 13 12"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z"
+                                  fill="#00529F"
+                                />
                               </svg>
                               <div class="product-rating-value">4.6</div>
-                              <div class="product-reviews-count">(7 reviews)</div>
+                              <div class="product-reviews-count">
+                                (7 reviews)
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="we-col">
                         <div class="we-inner-row">
-                          <div class="product-current-price"
-                            [innerText]="product.variants[0].price">
-                          </div>
-                          <div class="product-before-price"
-                            [innerText]="product.variants[0].compare_at_price">
-                          </div>
-                          <button class="we-button--add-to-cart"
-                            (click)="addToCart();">
-                            <svg class="we-icon-cart we-svg" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z" fill="#1B1B1B"/>
+                          <div
+                            class="product-current-price"
+                            [innerText]="product.variants.nodes[0].price.amount"
+                          ></div>
+                          <div
+                            class="product-before-price"
+                            [innerText]="
+                              product.variants.nodes[0].compareAtPricemount
+                            "
+                          ></div>
+                          <button
+                            class="we-button--add-to-cart"
+                            (click)="addToCart()"
+                          >
+                            <svg
+                              class="we-icon-cart we-svg"
+                              width="10"
+                              height="10"
+                              viewBox="0 0 10 10"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z"
+                                fill="#1B1B1B"
+                              />
                             </svg>
                           </button>
                         </div>
@@ -84,54 +154,105 @@
                     </div>
                   </div>
                 </ng-container>
-                <ng-container *ngIf="product.variants.length > 1;">
-                  <ng-container *ngFor="let variant of product.variants; let variantIndex = index;">
-                    <div class="we-search-results-item"
+                <ng-container *ngIf="product.variants.length > 1">
+                  <ng-container
+                    *ngFor="
+                      let variant of product.variants.nodes;
+                      let variantIndex = index
+                    "
+                  >
+                    <div
+                      class="we-search-results-item"
                       [attr.data-product-id]="product.id"
-                      [attr.data-product-variants-length]="product.variants.length"
+                      [attr.data-product-variants-length]="
+                        product.variants.nodes.length
+                      "
                       [attr.data-product-variant-index]="variantIndex"
-                      [attr.data-product-variant-availability]="variant.available"
-                      (click)="openLink(product.handle);">
+                      [attr.data-product-variant-availability]="
+                        variant.availableForSale
+                      "
+                      (click)="openLink(product.handle)"
+                    >
                       <div class="we-row">
                         <div class="we-col">
                           <div class="we-inner-row">
                             <div class="we-inner-col">
-                              <img class="product-img"
+                              <img
+                                class="product-img"
                                 [alt]="product.title"
                                 [title]="product.title"
-                                [src]="product.images[0].src"/>
+                                [src]="product.images.nodes[0].url"
+                              />
                             </div>
                             <div class="we-inner-col">
-                              <ng-container *ngIf="variant.compare_at_price != null && variant.compare_at_price != '0.00'">
-                                <div class="product-discount"
-                                  [innerText]="calculateDiscount(variant.compare_at_price, variant.price)">
-                                </div>
+                              <ng-container
+                                *ngIf="
+                                  variant.compareAtPrice != null &&
+                                  variant.compareAtPrice != '0.00'
+                                "
+                              >
+                                <div
+                                  class="product-discount"
+                                  [innerText]="
+                                    calculateDiscount(
+                                      variant.compareAtPrice,
+                                      variant.price.amount
+                                    )
+                                  "
+                                ></div>
                               </ng-container>
-                              <div class="product-name"
-                                [innerText]="product.title">
-                              </div>
+                              <div
+                                class="product-name"
+                                [innerText]="product.title"
+                              ></div>
                               <div class="product-rating">
-                                <svg class="product-rating-icon we-svg" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z" fill="#00529F"/>
+                                <svg
+                                  class="product-rating-icon we-svg"
+                                  width="13"
+                                  height="12"
+                                  viewBox="0 0 13 12"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z"
+                                    fill="#00529F"
+                                  />
                                 </svg>
                                 <div class="product-rating-value">4.6</div>
-                                <div class="product-reviews-count">(7 reviews)</div>
+                                <div class="product-reviews-count">
+                                  (7 reviews)
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="we-col">
                           <div class="we-inner-row">
-                            <div class="product-current-price"
-                              [innerText]="variant.price">
-                            </div>
-                            <div class="product-before-price"
-                              [innerText]="variant.compare_at_price">
-                            </div>
-                            <button class="we-button--add-to-cart"
-                              (click)="addToCart();">
-                              <svg class="we-icon-cart we-svg" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z" fill="#1B1B1B"/>
+                            <div
+                              class="product-current-price"
+                              [innerText]="variant.price.amount"
+                            ></div>
+                            <div
+                              class="product-before-price"
+                              [innerText]="variant.compareAtPrice"
+                            ></div>
+                            <button
+                              class="we-button--add-to-cart"
+                              (click)="addToCart()"
+                            >
+                              <svg
+                                class="we-icon-cart we-svg"
+                                width="10"
+                                height="10"
+                                viewBox="0 0 10 10"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z"
+                                  fill="#1B1B1B"
+                                />
                               </svg>
                             </button>
                           </div>
@@ -144,32 +265,67 @@
             </div>
           </div>
         </div>
-        <a class="we-contact-number-wrap"
+        <a
+          class="we-contact-number-wrap"
           title="Contact Phone"
-          [href]="'tel:'+contactDetails.phone">
-          <svg class="we-contact-phone-icon we-svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.00470874 2.0333C-0.0760033 0.889876 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353803 5.8275 0.896948L6.85144 3.35952C7.10088 3.9594 6.92384 4.65229 6.41744 5.05827L5.77915 5.56996C5.4943 5.79831 5.39746 6.19206 5.56635 6.51575C6.43432 8.17917 7.71712 9.59091 9.27712 10.6132C9.6064 10.829 10.0414 10.7431 10.287 10.4355L10.9522 9.60227C11.3573 9.09484 12.0487 8.91748 12.6474 9.1674L15.1049 10.1935C15.647 10.4198 16 10.9505 16 11.5389V13.9998C16 15.1461 15.0791 16.0762 13.9381 15.9951C6.64168 15.476 0.521973 9.36123 0.00470874 2.0333Z" fill="#1E1E1E"></path>
+          [href]="'tel:' + contactDetails.phone"
+        >
+          <svg
+            class="we-contact-phone-icon we-svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.00470874 2.0333C-0.0760033 0.889876 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353803 5.8275 0.896948L6.85144 3.35952C7.10088 3.9594 6.92384 4.65229 6.41744 5.05827L5.77915 5.56996C5.4943 5.79831 5.39746 6.19206 5.56635 6.51575C6.43432 8.17917 7.71712 9.59091 9.27712 10.6132C9.6064 10.829 10.0414 10.7431 10.287 10.4355L10.9522 9.60227C11.3573 9.09484 12.0487 8.91748 12.6474 9.1674L15.1049 10.1935C15.647 10.4198 16 10.9505 16 11.5389V13.9998C16 15.1461 15.0791 16.0762 13.9381 15.9951C6.64168 15.476 0.521973 9.36123 0.00470874 2.0333Z"
+              fill="#1E1E1E"
+            ></path>
           </svg>
           <div class="we-contact-label">Contact Us</div>
-          <div class="we-contact-number"
-            [innerText]="contactDetails.phone">
-          </div>
+          <div
+            class="we-contact-number"
+            [innerText]="contactDetails.phone"
+          ></div>
         </a>
         <div class="we-account-wrap">
           <button class="we-profile-wrap">
-            <svg class="we-profile-svg we-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 0C15.8565 0 17.637 0.737498 18.9497 2.05025C20.2625 3.36301 21 5.14348 21 7C21 8.85652 20.2625 10.637 18.9497 11.9497C17.637 13.2625 15.8565 14 14 14C12.1435 14 10.363 13.2625 9.05025 11.9497C7.7375 10.637 7 8.85652 7 7C7 5.14348 7.7375 3.36301 9.05025 2.05025C10.363 0.737498 12.1435 0 14 0ZM14 3.5C13.0717 3.5 12.1815 3.86875 11.5251 4.52513C10.8687 5.1815 10.5 6.07174 10.5 7C10.5 7.92826 10.8687 8.8185 11.5251 9.47487C12.1815 10.1313 13.0717 10.5 14 10.5C14.9283 10.5 15.8185 10.1313 16.4749 9.47487C17.1313 8.8185 17.5 7.92826 17.5 7C17.5 6.07174 17.1313 5.1815 16.4749 4.52513C15.8185 3.86875 14.9283 3.5 14 3.5ZM14 15.75C18.6725 15.75 28 18.0775 28 22.75V28H0V22.75C0 18.0775 9.3275 15.75 14 15.75ZM14 19.075C8.8025 19.075 3.325 21.63 3.325 22.75V24.675H24.675V22.75C24.675 21.63 19.1975 19.075 14 19.075Z" fill="#08406F"></path>
+            <svg
+              class="we-profile-svg we-svg"
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 0C15.8565 0 17.637 0.737498 18.9497 2.05025C20.2625 3.36301 21 5.14348 21 7C21 8.85652 20.2625 10.637 18.9497 11.9497C17.637 13.2625 15.8565 14 14 14C12.1435 14 10.363 13.2625 9.05025 11.9497C7.7375 10.637 7 8.85652 7 7C7 5.14348 7.7375 3.36301 9.05025 2.05025C10.363 0.737498 12.1435 0 14 0ZM14 3.5C13.0717 3.5 12.1815 3.86875 11.5251 4.52513C10.8687 5.1815 10.5 6.07174 10.5 7C10.5 7.92826 10.8687 8.8185 11.5251 9.47487C12.1815 10.1313 13.0717 10.5 14 10.5C14.9283 10.5 15.8185 10.1313 16.4749 9.47487C17.1313 8.8185 17.5 7.92826 17.5 7C17.5 6.07174 17.1313 5.1815 16.4749 4.52513C15.8185 3.86875 14.9283 3.5 14 3.5ZM14 15.75C18.6725 15.75 28 18.0775 28 22.75V28H0V22.75C0 18.0775 9.3275 15.75 14 15.75ZM14 19.075C8.8025 19.075 3.325 21.63 3.325 22.75V24.675H24.675V22.75C24.675 21.63 19.1975 19.075 14 19.075Z"
+                fill="#08406F"
+              ></path>
             </svg>
           </button>
           <button class="we-cart-wrap">
-            <svg class="we-cart-svg we-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.60286 32C8.7226 32 7.96931 31.6869 7.34299 31.0608C6.7156 30.4336 6.40191 29.68 6.40191 28.8C6.40191 27.92 6.7156 27.1664 7.34299 26.5392C7.96931 25.9131 8.7226 25.6 9.60286 25.6C10.4831 25.6 11.2364 25.9131 11.8627 26.5392C12.4901 27.1664 12.8038 27.92 12.8038 28.8C12.8038 29.68 12.4901 30.4336 11.8627 31.0608C11.2364 31.6869 10.4831 32 9.60286 32ZM25.6076 32C24.7274 32 23.9741 31.6869 23.3477 31.0608C22.7204 30.4336 22.4067 29.68 22.4067 28.8C22.4067 27.92 22.7204 27.1664 23.3477 26.5392C23.9741 25.9131 24.7274 25.6 25.6076 25.6C26.4879 25.6 27.2417 25.9131 27.8691 26.5392C28.4954 27.1664 28.8086 27.92 28.8086 28.8C28.8086 29.68 28.4954 30.4336 27.8691 31.0608C27.2417 31.6869 26.4879 32 25.6076 32ZM8.24245 6.4L12.0836 14.4H23.2869L27.6882 6.4H8.24245ZM9.60286 24C8.4025 24 7.49556 23.4731 6.88205 22.4192C6.26853 21.3664 6.24186 20.32 6.80202 19.28L8.96267 15.36L3.20095 3.2H1.56046C1.107 3.2 0.733552 3.0464 0.440131 2.7392C0.14671 2.43307 0 2.05333 0 1.6C0 1.14667 0.153646 0.7664 0.460937 0.4592C0.767162 0.153067 1.14701 0 1.60048 0H4.20125C4.49467 0 4.77475 0.0800002 5.0415 0.24C5.30825 0.4 5.50831 0.626667 5.64168 0.92L6.722 3.2H30.329C31.0492 3.2 31.5427 3.46667 31.8095 4C32.0762 4.53333 32.0629 5.09333 31.7695 5.68L26.0878 15.92C25.7943 16.4533 25.4076 16.8667 24.9274 17.16C24.4473 17.4533 23.9004 17.6 23.2869 17.6H11.3634L9.60286 20.8H27.2481C27.7016 20.8 28.075 20.9531 28.3684 21.2592C28.6619 21.5664 28.8086 21.9467 28.8086 22.4C28.8086 22.8533 28.6549 23.2331 28.3476 23.5392C28.0414 23.8464 27.6616 24 27.2081 24H9.60286Z" fill="#08406F"></path>
+            <svg
+              class="we-cart-svg we-svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.60286 32C8.7226 32 7.96931 31.6869 7.34299 31.0608C6.7156 30.4336 6.40191 29.68 6.40191 28.8C6.40191 27.92 6.7156 27.1664 7.34299 26.5392C7.96931 25.9131 8.7226 25.6 9.60286 25.6C10.4831 25.6 11.2364 25.9131 11.8627 26.5392C12.4901 27.1664 12.8038 27.92 12.8038 28.8C12.8038 29.68 12.4901 30.4336 11.8627 31.0608C11.2364 31.6869 10.4831 32 9.60286 32ZM25.6076 32C24.7274 32 23.9741 31.6869 23.3477 31.0608C22.7204 30.4336 22.4067 29.68 22.4067 28.8C22.4067 27.92 22.7204 27.1664 23.3477 26.5392C23.9741 25.9131 24.7274 25.6 25.6076 25.6C26.4879 25.6 27.2417 25.9131 27.8691 26.5392C28.4954 27.1664 28.8086 27.92 28.8086 28.8C28.8086 29.68 28.4954 30.4336 27.8691 31.0608C27.2417 31.6869 26.4879 32 25.6076 32ZM8.24245 6.4L12.0836 14.4H23.2869L27.6882 6.4H8.24245ZM9.60286 24C8.4025 24 7.49556 23.4731 6.88205 22.4192C6.26853 21.3664 6.24186 20.32 6.80202 19.28L8.96267 15.36L3.20095 3.2H1.56046C1.107 3.2 0.733552 3.0464 0.440131 2.7392C0.14671 2.43307 0 2.05333 0 1.6C0 1.14667 0.153646 0.7664 0.460937 0.4592C0.767162 0.153067 1.14701 0 1.60048 0H4.20125C4.49467 0 4.77475 0.0800002 5.0415 0.24C5.30825 0.4 5.50831 0.626667 5.64168 0.92L6.722 3.2H30.329C31.0492 3.2 31.5427 3.46667 31.8095 4C32.0762 4.53333 32.0629 5.09333 31.7695 5.68L26.0878 15.92C25.7943 16.4533 25.4076 16.8667 24.9274 17.16C24.4473 17.4533 23.9004 17.6 23.2869 17.6H11.3634L9.60286 20.8H27.2481C27.7016 20.8 28.075 20.9531 28.3684 21.2592C28.6619 21.5664 28.8086 21.9467 28.8086 22.4C28.8086 22.8533 28.6549 23.2331 28.3476 23.5392C28.0414 23.8464 27.6616 24 27.2081 24H9.60286Z"
+                fill="#08406F"
+              ></path>
             </svg>
           </button>
         </div>
-        <button class="we-hamburger-btn"
+        <button
+          class="we-hamburger-btn"
           [class.--active]="mobileMenuShow"
-          (click)="toggleMobileMenu();">
+          (click)="toggleMobileMenu()"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -182,20 +338,33 @@
       <div class="we-container">
         <div class="we-row">
           <nav class="we-nav01-list">
-            <ng-container *ngFor="let item of headerNavigation01List; let i = index;">
-              <div class="we-nav-item"
+            <ng-container
+              *ngFor="let item of headerNavigation01List; let i = index"
+            >
+              <div
+                class="we-nav-item"
                 [class.--has-dropdown]="item.dropdownItems.length"
-                [class.--active]="(i + 1) == headerNavigation01ActiveItem && showMegaMenu"
-                [id]="(i + 1)"
-                (mouseenter)="toggleMegaMenu(i, item.dropdownItems[0]);">
-                <div class="we-nav-item-label"
-                  (click)="openLink(item.url);">
-                  <div class="we-nav-item-name"
-                    [innerText]="item.name">
-                  </div>
+                [class.--active]="
+                  i + 1 == headerNavigation01ActiveItem && showMegaMenu
+                "
+                [id]="i + 1"
+                (mouseenter)="toggleMegaMenu(i, item.dropdownItems[0])"
+              >
+                <div class="we-nav-item-label" (click)="openLink(item.url)">
+                  <div class="we-nav-item-name" [innerText]="item.name"></div>
                   <ng-container *ngIf="item.dropdownItems.length">
-                    <svg class="we-nav-item-icon we-svg" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z" fill="#09244F"></path>
+                    <svg
+                      class="we-nav-item-icon we-svg"
+                      width="14"
+                      height="8"
+                      viewBox="0 0 14 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
+                        fill="#09244F"
+                      ></path>
                     </svg>
                   </ng-container>
                 </div>
@@ -203,39 +372,66 @@
             </ng-container>
           </nav>
           <nav class="we-nav02-list">
-            <ng-container *ngFor="let item of headerNavigation02List;">
+            <ng-container *ngFor="let item of headerNavigation02List">
               <button class="we-nav-item">
-                <div class="we-nav-item-label"
-                  [innerText]="item.name">
-                </div>
+                <div class="we-nav-item-label" [innerText]="item.name"></div>
               </button>
             </ng-container>
           </nav>
         </div>
       </div>
     </div>
-    <div class="we-nav-mega-menu-wrap"
-      [class.--show]="showMegaMenu">
+    <div class="we-nav-mega-menu-wrap" [class.--show]="showMegaMenu">
       <div class="we-container">
-        <ng-container *ngFor="let item of headerNavigation01List; let i = index">
+        <ng-container
+          *ngFor="let item of headerNavigation01List; let i = index"
+        >
           <ng-container *ngIf="item.dropdownItems.length">
-            <div class="we-nav-mega-menu-item"
+            <div
+              class="we-nav-mega-menu-item"
               [attr.data-menu]="item.name"
-              [id]="(i + 1)"
-              *ngIf="(i + 1) == headerNavigation01ActiveItem">
+              [id]="i + 1"
+              *ngIf="i + 1 == headerNavigation01ActiveItem"
+            >
               <div class="we-row">
                 <div class="we-col">
                   <ul class="main-category-list">
-                    <ng-container *ngFor="let dropdownItems of item.dropdownItems; let j = index;">
-                      <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories">
-                        <li class="main-category-item"
-                          [class.--active-main-category]="(i + 1) == headerNavigation01ActiveItem && mainCategory.name.toLowerCase() == selectedMainCategory"
-                          (mouseenter)="selectMainCategory(mainCategory.name);">
-                          <div class="category-name"
-                            [innerText]="mainCategory.name">
-                          </div>
-                          <svg class="category-icon we-svg" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z" fill="#2D3648"></path>
+                    <ng-container
+                      *ngFor="
+                        let dropdownItems of item.dropdownItems;
+                        let j = index
+                      "
+                    >
+                      <ng-container
+                        *ngFor="
+                          let mainCategory of dropdownItems.mainCategories
+                        "
+                      >
+                        <li
+                          class="main-category-item"
+                          [class.--active-main-category]="
+                            i + 1 == headerNavigation01ActiveItem &&
+                            mainCategory.name.toLowerCase() ==
+                              selectedMainCategory
+                          "
+                          (mouseenter)="selectMainCategory(mainCategory.name)"
+                        >
+                          <div
+                            class="category-name"
+                            [innerText]="mainCategory.name"
+                          ></div>
+                          <svg
+                            class="category-icon we-svg"
+                            width="8"
+                            height="14"
+                            viewBox="0 0 8 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
+                              fill="#2D3648"
+                            ></path>
                           </svg>
                         </li>
                       </ng-container>
@@ -243,15 +439,27 @@
                   </ul>
                 </div>
                 <div class="we-col">
-                  <ng-container *ngFor="let dropdownItems of item.dropdownItems;">
-                    <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories;">
-                      <ul class="sub-category-list"
+                  <ng-container
+                    *ngFor="let dropdownItems of item.dropdownItems"
+                  >
+                    <ng-container
+                      *ngFor="let mainCategory of dropdownItems.mainCategories"
+                    >
+                      <ul
+                        class="sub-category-list"
                         [attr.data-main-category]="mainCategory.name"
-                        *ngIf="mainCategory.name.toLowerCase() == selectedMainCategory">
-                        <ng-container *ngFor="let subCategory of mainCategory.subCategories;">
-                          <li class="sub-category-item"
-                            [innerText]="subCategory.name">
-                          </li>      
+                        *ngIf="
+                          mainCategory.name.toLowerCase() ==
+                          selectedMainCategory
+                        "
+                      >
+                        <ng-container
+                          *ngFor="let subCategory of mainCategory.subCategories"
+                        >
+                          <li
+                            class="sub-category-item"
+                            [innerText]="subCategory.name"
+                          ></li>
                         </ng-container>
                       </ul>
                     </ng-container>
@@ -263,55 +471,99 @@
         </ng-container>
       </div>
     </div>
-    <div class="we-nav-mobile-menu we-scroll-bar"
-      *ngIf="mobileMenuShow">
+    <div class="we-nav-mobile-menu we-scroll-bar" *ngIf="mobileMenuShow">
       <div class="we-search-wrap">
         <div class="we-search-bar">
-          <input class="we-search-input"
+          <input
+            class="we-search-input"
             type="text"
             placeholder="SEARCH KEYWORD HERE"
             [(ngModel)]="productSearchKeyword"
-            (keyup)="productSearch()"/>
-          <svg class="we-search-icon we-svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.8674 15.7233H16.7381L16.3379 15.3373C17.7387 13.7078 18.582 11.5923 18.582 9.29102C18.582 4.15952 14.4225 0 9.29102 0C4.15952 0 0 4.15952 0 9.29102C0 14.4225 4.15952 18.582 9.29102 18.582C11.5923 18.582 13.7078 17.7387 15.3373 16.3379L15.7233 16.7381V17.8674L22.8702 25L25 22.8702L17.8674 15.7233ZM9.29102 15.7233C5.73185 15.7233 2.85878 12.8502 2.85878 9.29102C2.85878 5.73185 5.73185 2.85878 9.29102 2.85878C12.8502 2.85878 15.7233 5.73185 15.7233 9.29102C15.7233 12.8502 12.8502 15.7233 9.29102 15.7233Z" fill="#8A8A8A"></path>
+            (keyup)="productSearch()"
+          />
+          <svg
+            class="we-search-icon we-svg"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.8674 15.7233H16.7381L16.3379 15.3373C17.7387 13.7078 18.582 11.5923 18.582 9.29102C18.582 4.15952 14.4225 0 9.29102 0C4.15952 0 0 4.15952 0 9.29102C0 14.4225 4.15952 18.582 9.29102 18.582C11.5923 18.582 13.7078 17.7387 15.3373 16.3379L15.7233 16.7381V17.8674L22.8702 25L25 22.8702L17.8674 15.7233ZM9.29102 15.7233C5.73185 15.7233 2.85878 12.8502 2.85878 9.29102C2.85878 5.73185 5.73185 2.85878 9.29102 2.85878C12.8502 2.85878 15.7233 5.73185 15.7233 9.29102C15.7233 12.8502 12.8502 15.7233 9.29102 15.7233Z"
+              fill="#8A8A8A"
+            ></path>
           </svg>
         </div>
-        <div class="we-search-results we-scroll-bar"
-          *ngIf="productsSearchList.length">
-          <div class="we-search-results-count"
-            [innerText]="'Search Results ('+productsSearchList.length+')'">
-          </div>
+        <div
+          class="we-search-results we-scroll-bar"
+          *ngIf="productsSearchList.length"
+        >
+          <div
+            class="we-search-results-count"
+            [innerText]="'Search Results (' + productsSearchList.length + ')'"
+          ></div>
           <div class="we-search-results-list">
-            <ng-container *ngFor="let product of productsSearchList;">
-              <ng-container *ngIf="product.variants.length == 1;">
-                <div class="we-search-results-item"
+            <ng-container *ngFor="let product of productsSearchList">
+              <ng-container *ngIf="product.variants.nodes.length == 1">
+                <div
+                  class="we-search-results-item"
                   [attr.data-product-id]="product.id"
                   [attr.data-product-variants-length]="product.variants.length"
-                  [attr.data-product-compare-at-price]="product.variants[0].compare_at_price"
+                  [attr.data-product-compare-at-price]="
+                    product.variants[0].compareAtPrice
+                  "
                   [attr.data-product-price]="product.variants[0].price"
-                  [attr.data-product-variant-availability]="product.variants[0].available"
-                  (click)="openLink(product.handle);">
+                  [attr.data-product-variant-availability]="
+                    product.variants[0].available
+                  "
+                  (click)="openLink(product.handle)"
+                >
                   <div class="we-row">
                     <div class="we-col">
                       <div class="we-inner-row">
                         <div class="we-inner-col">
-                          <img class="product-img"
+                          <img
+                            class="product-img"
                             [alt]="product.title"
                             [title]="product.title"
-                            [src]="product.images[0].src"/>
+                            [src]="product.images.nodes[0].url"
+                          />
                         </div>
                         <div class="we-inner-col">
-                          <ng-container *ngIf="product.variants[0].compare_at_price != null && product.variants[0].compare_at_price != '0.00'">
-                            <div class="product-discount"
-                              [innerText]="calculateDiscount(product.variants[0].compare_at_price, product.variants[0].price)">
-                            </div>
+                          <ng-container
+                            *ngIf="
+                              product.variants[0].compareAtPrice != null &&
+                              product.variants[0].compareAtPrice != '0.00'
+                            "
+                          >
+                            <div
+                              class="product-discount"
+                              [innerText]="
+                                calculateDiscount(
+                                  product.variants[0].compareAtPrice,
+                                  product.variants[0].price.amount
+                                )
+                              "
+                            ></div>
                           </ng-container>
-                          <div class="product-name"
-                            [innerText]="product.title">
-                          </div>
+                          <div
+                            class="product-name"
+                            [innerText]="product.title"
+                          ></div>
                           <div class="product-rating">
-                            <svg class="product-rating-icon we-svg" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z" fill="#00529F"/>
+                            <svg
+                              class="product-rating-icon we-svg"
+                              width="13"
+                              height="12"
+                              viewBox="0 0 13 12"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z"
+                                fill="#00529F"
+                              />
                             </svg>
                             <div class="product-rating-value">4.6</div>
                             <div class="product-reviews-count">(7 reviews)</div>
@@ -321,16 +573,30 @@
                     </div>
                     <div class="we-col">
                       <div class="we-inner-row">
-                        <div class="product-current-price"
-                          [innerText]="product.variants[0].price">
-                        </div>
-                        <div class="product-before-price"
-                          [innerText]="product.variants[0].compare_at_price">
-                        </div>
-                        <button class="we-button--add-to-cart"
-                          (click)="addToCart();">
-                          <svg class="we-icon-cart we-svg" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z" fill="#1B1B1B"/>
+                        <div
+                          class="product-current-price"
+                          [innerText]="product.variants[0].price"
+                        ></div>
+                        <div
+                          class="product-before-price"
+                          [innerText]="product.variants[0].compareAtPrice"
+                        ></div>
+                        <button
+                          class="we-button--add-to-cart"
+                          (click)="addToCart()"
+                        >
+                          <svg
+                            class="we-icon-cart we-svg"
+                            width="10"
+                            height="10"
+                            viewBox="0 0 10 10"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z"
+                              fill="#1B1B1B"
+                            />
                           </svg>
                         </button>
                       </div>
@@ -338,54 +604,103 @@
                   </div>
                 </div>
               </ng-container>
-              <ng-container *ngIf="product.variants.length > 1;">
-                <ng-container *ngFor="let variant of product.variants; let variantIndex = index;">
-                  <div class="we-search-results-item"
+              <ng-container *ngIf="product.variants.length > 1">
+                <ng-container
+                  *ngFor="
+                    let variant of product.variants;
+                    let variantIndex = index
+                  "
+                >
+                  <div
+                    class="we-search-results-item"
                     [attr.data-product-id]="product.id"
-                    [attr.data-product-variants-length]="product.variants.length"
+                    [attr.data-product-variants-length]="
+                      product.variants.length
+                    "
                     [attr.data-product-variant-index]="variantIndex"
                     [attr.data-product-variant-availability]="variant.available"
-                    (click)="openLink(product.handle);">
+                    (click)="openLink(product.handle)"
+                  >
                     <div class="we-row">
                       <div class="we-col">
                         <div class="we-inner-row">
                           <div class="we-inner-col">
-                            <img class="product-img"
+                            <img
+                              class="product-img"
                               [alt]="product.title"
                               [title]="product.title"
-                              [src]="product.images[0].src"/>
+                              [src]="product.images[0].src"
+                            />
                           </div>
                           <div class="we-inner-col">
-                            <ng-container *ngIf="variant.compare_at_price != null && variant.compare_at_price != '0.00'">
-                              <div class="product-discount"
-                                [innerText]="calculateDiscount(variant.compare_at_price, variant.price)">
-                              </div>
+                            <ng-container
+                              *ngIf="
+                                variant.compareAtPrice != null &&
+                                variant.compareAtPrice != '0.00'
+                              "
+                            >
+                              <div
+                                class="product-discount"
+                                [innerText]="
+                                  calculateDiscount(
+                                    variant.compareAtPrice,
+                                    variant.price.amount
+                                  )
+                                "
+                              ></div>
                             </ng-container>
-                            <div class="product-name"
-                              [innerText]="product.title">
-                            </div>
+                            <div
+                              class="product-name"
+                              [innerText]="product.title"
+                            ></div>
                             <div class="product-rating">
-                              <svg class="product-rating-icon we-svg" width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z" fill="#00529F"/>
+                              <svg
+                                class="product-rating-icon we-svg"
+                                width="13"
+                                height="12"
+                                viewBox="0 0 13 12"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z"
+                                  fill="#00529F"
+                                />
                               </svg>
                               <div class="product-rating-value">4.6</div>
-                              <div class="product-reviews-count">(7 reviews)</div>
+                              <div class="product-reviews-count">
+                                (7 reviews)
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="we-col">
                         <div class="we-inner-row">
-                          <div class="product-current-price"
-                            [innerText]="variant.price">
-                          </div>
-                          <div class="product-before-price"
-                            [innerText]="variant.compare_at_price">
-                          </div>
-                          <button class="we-button--add-to-cart"
-                            (click)="addToCart();">
-                            <svg class="we-icon-cart we-svg" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z" fill="#1B1B1B"/>
+                          <div
+                            class="product-current-price"
+                            [innerText]="variant.price"
+                          ></div>
+                          <div
+                            class="product-before-price"
+                            [innerText]="variant.compareAtPrice"
+                          ></div>
+                          <button
+                            class="we-button--add-to-cart"
+                            (click)="addToCart()"
+                          >
+                            <svg
+                              class="we-icon-cart we-svg"
+                              width="10"
+                              height="10"
+                              viewBox="0 0 10 10"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M3.00089 10C2.72581 10 2.49041 9.90217 2.29468 9.7065C2.09862 9.5105 2.0006 9.275 2.0006 9C2.0006 8.725 2.09862 8.4895 2.29468 8.2935C2.49041 8.09783 2.72581 8 3.00089 8C3.27597 8 3.51138 8.09783 3.7071 8.2935C3.90316 8.4895 4.00119 8.725 4.00119 9C4.00119 9.275 3.90316 9.5105 3.7071 9.7065C3.51138 9.90217 3.27597 10 3.00089 10ZM8.00238 10C7.7273 10 7.4919 9.90217 7.29617 9.7065C7.10011 9.5105 7.00208 9.275 7.00208 9C7.00208 8.725 7.10011 8.4895 7.29617 8.2935C7.4919 8.09783 7.7273 8 8.00238 8C8.27746 8 8.51303 8.09783 8.70909 8.2935C8.90482 8.4895 9.00268 8.725 9.00268 9C9.00268 9.275 8.90482 9.5105 8.70909 9.7065C8.51303 9.90217 8.27746 10 8.00238 10ZM2.57577 2L3.77612 4.5H7.27717L8.65257 2H2.57577ZM3.00089 7.5C2.62578 7.5 2.34236 7.33533 2.15064 7.006C1.95892 6.677 1.95058 6.35 2.12563 6.025L2.80083 4.8L1.0003 1H0.487645C0.345936 1 0.229235 0.952 0.137541 0.856C0.045847 0.760333 0 0.641667 0 0.5C0 0.358333 0.0480143 0.2395 0.144043 0.1435C0.239738 0.0478333 0.35844 0 0.500149 0H1.31289C1.40458 0 1.49211 0.025 1.57547 0.075C1.65883 0.125 1.72135 0.195833 1.76302 0.2875L2.10063 1H9.47782C9.70289 1 9.8571 1.08333 9.94046 1.25C10.0238 1.41667 10.0196 1.59167 9.92795 1.775L8.15243 4.975C8.06073 5.14167 7.93986 5.27083 7.78982 5.3625C7.63977 5.45417 7.46889 5.5 7.27717 5.5H3.55106L3.00089 6.5H8.51503C8.65674 6.5 8.77344 6.54783 8.86514 6.6435C8.95683 6.7395 9.00268 6.85833 9.00268 7C9.00268 7.14167 8.95467 7.26033 8.85864 7.356C8.76294 7.452 8.64424 7.5 8.50253 7.5H3.00089Z"
+                                fill="#1B1B1B"
+                              />
                             </svg>
                           </button>
                         </div>
@@ -399,49 +714,98 @@
         </div>
       </div>
       <nav class="we-nav01-list">
-        <ng-container *ngFor="let item of headerNavigation01List; let dropdownIndex = index;">
-          <div class="we-nav-item"
-            [attr.data-index]="(dropdownIndex + 1)"
-            [attr.data-dropdown-items-length]="item.dropdownItems.length">
-            <div class="we-nav-item-wrap"
-              [class.--active]="(dropdownIndex + 1) == mobileDropdownIndex"
-              (click)="toggleMobileDropdown((dropdownIndex + 1));">
-              <div class="we-nav-item-label"
-                [innerText]="item.name">
-              </div>
+        <ng-container
+          *ngFor="let item of headerNavigation01List; let dropdownIndex = index"
+        >
+          <div
+            class="we-nav-item"
+            [attr.data-index]="dropdownIndex + 1"
+            [attr.data-dropdown-items-length]="item.dropdownItems.length"
+          >
+            <div
+              class="we-nav-item-wrap"
+              [class.--active]="dropdownIndex + 1 == mobileDropdownIndex"
+              (click)="toggleMobileDropdown(dropdownIndex + 1)"
+            >
+              <div class="we-nav-item-label" [innerText]="item.name"></div>
               <ng-container *ngIf="item.dropdownItems.length">
-                <svg class="we-nav-item-icon we-svg" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z" fill="#09244F"></path>
+                <svg
+                  class="we-nav-item-icon we-svg"
+                  width="14"
+                  height="8"
+                  viewBox="0 0 14 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
+                    fill="#09244F"
+                  ></path>
                 </svg>
               </ng-container>
             </div>
-            <ng-container *ngIf="(dropdownIndex + 1) == mobileDropdownIndex">
+            <ng-container *ngIf="dropdownIndex + 1 == mobileDropdownIndex">
               <div class="we-nav-main-category-list">
-                <ng-container *ngFor="let dropdownItems of item.dropdownItems;">
-                  <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories; let mainCategoryIndex = index;">
-                    <div class="we-nav-main-category-item"
-                      [attr.data-main-category-index]="(mainCategoryIndex + 1)"
-                      [attr.data-main-category-length]="mainCategory.length">
-                      <div class="we-nav-main-category-wrap"
-                        [class.--active]="(mainCategoryIndex + 1) == mobileMainCategoryDropdownIndex"
-                        (click)="toggleMainCategoryDropdown((mainCategoryIndex + 1));">
-                        <div class="we-nav-main-category-label"
-                          [innerText]="mainCategory.name">
-                        </div>
+                <ng-container *ngFor="let dropdownItems of item.dropdownItems">
+                  <ng-container
+                    *ngFor="
+                      let mainCategory of dropdownItems.mainCategories;
+                      let mainCategoryIndex = index
+                    "
+                  >
+                    <div
+                      class="we-nav-main-category-item"
+                      [attr.data-main-category-index]="mainCategoryIndex + 1"
+                      [attr.data-main-category-length]="mainCategory.length"
+                    >
+                      <div
+                        class="we-nav-main-category-wrap"
+                        [class.--active]="
+                          mainCategoryIndex + 1 ==
+                          mobileMainCategoryDropdownIndex
+                        "
+                        (click)="
+                          toggleMainCategoryDropdown(mainCategoryIndex + 1)
+                        "
+                      >
+                        <div
+                          class="we-nav-main-category-label"
+                          [innerText]="mainCategory.name"
+                        ></div>
                         <ng-container *ngIf="mainCategory.subCategories.length">
-                          <svg class="we-nav-item-icon we-svg" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z" fill="#09244F"></path>
+                          <svg
+                            class="we-nav-item-icon we-svg"
+                            width="14"
+                            height="8"
+                            viewBox="0 0 14 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
+                              fill="#09244F"
+                            ></path>
                           </svg>
                         </ng-container>
                       </div>
-                      <ng-container *ngIf="(mainCategoryIndex + 1) == mobileMainCategoryDropdownIndex">
+                      <ng-container
+                        *ngIf="
+                          mainCategoryIndex + 1 ==
+                          mobileMainCategoryDropdownIndex
+                        "
+                      >
                         <div class="we-nav-sub-category-list">
-                          <ng-container *ngFor="let subCategory of mainCategory.subCategories">
+                          <ng-container
+                            *ngFor="
+                              let subCategory of mainCategory.subCategories
+                            "
+                          >
                             <div class="we-nav-sub-category-item">
                               <div class="we-nav-sub-category-wrap">
-                                <div class="we-nav-sub-category-label"
-                                  [innerText]="subCategory.name">
-                                </div>
+                                <div
+                                  class="we-nav-sub-category-label"
+                                  [innerText]="subCategory.name"
+                                ></div>
                               </div>
                             </div>
                           </ng-container>
@@ -456,35 +820,66 @@
         </ng-container>
       </nav>
       <nav class="we-nav02-list">
-        <ng-container *ngFor="let item of headerNavigation02List;">
+        <ng-container *ngFor="let item of headerNavigation02List">
           <button class="we-nav-item">
-            <div class="we-nav-item-label"
-              [innerText]="item.name">
-            </div>
+            <div class="we-nav-item-label" [innerText]="item.name"></div>
           </button>
         </ng-container>
       </nav>
       <div class="we-nav-bottom">
-        <a class="we-contact-number-wrap"
+        <a
+          class="we-contact-number-wrap"
           title="Contact Phone"
-          [href]="'tel:'+contactDetails.phone">
-          <svg class="we-contact-phone-icon we-svg" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.00470874 2.0333C-0.0760033 0.889876 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353803 5.8275 0.896948L6.85144 3.35952C7.10088 3.9594 6.92384 4.65229 6.41744 5.05827L5.77915 5.56996C5.4943 5.79831 5.39746 6.19206 5.56635 6.51575C6.43432 8.17917 7.71712 9.59091 9.27712 10.6132C9.6064 10.829 10.0414 10.7431 10.287 10.4355L10.9522 9.60227C11.3573 9.09484 12.0487 8.91748 12.6474 9.1674L15.1049 10.1935C15.647 10.4198 16 10.9505 16 11.5389V13.9998C16 15.1461 15.0791 16.0762 13.9381 15.9951C6.64168 15.476 0.521973 9.36123 0.00470874 2.0333Z" fill="#1E1E1E"></path>
+          [href]="'tel:' + contactDetails.phone"
+        >
+          <svg
+            class="we-contact-phone-icon we-svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.00470874 2.0333C-0.0760033 0.889876 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353803 5.8275 0.896948L6.85144 3.35952C7.10088 3.9594 6.92384 4.65229 6.41744 5.05827L5.77915 5.56996C5.4943 5.79831 5.39746 6.19206 5.56635 6.51575C6.43432 8.17917 7.71712 9.59091 9.27712 10.6132C9.6064 10.829 10.0414 10.7431 10.287 10.4355L10.9522 9.60227C11.3573 9.09484 12.0487 8.91748 12.6474 9.1674L15.1049 10.1935C15.647 10.4198 16 10.9505 16 11.5389V13.9998C16 15.1461 15.0791 16.0762 13.9381 15.9951C6.64168 15.476 0.521973 9.36123 0.00470874 2.0333Z"
+              fill="#1E1E1E"
+            ></path>
           </svg>
           <div class="we-contact-label">Contact Us</div>
-          <div class="we-contact-number"
-            [innerText]="contactDetails.phone">
-          </div>
+          <div
+            class="we-contact-number"
+            [innerText]="contactDetails.phone"
+          ></div>
         </a>
         <div class="we-account-wrap">
           <button class="we-profile-wrap">
-            <svg class="we-profile-svg we-svg" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 0C15.8565 0 17.637 0.737498 18.9497 2.05025C20.2625 3.36301 21 5.14348 21 7C21 8.85652 20.2625 10.637 18.9497 11.9497C17.637 13.2625 15.8565 14 14 14C12.1435 14 10.363 13.2625 9.05025 11.9497C7.7375 10.637 7 8.85652 7 7C7 5.14348 7.7375 3.36301 9.05025 2.05025C10.363 0.737498 12.1435 0 14 0ZM14 3.5C13.0717 3.5 12.1815 3.86875 11.5251 4.52513C10.8687 5.1815 10.5 6.07174 10.5 7C10.5 7.92826 10.8687 8.8185 11.5251 9.47487C12.1815 10.1313 13.0717 10.5 14 10.5C14.9283 10.5 15.8185 10.1313 16.4749 9.47487C17.1313 8.8185 17.5 7.92826 17.5 7C17.5 6.07174 17.1313 5.1815 16.4749 4.52513C15.8185 3.86875 14.9283 3.5 14 3.5ZM14 15.75C18.6725 15.75 28 18.0775 28 22.75V28H0V22.75C0 18.0775 9.3275 15.75 14 15.75ZM14 19.075C8.8025 19.075 3.325 21.63 3.325 22.75V24.675H24.675V22.75C24.675 21.63 19.1975 19.075 14 19.075Z" fill="#08406F"></path>
+            <svg
+              class="we-profile-svg we-svg"
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 0C15.8565 0 17.637 0.737498 18.9497 2.05025C20.2625 3.36301 21 5.14348 21 7C21 8.85652 20.2625 10.637 18.9497 11.9497C17.637 13.2625 15.8565 14 14 14C12.1435 14 10.363 13.2625 9.05025 11.9497C7.7375 10.637 7 8.85652 7 7C7 5.14348 7.7375 3.36301 9.05025 2.05025C10.363 0.737498 12.1435 0 14 0ZM14 3.5C13.0717 3.5 12.1815 3.86875 11.5251 4.52513C10.8687 5.1815 10.5 6.07174 10.5 7C10.5 7.92826 10.8687 8.8185 11.5251 9.47487C12.1815 10.1313 13.0717 10.5 14 10.5C14.9283 10.5 15.8185 10.1313 16.4749 9.47487C17.1313 8.8185 17.5 7.92826 17.5 7C17.5 6.07174 17.1313 5.1815 16.4749 4.52513C15.8185 3.86875 14.9283 3.5 14 3.5ZM14 15.75C18.6725 15.75 28 18.0775 28 22.75V28H0V22.75C0 18.0775 9.3275 15.75 14 15.75ZM14 19.075C8.8025 19.075 3.325 21.63 3.325 22.75V24.675H24.675V22.75C24.675 21.63 19.1975 19.075 14 19.075Z"
+                fill="#08406F"
+              ></path>
             </svg>
           </button>
           <button class="we-cart-wrap">
-            <svg class="we-cart-svg we-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9.60286 32C8.7226 32 7.96931 31.6869 7.34299 31.0608C6.7156 30.4336 6.40191 29.68 6.40191 28.8C6.40191 27.92 6.7156 27.1664 7.34299 26.5392C7.96931 25.9131 8.7226 25.6 9.60286 25.6C10.4831 25.6 11.2364 25.9131 11.8627 26.5392C12.4901 27.1664 12.8038 27.92 12.8038 28.8C12.8038 29.68 12.4901 30.4336 11.8627 31.0608C11.2364 31.6869 10.4831 32 9.60286 32ZM25.6076 32C24.7274 32 23.9741 31.6869 23.3477 31.0608C22.7204 30.4336 22.4067 29.68 22.4067 28.8C22.4067 27.92 22.7204 27.1664 23.3477 26.5392C23.9741 25.9131 24.7274 25.6 25.6076 25.6C26.4879 25.6 27.2417 25.9131 27.8691 26.5392C28.4954 27.1664 28.8086 27.92 28.8086 28.8C28.8086 29.68 28.4954 30.4336 27.8691 31.0608C27.2417 31.6869 26.4879 32 25.6076 32ZM8.24245 6.4L12.0836 14.4H23.2869L27.6882 6.4H8.24245ZM9.60286 24C8.4025 24 7.49556 23.4731 6.88205 22.4192C6.26853 21.3664 6.24186 20.32 6.80202 19.28L8.96267 15.36L3.20095 3.2H1.56046C1.107 3.2 0.733552 3.0464 0.440131 2.7392C0.14671 2.43307 0 2.05333 0 1.6C0 1.14667 0.153646 0.7664 0.460937 0.4592C0.767162 0.153067 1.14701 0 1.60048 0H4.20125C4.49467 0 4.77475 0.0800002 5.0415 0.24C5.30825 0.4 5.50831 0.626667 5.64168 0.92L6.722 3.2H30.329C31.0492 3.2 31.5427 3.46667 31.8095 4C32.0762 4.53333 32.0629 5.09333 31.7695 5.68L26.0878 15.92C25.7943 16.4533 25.4076 16.8667 24.9274 17.16C24.4473 17.4533 23.9004 17.6 23.2869 17.6H11.3634L9.60286 20.8H27.2481C27.7016 20.8 28.075 20.9531 28.3684 21.2592C28.6619 21.5664 28.8086 21.9467 28.8086 22.4C28.8086 22.8533 28.6549 23.2331 28.3476 23.5392C28.0414 23.8464 27.6616 24 27.2081 24H9.60286Z" fill="#08406F"></path>
+            <svg
+              class="we-cart-svg we-svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.60286 32C8.7226 32 7.96931 31.6869 7.34299 31.0608C6.7156 30.4336 6.40191 29.68 6.40191 28.8C6.40191 27.92 6.7156 27.1664 7.34299 26.5392C7.96931 25.9131 8.7226 25.6 9.60286 25.6C10.4831 25.6 11.2364 25.9131 11.8627 26.5392C12.4901 27.1664 12.8038 27.92 12.8038 28.8C12.8038 29.68 12.4901 30.4336 11.8627 31.0608C11.2364 31.6869 10.4831 32 9.60286 32ZM25.6076 32C24.7274 32 23.9741 31.6869 23.3477 31.0608C22.7204 30.4336 22.4067 29.68 22.4067 28.8C22.4067 27.92 22.7204 27.1664 23.3477 26.5392C23.9741 25.9131 24.7274 25.6 25.6076 25.6C26.4879 25.6 27.2417 25.9131 27.8691 26.5392C28.4954 27.1664 28.8086 27.92 28.8086 28.8C28.8086 29.68 28.4954 30.4336 27.8691 31.0608C27.2417 31.6869 26.4879 32 25.6076 32ZM8.24245 6.4L12.0836 14.4H23.2869L27.6882 6.4H8.24245ZM9.60286 24C8.4025 24 7.49556 23.4731 6.88205 22.4192C6.26853 21.3664 6.24186 20.32 6.80202 19.28L8.96267 15.36L3.20095 3.2H1.56046C1.107 3.2 0.733552 3.0464 0.440131 2.7392C0.14671 2.43307 0 2.05333 0 1.6C0 1.14667 0.153646 0.7664 0.460937 0.4592C0.767162 0.153067 1.14701 0 1.60048 0H4.20125C4.49467 0 4.77475 0.0800002 5.0415 0.24C5.30825 0.4 5.50831 0.626667 5.64168 0.92L6.722 3.2H30.329C31.0492 3.2 31.5427 3.46667 31.8095 4C32.0762 4.53333 32.0629 5.09333 31.7695 5.68L26.0878 15.92C25.7943 16.4533 25.4076 16.8667 24.9274 17.16C24.4473 17.4533 23.9004 17.6 23.2869 17.6H11.3634L9.60286 20.8H27.2481C27.7016 20.8 28.075 20.9531 28.3684 21.2592C28.6619 21.5664 28.8086 21.9467 28.8086 22.4C28.8086 22.8533 28.6549 23.2331 28.3476 23.5392C28.0414 23.8464 27.6616 24 27.2081 24H9.60286Z"
+                fill="#08406F"
+              ></path>
             </svg>
           </button>
         </div>
