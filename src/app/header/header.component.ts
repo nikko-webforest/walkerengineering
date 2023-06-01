@@ -102,7 +102,7 @@ export class HeaderComponent implements OnInit {
 
   fetchProducts() {
     this.productsService.getAllProducts().subscribe((results: any) => {
-      // console.log(results.data.products.nodes[0]);
+      console.log(results.data.products.nodes[0]);
       this.fetchedProducts = results.data.products.nodes;
     });
   }
