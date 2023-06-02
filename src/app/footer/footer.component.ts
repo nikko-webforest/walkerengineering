@@ -9,29 +9,34 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 export class FooterComponent implements OnInit {
 
-  @Input() footerMenuList: any;
+  @Input() footermenulist: any;
 
-  @Input() contactDetails: any;
+  @Input() contactdetails: any;
 
-  @Input() socialMediaList: any;
+  @Input() socialmedialist: any;
 
-  @Input() copyrightYear: any;
+  @Input() policylist: any;
+
+  @Input() copyrightyear: any;
 
   footerLogos: any = {
-    main: {
+    airsep: {
       title: 'Airsep',
-      url: '/',
-      imgSrc: 'assets/WE_Footer_Main_logo-v01.png',
+      url: '/'
     },
-    sub: {
+    performance: {
       title: 'Performance',
-      url: '/',
-      imgSrc: 'assets/WE_Footer_Sub_logo-v01.png',
+      url: '/'
     }
   };
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.footermenulist = JSON.parse(this.footermenulist);
+    this.contactdetails = JSON.parse(this.contactdetails);
+    this.socialmedialist = JSON.parse(this.socialmedialist);
+    this.policylist = JSON.parse(this.policylist);
+  }
 
 }

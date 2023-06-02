@@ -10,4 +10,5 @@ const concat = require('concat');
 
   await fs.ensureDir('elements');
   await concat(files, 'elements/walker-engineering.js');
+  await fs.copyFile('./dist/walkerengineering/styles.css', 'elements/styles.css');
 })();

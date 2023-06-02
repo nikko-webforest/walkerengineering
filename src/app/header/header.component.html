@@ -9,54 +9,10 @@
           <ng-container *ngTemplateOutlet="WalkerEngineeringEnterpriseLogo"></ng-container>
         </a>
         <ng-container *ngTemplateOutlet="WalkerNavbarSearchWrap"></ng-container>
-        <a class="we-contact-number-wrap"
-          title="Contact Phone"
-          [href]="'tel:'+contactDetails.phone">
-          <svg class="we-contact-phone-icon we-svg"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path id="path_01"
-              d="M0.00470874 2.0333C-0.0760033 0.889876 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353803 5.8275 0.896948L6.85144 3.35952C7.10088 3.9594 6.92384 4.65229 6.41744 5.05827L5.77915 5.56996C5.4943 5.79831 5.39746 6.19206 5.56635 6.51575C6.43432 8.17917 7.71712 9.59091 9.27712 10.6132C9.6064 10.829 10.0414 10.7431 10.287 10.4355L10.9522 9.60227C11.3573 9.09484 12.0487 8.91748 12.6474 9.1674L15.1049 10.1935C15.647 10.4198 16 10.9505 16 11.5389V13.9998C16 15.1461 15.0791 16.0762 13.9381 15.9951C6.64168 15.476 0.521973 9.36123 0.00470874 2.0333Z"
-              fill="#1E1E1E">
-            </path>
-          </svg>
-          <div class="we-contact-label">Contact Us</div>
-          <div class="we-contact-number"
-            [innerText]="contactDetails.phone">
-          </div>
-        </a>
-        <div class="we-account-wrap">
-          <button class="we-profile-wrap">
-            <svg class="we-profile-svg we-svg"
-              width="28"
-              height="28"
-              viewBox="0 0 28 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path id="path_01"
-                d="M14 0C15.8565 0 17.637 0.737498 18.9497 2.05025C20.2625 3.36301 21 5.14348 21 7C21 8.85652 20.2625 10.637 18.9497 11.9497C17.637 13.2625 15.8565 14 14 14C12.1435 14 10.363 13.2625 9.05025 11.9497C7.7375 10.637 7 8.85652 7 7C7 5.14348 7.7375 3.36301 9.05025 2.05025C10.363 0.737498 12.1435 0 14 0ZM14 3.5C13.0717 3.5 12.1815 3.86875 11.5251 4.52513C10.8687 5.1815 10.5 6.07174 10.5 7C10.5 7.92826 10.8687 8.8185 11.5251 9.47487C12.1815 10.1313 13.0717 10.5 14 10.5C14.9283 10.5 15.8185 10.1313 16.4749 9.47487C17.1313 8.8185 17.5 7.92826 17.5 7C17.5 6.07174 17.1313 5.1815 16.4749 4.52513C15.8185 3.86875 14.9283 3.5 14 3.5ZM14 15.75C18.6725 15.75 28 18.0775 28 22.75V28H0V22.75C0 18.0775 9.3275 15.75 14 15.75ZM14 19.075C8.8025 19.075 3.325 21.63 3.325 22.75V24.675H24.675V22.75C24.675 21.63 19.1975 19.075 14 19.075Z"
-                fill="#08406F">
-              </path>
-            </svg>
-          </button>
-          <button class="we-cart-wrap">
-            <svg class="we-cart-svg we-svg"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path id="path_01"
-                d="M9.60286 32C8.7226 32 7.96931 31.6869 7.34299 31.0608C6.7156 30.4336 6.40191 29.68 6.40191 28.8C6.40191 27.92 6.7156 27.1664 7.34299 26.5392C7.96931 25.9131 8.7226 25.6 9.60286 25.6C10.4831 25.6 11.2364 25.9131 11.8627 26.5392C12.4901 27.1664 12.8038 27.92 12.8038 28.8C12.8038 29.68 12.4901 30.4336 11.8627 31.0608C11.2364 31.6869 10.4831 32 9.60286 32ZM25.6076 32C24.7274 32 23.9741 31.6869 23.3477 31.0608C22.7204 30.4336 22.4067 29.68 22.4067 28.8C22.4067 27.92 22.7204 27.1664 23.3477 26.5392C23.9741 25.9131 24.7274 25.6 25.6076 25.6C26.4879 25.6 27.2417 25.9131 27.8691 26.5392C28.4954 27.1664 28.8086 27.92 28.8086 28.8C28.8086 29.68 28.4954 30.4336 27.8691 31.0608C27.2417 31.6869 26.4879 32 25.6076 32ZM8.24245 6.4L12.0836 14.4H23.2869L27.6882 6.4H8.24245ZM9.60286 24C8.4025 24 7.49556 23.4731 6.88205 22.4192C6.26853 21.3664 6.24186 20.32 6.80202 19.28L8.96267 15.36L3.20095 3.2H1.56046C1.107 3.2 0.733552 3.0464 0.440131 2.7392C0.14671 2.43307 0 2.05333 0 1.6C0 1.14667 0.153646 0.7664 0.460937 0.4592C0.767162 0.153067 1.14701 0 1.60048 0H4.20125C4.49467 0 4.77475 0.0800002 5.0415 0.24C5.30825 0.4 5.50831 0.626667 5.64168 0.92L6.722 3.2H30.329C31.0492 3.2 31.5427 3.46667 31.8095 4C32.0762 4.53333 32.0629 5.09333 31.7695 5.68L26.0878 15.92C25.7943 16.4533 25.4076 16.8667 24.9274 17.16C24.4473 17.4533 23.9004 17.6 23.2869 17.6H11.3634L9.60286 20.8H27.2481C27.7016 20.8 28.075 20.9531 28.3684 21.2592C28.6619 21.5664 28.8086 21.9467 28.8086 22.4C28.8086 22.8533 28.6549 23.2331 28.3476 23.5392C28.0414 23.8464 27.6616 24 27.2081 24H9.60286Z"
-                fill="#08406F">
-              </path>
-            </svg>
-          </button>
-        </div>
+        <ng-container *ngTemplateOutlet="WalkerNavbarContactWrap"></ng-container>
+        <ng-container *ngTemplateOutlet="WalkerNavbarAccountWrap"></ng-container>
         <button class="we-hamburger-btn"
+          *ngIf="screenWidth <= 900"
           [class.--active]="headerMobileNav.showMenu"
           (click)="toggleMobileMenu()">
           <span></span>
@@ -71,12 +27,12 @@
       <div class="we-container">
         <div class="we-row">
           <nav class="we-nav01-list">
-            <ng-container *ngFor="let item of headerNavigation01List; let i = index;">
+            <ng-container *ngFor="let item of headernav1; let i = index;">
               <div class="we-nav-item"
                 [class.--has-dropdown]="item.dropdownItems.length"
                 [class.--active]="(i + 1) == headerDesktopNav.activeMenuIndex && headerDesktopNav.showMegaMenu"
                 [id]="(i + 1)"
-                (mouseenter)="toggleMegaMenu(i, item.dropdownItems[0])">
+                (mouseenter)="toggleMegaMenu(i, item.dropdownItems.length)">
                 <div class="we-nav-item-label"
                   (click)="openLink(item.url)">
                   <div class="we-nav-item-name"
@@ -100,21 +56,15 @@
             </ng-container>
           </nav>
           <nav class="we-nav02-list">
-            <ng-container *ngFor="let item of headerNavigation02List;">
-              <button class="we-nav-item">
-                <div class="we-nav-item-label"
-                  [innerText]="item.name">
-                </div>
-              </button>
-            </ng-container>
+            <ng-container *ngTemplateOutlet="WalkerNavbarCTAsWrap"></ng-container>
           </nav>
         </div>
       </div>
     </div>
     <div class="we-nav-mega-menu-wrap"
-      [class.--show]="headerDesktopNav.showMegaMenu">
+      [class.--show]="headerDesktopNav.showMegaMenu && headerDesktopNav.hasDropdownItems">
       <div class="we-container">
-        <ng-container *ngFor="let item of headerNavigation01List; let i = index;">
+        <ng-container *ngFor="let item of headernav1; let i = index;">
           <ng-container *ngIf="item.dropdownItems.length">
             <div class="we-nav-mega-menu-item"
               [attr.data-menu]="item.name"
@@ -155,7 +105,8 @@
                         *ngIf="mainCategory.name.toLowerCase() == headerDesktopNav.activeMainCategoryLabel">
                         <ng-container *ngFor="let subCategory of mainCategory.subCategories">
                           <li class="sub-category-item"
-                            [innerText]="subCategory.name">
+                            [innerText]="subCategory.name"
+                            (click)="openLink(subCategory.url);">
                           </li>
                         </ng-container>
                       </ul>
@@ -172,7 +123,7 @@
       *ngIf="headerMobileNav.showMenu && screenWidth <= 900">
       <ng-container *ngTemplateOutlet="WalkerNavbarSearchWrap"></ng-container>
       <nav class="we-nav01-list">
-        <ng-container *ngFor="let item of headerNavigation01List; let dropdownIndex = index;">
+        <ng-container *ngFor="let item of headernav1; let dropdownIndex = index;">
           <div class="we-nav-item"
             [attr.data-index]="(dropdownIndex + 1)"
             [attr.data-dropdown-items-length]="item.dropdownItems.length">
@@ -245,64 +196,11 @@
         </ng-container>
       </nav>
       <nav class="we-nav02-list">
-        <ng-container *ngFor="let item of headerNavigation02List">
-          <button class="we-nav-item">
-            <div class="we-nav-item-label"
-              [innerText]="item.name">
-            </div>
-          </button>
-        </ng-container>
+        <ng-container *ngTemplateOutlet="WalkerNavbarCTAsWrap"></ng-container>
       </nav>
       <div class="we-nav-bottom">
-        <a class="we-contact-number-wrap"
-          title="Contact Phone"
-          [href]="'tel:'+contactDetails.phone">
-          <svg class="we-contact-phone-icon we-svg"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path id="path_01"
-              d="M0.00470874 2.0333C-0.0760033 0.889876 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353803 5.8275 0.896948L6.85144 3.35952C7.10088 3.9594 6.92384 4.65229 6.41744 5.05827L5.77915 5.56996C5.4943 5.79831 5.39746 6.19206 5.56635 6.51575C6.43432 8.17917 7.71712 9.59091 9.27712 10.6132C9.6064 10.829 10.0414 10.7431 10.287 10.4355L10.9522 9.60227C11.3573 9.09484 12.0487 8.91748 12.6474 9.1674L15.1049 10.1935C15.647 10.4198 16 10.9505 16 11.5389V13.9998C16 15.1461 15.0791 16.0762 13.9381 15.9951C6.64168 15.476 0.521973 9.36123 0.00470874 2.0333Z"
-              fill="#1E1E1E">
-            </path>
-          </svg>
-          <div class="we-contact-label"
-            [innerText]="'Contact Us'">
-          </div>
-          <div class="we-contact-number"
-            [innerText]="contactDetails.phone">
-          </div>
-        </a>
-        <div class="we-account-wrap">
-          <button class="we-profile-wrap">
-            <svg class="we-profile-svg we-svg"
-              width="28"
-              height="28"
-              viewBox="0 0 28 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path id="path_01"
-                d="M14 0C15.8565 0 17.637 0.737498 18.9497 2.05025C20.2625 3.36301 21 5.14348 21 7C21 8.85652 20.2625 10.637 18.9497 11.9497C17.637 13.2625 15.8565 14 14 14C12.1435 14 10.363 13.2625 9.05025 11.9497C7.7375 10.637 7 8.85652 7 7C7 5.14348 7.7375 3.36301 9.05025 2.05025C10.363 0.737498 12.1435 0 14 0ZM14 3.5C13.0717 3.5 12.1815 3.86875 11.5251 4.52513C10.8687 5.1815 10.5 6.07174 10.5 7C10.5 7.92826 10.8687 8.8185 11.5251 9.47487C12.1815 10.1313 13.0717 10.5 14 10.5C14.9283 10.5 15.8185 10.1313 16.4749 9.47487C17.1313 8.8185 17.5 7.92826 17.5 7C17.5 6.07174 17.1313 5.1815 16.4749 4.52513C15.8185 3.86875 14.9283 3.5 14 3.5ZM14 15.75C18.6725 15.75 28 18.0775 28 22.75V28H0V22.75C0 18.0775 9.3275 15.75 14 15.75ZM14 19.075C8.8025 19.075 3.325 21.63 3.325 22.75V24.675H24.675V22.75C24.675 21.63 19.1975 19.075 14 19.075Z"
-                fill="#08406F">
-              </path>
-            </svg>
-          </button>
-          <button class="we-cart-wrap">
-            <svg class="we-cart-svg we-svg"
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path id="path_01"
-                d="M9.60286 32C8.7226 32 7.96931 31.6869 7.34299 31.0608C6.7156 30.4336 6.40191 29.68 6.40191 28.8C6.40191 27.92 6.7156 27.1664 7.34299 26.5392C7.96931 25.9131 8.7226 25.6 9.60286 25.6C10.4831 25.6 11.2364 25.9131 11.8627 26.5392C12.4901 27.1664 12.8038 27.92 12.8038 28.8C12.8038 29.68 12.4901 30.4336 11.8627 31.0608C11.2364 31.6869 10.4831 32 9.60286 32ZM25.6076 32C24.7274 32 23.9741 31.6869 23.3477 31.0608C22.7204 30.4336 22.4067 29.68 22.4067 28.8C22.4067 27.92 22.7204 27.1664 23.3477 26.5392C23.9741 25.9131 24.7274 25.6 25.6076 25.6C26.4879 25.6 27.2417 25.9131 27.8691 26.5392C28.4954 27.1664 28.8086 27.92 28.8086 28.8C28.8086 29.68 28.4954 30.4336 27.8691 31.0608C27.2417 31.6869 26.4879 32 25.6076 32ZM8.24245 6.4L12.0836 14.4H23.2869L27.6882 6.4H8.24245ZM9.60286 24C8.4025 24 7.49556 23.4731 6.88205 22.4192C6.26853 21.3664 6.24186 20.32 6.80202 19.28L8.96267 15.36L3.20095 3.2H1.56046C1.107 3.2 0.733552 3.0464 0.440131 2.7392C0.14671 2.43307 0 2.05333 0 1.6C0 1.14667 0.153646 0.7664 0.460937 0.4592C0.767162 0.153067 1.14701 0 1.60048 0H4.20125C4.49467 0 4.77475 0.0800002 5.0415 0.24C5.30825 0.4 5.50831 0.626667 5.64168 0.92L6.722 3.2H30.329C31.0492 3.2 31.5427 3.46667 31.8095 4C32.0762 4.53333 32.0629 5.09333 31.7695 5.68L26.0878 15.92C25.7943 16.4533 25.4076 16.8667 24.9274 17.16C24.4473 17.4533 23.9004 17.6 23.2869 17.6H11.3634L9.60286 20.8H27.2481C27.7016 20.8 28.075 20.9531 28.3684 21.2592C28.6619 21.5664 28.8086 21.9467 28.8086 22.4C28.8086 22.8533 28.6549 23.2331 28.3476 23.5392C28.0414 23.8464 27.6616 24 27.2081 24H9.60286Z"
-                fill="#08406F">
-              </path>
-            </svg>
-          </button>
-        </div>
+        <ng-container *ngTemplateOutlet="WalkerNavbarContactWrap"></ng-container>
+        <ng-container *ngTemplateOutlet="WalkerNavbarAccountWrap"></ng-container>
       </div>
     </div>
   </div>
@@ -376,8 +274,12 @@
                       <div class="product-name"
                         [innerText]="product.title">
                       </div>
-                      <div class="product-rating">
-                        <!-- <svg class="product-rating-icon we-svg"
+                      <div class="product-type"
+                        [innerText]="product.productType">
+                      </div>
+                      <div class="product-rating"
+                        *ngIf="false">
+                        <svg class="product-rating-icon we-svg"
                           width="13"
                           height="12"
                           viewBox="0 0 13 12"
@@ -387,12 +289,12 @@
                             d="M6.15427 9.74036C6.30061 9.65447 6.48196 9.65447 6.6283 9.74036L9.39212 11.3627C9.74813 11.5716 10.1807 11.2511 10.0844 10.8497L9.36035 7.83111C9.31902 7.65883 9.37848 7.47798 9.51397 7.36383L11.9145 5.34138C12.234 5.07219 12.0677 4.55105 11.6513 4.51669L8.46615 4.25389C8.29438 4.23971 8.14429 4.13232 8.07543 3.97432L6.82051 1.09475C6.65714 0.719884 6.12544 0.719884 5.96207 1.09475L4.70714 3.97432C4.63829 4.13232 4.48819 4.23971 4.31642 4.25389L1.13125 4.51669C0.714865 4.55105 0.548559 5.07219 0.868073 5.34138L3.2686 7.36383C3.40409 7.47798 3.46355 7.65883 3.42222 7.83111L2.69815 10.8497C2.60185 11.2511 3.03444 11.5716 3.39045 11.3627L6.15427 9.74036Z"
                             fill="#00529F">
                           </path>
-                        </svg> -->
-                        <!-- <div class="product-rating-value"
+                        </svg>
+                        <div class="product-rating-value"
                           [innerText]="'4.6'">
-                        </div> -->
+                        </div>
                         <div class="product-reviews-count"
-                          [innerText]="product.productType">
+                          [innerText]="'(7 reviews)'">
                         </div>
                       </div>
                     </div>
@@ -466,7 +368,11 @@
                         <div class="product-name"
                           [innerText]="product.title">
                         </div>
-                        <div class="product-rating">
+                        <div class="product-type"
+                          [innerText]="product.productType">
+                        </div>
+                        <div class="product-rating"
+                          *ngIf="false">
                           <svg class="product-rating-icon we-svg"
                             width="13"
                             height="12"
@@ -520,6 +426,76 @@
       </div>
     </div>
   </div>
+</ng-template>
+
+<ng-template #WalkerNavbarContactWrap>
+  <ng-container *ngFor="let item of contactdetails;">
+    <ng-container *ngIf="item.title.toLowerCase() == 'phone'">
+      <a class="we-contact-number-wrap"
+        title="Contact Phone"
+        [href]="'tel:'+item.phone">
+        <svg class="we-contact-phone-icon we-svg"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path id="path_01"
+            d="M0.00470874 2.0333C-0.0760033 0.889876 0.892245 0 2.03617 0H4.48485C5.07205 0 5.60165 0.353803 5.8275 0.896948L6.85144 3.35952C7.10088 3.9594 6.92384 4.65229 6.41744 5.05827L5.77915 5.56996C5.4943 5.79831 5.39746 6.19206 5.56635 6.51575C6.43432 8.17917 7.71712 9.59091 9.27712 10.6132C9.6064 10.829 10.0414 10.7431 10.287 10.4355L10.9522 9.60227C11.3573 9.09484 12.0487 8.91748 12.6474 9.1674L15.1049 10.1935C15.647 10.4198 16 10.9505 16 11.5389V13.9998C16 15.1461 15.0791 16.0762 13.9381 15.9951C6.64168 15.476 0.521973 9.36123 0.00470874 2.0333Z"
+            fill="#1E1E1E">
+          </path>
+        </svg>
+        <div class="we-contact-label"
+          [innerText]="'Contact Us'">
+        </div>
+        <div class="we-contact-number"
+          [innerText]="item.label">
+        </div>
+      </a>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #WalkerNavbarAccountWrap>
+  <div class="we-account-wrap">
+    <button class="we-profile-wrap">
+      <svg class="we-profile-svg we-svg"
+        width="28"
+        height="28"
+        viewBox="0 0 28 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path id="path_01"
+          d="M14 0C15.8565 0 17.637 0.737498 18.9497 2.05025C20.2625 3.36301 21 5.14348 21 7C21 8.85652 20.2625 10.637 18.9497 11.9497C17.637 13.2625 15.8565 14 14 14C12.1435 14 10.363 13.2625 9.05025 11.9497C7.7375 10.637 7 8.85652 7 7C7 5.14348 7.7375 3.36301 9.05025 2.05025C10.363 0.737498 12.1435 0 14 0ZM14 3.5C13.0717 3.5 12.1815 3.86875 11.5251 4.52513C10.8687 5.1815 10.5 6.07174 10.5 7C10.5 7.92826 10.8687 8.8185 11.5251 9.47487C12.1815 10.1313 13.0717 10.5 14 10.5C14.9283 10.5 15.8185 10.1313 16.4749 9.47487C17.1313 8.8185 17.5 7.92826 17.5 7C17.5 6.07174 17.1313 5.1815 16.4749 4.52513C15.8185 3.86875 14.9283 3.5 14 3.5ZM14 15.75C18.6725 15.75 28 18.0775 28 22.75V28H0V22.75C0 18.0775 9.3275 15.75 14 15.75ZM14 19.075C8.8025 19.075 3.325 21.63 3.325 22.75V24.675H24.675V22.75C24.675 21.63 19.1975 19.075 14 19.075Z"
+          fill="#08406F">
+        </path>
+      </svg>
+    </button>
+    <button class="we-cart-wrap">
+      <svg class="we-cart-svg we-svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path id="path_01"
+          d="M9.60286 32C8.7226 32 7.96931 31.6869 7.34299 31.0608C6.7156 30.4336 6.40191 29.68 6.40191 28.8C6.40191 27.92 6.7156 27.1664 7.34299 26.5392C7.96931 25.9131 8.7226 25.6 9.60286 25.6C10.4831 25.6 11.2364 25.9131 11.8627 26.5392C12.4901 27.1664 12.8038 27.92 12.8038 28.8C12.8038 29.68 12.4901 30.4336 11.8627 31.0608C11.2364 31.6869 10.4831 32 9.60286 32ZM25.6076 32C24.7274 32 23.9741 31.6869 23.3477 31.0608C22.7204 30.4336 22.4067 29.68 22.4067 28.8C22.4067 27.92 22.7204 27.1664 23.3477 26.5392C23.9741 25.9131 24.7274 25.6 25.6076 25.6C26.4879 25.6 27.2417 25.9131 27.8691 26.5392C28.4954 27.1664 28.8086 27.92 28.8086 28.8C28.8086 29.68 28.4954 30.4336 27.8691 31.0608C27.2417 31.6869 26.4879 32 25.6076 32ZM8.24245 6.4L12.0836 14.4H23.2869L27.6882 6.4H8.24245ZM9.60286 24C8.4025 24 7.49556 23.4731 6.88205 22.4192C6.26853 21.3664 6.24186 20.32 6.80202 19.28L8.96267 15.36L3.20095 3.2H1.56046C1.107 3.2 0.733552 3.0464 0.440131 2.7392C0.14671 2.43307 0 2.05333 0 1.6C0 1.14667 0.153646 0.7664 0.460937 0.4592C0.767162 0.153067 1.14701 0 1.60048 0H4.20125C4.49467 0 4.77475 0.0800002 5.0415 0.24C5.30825 0.4 5.50831 0.626667 5.64168 0.92L6.722 3.2H30.329C31.0492 3.2 31.5427 3.46667 31.8095 4C32.0762 4.53333 32.0629 5.09333 31.7695 5.68L26.0878 15.92C25.7943 16.4533 25.4076 16.8667 24.9274 17.16C24.4473 17.4533 23.9004 17.6 23.2869 17.6H11.3634L9.60286 20.8H27.2481C27.7016 20.8 28.075 20.9531 28.3684 21.2592C28.6619 21.5664 28.8086 21.9467 28.8086 22.4C28.8086 22.8533 28.6549 23.2331 28.3476 23.5392C28.0414 23.8464 27.6616 24 27.2081 24H9.60286Z"
+          fill="#08406F">
+        </path>
+      </svg>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #WalkerNavbarCTAsWrap>
+  <ng-container *ngFor="let item of headernav2">
+    <button class="we-nav-item">
+      <div class="we-nav-item-label"
+        (click)="openLink(item.url);"
+        [innerText]="item.name">
+      </div>
+    </button>
+  </ng-container>
 </ng-template>
 
 <ng-template #WalkerEngineeringEnterpriseLogo>

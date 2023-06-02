@@ -336,7 +336,8 @@
                   margin: 0 0 16px;
                   
                   .we-footer-menu-link {
-                    color: #191D32;
+                    --textColor: #191D32;
+                    color: var(--textColor);
                     font-family: var(--tertiaryFontFamily);
                     font-style: normal;
                     font-weight: 600;
@@ -348,7 +349,7 @@
                     }
 
                     &:hover {
-                      color: var(--secondaryColor); 
+                      --textColor: #F2234B;
                     }
                   }
                 }
@@ -394,19 +395,26 @@
           &:nth-child(5) {
             grid-area: contact-info;
 
-            .we-address,
-            .we-phone,
-            .we-fax {
-              color: #191D32;
-              font-family: var(--secondaryFontFamily);
-              font-style: normal;
-              font-weight: 400;
-              font-size: 12px;
-              line-height: 1.65em;
-            }
+            .we-contact-details-list {
+              .we-contact-details-item {
+                .we-contact-details-link {
+                  --textColor: #191D32;
+                  color: var(--textColor);
+                  font-family: var(--secondaryFontFamily);
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 12px;
+                  line-height: 1.65em;
 
-            .we-address {
-              margin: 0 0 25px;
+                  &:hover {
+                    --textColor: #F2234B;
+                  }
+                }
+
+                &.--address {
+                  margin: 0 0 25px;
+                }
+              }
             }
           }
         }
@@ -439,7 +447,8 @@
         align-items: center;
 
         .we-link {
-          color: #191D32;
+          --textColor: #191D32;
+          color: var(--textColor);
           font-family: var(--tertiaryFontFamily);
           font-style: normal;
           font-weight: 700;
@@ -452,7 +461,7 @@
           }
 
           &:hover {
-            color: var(--secondaryColor);
+            --textColor: #F2234B;
           }
         }
 

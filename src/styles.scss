@@ -21,8 +21,10 @@
 
   --blackColor: #000000;
   --whiteColor: #FFFFFF;
-  --primaryColor: #09244F;
-  --secondaryColor: #F2234B;
+  --primaryColor: #00529F;
+  --primaryDarkColor: #00407B;
+  --secondaryColor: #E93C42;
+  --secondaryDarkColor: #D41A3F;
   --tertiaryColor: #08406F;
 
   --container: 1140px;
@@ -49,7 +51,6 @@ $clickTransitionDuration: var(--clickTransitionDuration);
 /*===============*/
 /*   CSS RESET   */
 /*===============*/
-
 * {
   margin: 0;
   padding: 0;
@@ -93,23 +94,22 @@ a,
 button,
 input[type='submit'],
 input[type='button'] {
+  text-decoration: none;
   line-height: 1em;
   text-decoration: none;
+  display: block;
+  background-color: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  outline: transparent;
   transition:
     all $hoverTransitionDuration ease-in-out 0ms;
   cursor: pointer;
 }
 
 ul, ol {
-  list-style-type: none;
-  list-style-position: inside;
-}
-
-img {
-  width: 100%;
+  list-style: none inside;
 }
 
 /*===================*/
@@ -118,10 +118,11 @@ img {
 .we-section {
   position: relative;
   width: 100%;
+  padding: 25px;
 }
 
 .we-container {
-  max-width: 1140px;
+  max-width: $container;
   width: 100%;
   margin: 0 auto;
 }
@@ -168,7 +169,7 @@ img {
 }
 
 .we-scroll-bar {
-	// width & height
+	// Width & Height
 	&::-webkit-scrollbar {
 		width: 4px;
 		height: 4px;
@@ -194,23 +195,13 @@ img {
 /*=============*/
 /*   BUTTONS   */
 /*=============*/
-a,
-button {
-  text-decoration: none;
-  display: block;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: transparent;
-  cursor: pointer;
-
-  .we-button-primary {
+.we-btn {
+  &.we-button-primary {
 
   }
 
-  .we-button-secondary {
-
+  &.we-button-secondary {
+    
   }
 }
 
