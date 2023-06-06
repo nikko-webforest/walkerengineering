@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation, HostListener } from '@angular/core';
-import { ProductsService } from '../services/products.service';
+import { ProductsService } from '../../services/products.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

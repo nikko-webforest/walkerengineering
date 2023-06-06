@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
 
   title = 'Walker Engineering Group';
 
-  @Input() type: any = 'header';
+  @Input() type: any = 'footer';
   @Input() headernav1: any = `[
     {
       "name": "By Category",
