@@ -1,0 +1,106 @@
+<div class="we-cart we-scroll-bar"
+  [class.--toggle-cart]="showCart">
+  <div class="we-cart-wrap">
+    <div class="we-cart-head">
+      <div class="we-row">
+        <h2 class="we-cart-title"
+          [innerText]="'Your Cart'">
+        </h2>
+        <button class="we-btn we-btn--close-cart"
+          type="button"
+          title="Close Cart"
+          (click)="toggleCart()">
+          <svg class="we-svg-icon-close-cart"
+            width="21"
+            height="21"
+            viewBox="0 0 21 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path id="path_01"
+              d="M20.7082 2.34775L18.6519 0.291504L10.4998 8.44359L2.34775 0.291504L0.291504 2.34775L8.44359 10.4998L0.291504 18.6519L2.34775 20.7082L10.4998 12.5561L18.6519 20.7082L20.7082 18.6519L12.5561 10.4998L20.7082 2.34775Z"
+              fill="#000000">
+            </path>
+          </svg>        
+        </button>
+      </div>
+    </div>
+    <div class="we-cart-body">
+      <div class="we-cart-product-list">
+        <ng-container *ngFor="let cartItem of cartData.items; let cartIndex = index;">
+          <div class="we-cart-product-item"
+            [attr.data-cart-item-index]="cartIndex">
+            <div class="we-row">
+              <div class="we-cart-product-img"
+                [ngStyle]="{'background-image': 'url(' + cartItem.featured_image.url + ')'}">
+              </div>
+              <div class="we-inner-row">
+                <div class="we-inner-col">
+                  <div class="we-cart-product-title"
+                    (click)="openProductLink(cartItem.handle);"
+                    [innerText]="cartItem.title">
+                  </div>
+                  <div class="we-cart-product-quantity-wrap">
+                    <button class="we-cart-product-quantity-minus"
+                      type="button"
+                      (click)="updateQuantity(cartItem.id, 'minus');"
+                      [innerText]="'-'">
+                    </button>
+                    <input class="we-cart-product-quantity-input"
+                      type="number"
+                      min="1"
+                      pattern="[0-9]"
+                      [value]="cartItem.quantity">
+                    <button class="we-cart-product-quantity-plus"
+                      type="button"
+                      (click)="updateQuantity(cartItem.id, 'plus');"
+                      [innerText]="'+'">
+                    </button>
+                  </div>
+                </div>
+                <div class="we-inner-col">
+                  <div class="we-cart-product-before-price"
+                    [innerText]="appComponent.getCurrencySymbol(cartData.currency)+cartItem.original_price">
+                  </div>
+                  <div class="we-cart-product-current-price"
+                    [innerText]="appComponent.getCurrencySymbol(cartData.currency)+cartItem.discounted_price">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="we-cart-foot">
+      <div class="we-cart-subtotal-wrap">
+        <div class="we-cart-subtotal-label"
+          [innerText]="'SUBTOTAL'">
+        </div>
+        <div class="we-cart-subtotal-value"
+          [innerText]="appComponent.getCurrencySymbol(cartData.currency)+cartData.items_subtotal_price">
+        </div>
+      </div>
+      <div class="we-cart-shipping-and-discounts-details"
+        [innerText]="'Shipping & discounts calculated at checkout'">
+      </div>
+      <button class="we-btn we-btn--checkout-now"
+        type="button"
+        title="Checkout Now">
+        <div class="we-btn-label"
+          [innerText]="'Checkout Now'">
+        </div>
+        <svg class="we-svg-icon-arrow-right we-svg"
+          width="15"
+          height="15"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path id="path_01"
+            d="M6.5636 0.563897C6.91508 0.212425 7.48492 0.212425 7.8364 0.563897L14.1364 6.8639C14.4879 7.21537 14.4879 7.78522 14.1364 8.13669L7.8364 14.4367C7.48492 14.7882 6.91508 14.7882 6.5636 14.4367C6.21213 14.0852 6.21213 13.5154 6.5636 13.1639L11.3272 8.40029H0.9C0.402944 8.40029 0 7.99735 0 7.50029C0 7.00324 0.402944 6.60029 0.9 6.60029H11.3272L6.5636 1.83669C6.21213 1.48522 6.21213 0.915369 6.5636 0.563897Z"
+            fill="#FFFFFF">
+          </path>
+        </svg>        
+      </button>
+    </div>
+  </div>
+</div>

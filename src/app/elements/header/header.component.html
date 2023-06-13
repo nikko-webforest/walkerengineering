@@ -303,10 +303,10 @@
                 <div class="we-col">
                   <div class="we-inner-row">
                     <div class="product-current-price"
-                      [innerText]="getCurrencySymbol(product.variants.nodes[0].price.currencyCode)+product.variants.nodes[0].price.amount">
+                      [innerText]="product.variants.nodes[0].price.amount != null ? appComponent.getCurrencySymbol(product.variants.nodes[0].price.currencyCode)+product.variants.nodes[0].price.amount : ''">
                     </div>
                     <div class="product-before-price"
-                      [innerText]="product.variants.nodes[0].compareAtPrice">
+                      [innerText]="product.variants.nodes[0].price.compareAtPrice!= null ? appComponent.getCurrencySymbol(product.variants.nodes[0].price.currencyCode)+product.variants.nodes[0].compareAtPrice : ''">
                     </div>
                     <button class="we-button--add-to-cart"
                       (click)="addToCart()">
@@ -397,10 +397,10 @@
                   <div class="we-col">
                     <div class="we-inner-row">
                       <div class="product-current-price"
-                        [innerText]="getCurrencySymbol(variant.price.currencyCode)+variant.price.amount">
+                        [innerText]="variant.price.amount != null ? appComponent.getCurrencySymbol(variant.price.currencyCode)+variant.price.amount : ''">
                       </div>
                       <div class="product-before-price"
-                        [innerText]="variant.compareAtPrice">
+                        [innerText]="variant.compareAtPrice != null ? appComponent.getCurrencySymbol(variant.price.currencyCode)+variant.compareAtPrice : ''">
                       </div>
                       <button class="we-button--add-to-cart"
                         (click)="addToCart()">
@@ -471,7 +471,8 @@
         </path>
       </svg>
     </button>
-    <button class="we-cart-wrap">
+    <button class="we-cart-wrap"
+      (click)="toggleCart();">
       <svg class="we-cart-svg we-svg"
         width="32"
         height="32"
