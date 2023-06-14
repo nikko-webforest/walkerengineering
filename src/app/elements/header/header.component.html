@@ -119,89 +119,89 @@
         </ng-container>
       </div>
     </div>
-    <div class="we-nav-mobile-menu we-scroll-bar"
-      *ngIf="headerMobileNav.showMenu && screenWidth <= 900">
-      <ng-container *ngTemplateOutlet="WalkerNavbarSearchWrap"></ng-container>
-      <nav class="we-nav01-list">
-        <ng-container *ngFor="let item of headernav1; let dropdownIndex = index;">
-          <div class="we-nav-item"
-            [attr.data-index]="(dropdownIndex + 1)"
-            [attr.data-dropdown-items-length]="item.dropdownItems.length">
-            <div class="we-nav-item-wrap"
-              [class.--active]="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex"
-              (click)="toggleMobileDropdown(dropdownIndex + 1)">
-              <div class="we-nav-item-label"
-                [innerText]="item.name">
-              </div>
-              <ng-container *ngIf="item.dropdownItems.length">
-                <svg class="we-nav-item-icon we-svg"
-                  width="14"
-                  height="8"
-                  viewBox="0 0 14 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path id="path_01"
-                    d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
-                    fill="#09244F">
-                  </path>
-                </svg>
-              </ng-container>
+  </div>
+  <div class="we-nav-mobile-menu we-scroll-bar"
+    *ngIf="headerMobileNav.showMenu && screenWidth <= 900">
+    <ng-container *ngTemplateOutlet="WalkerNavbarSearchWrap"></ng-container>
+    <nav class="we-nav01-list">
+      <ng-container *ngFor="let item of headernav1; let dropdownIndex = index;">
+        <div class="we-nav-item"
+          [attr.data-index]="(dropdownIndex + 1)"
+          [attr.data-dropdown-items-length]="item.dropdownItems.length">
+          <div class="we-nav-item-wrap"
+            [class.--active]="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex"
+            (click)="toggleMobileDropdown(dropdownIndex + 1)">
+            <div class="we-nav-item-label"
+              [innerText]="item.name">
             </div>
-            <ng-container *ngIf="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex;">
-              <div class="we-nav-main-category-list">
-                <ng-container *ngFor="let dropdownItems of item.dropdownItems;">
-                  <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories; let mainCategoryIndex = index;">
-                    <div class="we-nav-main-category-item"
-                      [attr.data-main-category-index]="mainCategoryIndex + 1"
-                      [attr.data-main-category-length]="mainCategory.length">
-                      <div class="we-nav-main-category-wrap"
-                        [class.--active]="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex"
-                        (click)="toggleMainCategoryDropdown(mainCategoryIndex + 1)">
-                        <div class="we-nav-main-category-label"
-                          [innerText]="mainCategory.name">
-                        </div>
-                        <ng-container *ngIf="mainCategory.subCategories.length">
-                          <svg class="we-nav-item-icon we-svg"
-                            width="14"
-                            height="8"
-                            viewBox="0 0 14 8"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path id="path_01"
-                              d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
-                              fill="#09244F">
-                            </path>
-                          </svg>
-                        </ng-container>
-                      </div>
-                      <ng-container *ngIf="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex;">
-                        <div class="we-nav-sub-category-list">
-                          <ng-container *ngFor="let subCategory of mainCategory.subCategories;">
-                            <div class="we-nav-sub-category-item">
-                              <div class="we-nav-sub-category-wrap">
-                                <div class="we-nav-sub-category-label"
-                                  [innerText]="subCategory.name">
-                                </div>
-                              </div>
-                            </div>
-                          </ng-container>
-                        </div>
-                      </ng-container>
-                    </div>
-                  </ng-container>
-                </ng-container>
-              </div>
+            <ng-container *ngIf="item.dropdownItems.length">
+              <svg class="we-nav-item-icon we-svg"
+                width="14"
+                height="8"
+                viewBox="0 0 14 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path id="path_01"
+                  d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
+                  fill="#09244F">
+                </path>
+              </svg>
             </ng-container>
           </div>
-        </ng-container>
-      </nav>
-      <nav class="we-nav02-list">
-        <ng-container *ngTemplateOutlet="WalkerNavbarCTAsWrap"></ng-container>
-      </nav>
-      <div class="we-nav-bottom">
-        <ng-container *ngTemplateOutlet="WalkerNavbarContactWrap"></ng-container>
-        <ng-container *ngTemplateOutlet="WalkerNavbarAccountWrap"></ng-container>
-      </div>
+          <ng-container *ngIf="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex;">
+            <div class="we-nav-main-category-list">
+              <ng-container *ngFor="let dropdownItems of item.dropdownItems;">
+                <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories; let mainCategoryIndex = index;">
+                  <div class="we-nav-main-category-item"
+                    [attr.data-main-category-index]="mainCategoryIndex + 1"
+                    [attr.data-main-category-length]="mainCategory.length">
+                    <div class="we-nav-main-category-wrap"
+                      [class.--active]="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex"
+                      (click)="toggleMainCategoryDropdown(mainCategoryIndex + 1)">
+                      <div class="we-nav-main-category-label"
+                        [innerText]="mainCategory.name">
+                      </div>
+                      <ng-container *ngIf="mainCategory.subCategories.length">
+                        <svg class="we-nav-item-icon we-svg"
+                          width="14"
+                          height="8"
+                          viewBox="0 0 14 8"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path id="path_01"
+                            d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
+                            fill="#09244F">
+                          </path>
+                        </svg>
+                      </ng-container>
+                    </div>
+                    <ng-container *ngIf="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex;">
+                      <div class="we-nav-sub-category-list">
+                        <ng-container *ngFor="let subCategory of mainCategory.subCategories;">
+                          <div class="we-nav-sub-category-item">
+                            <div class="we-nav-sub-category-wrap">
+                              <div class="we-nav-sub-category-label"
+                                [innerText]="subCategory.name">
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </nav>
+    <nav class="we-nav02-list">
+      <ng-container *ngTemplateOutlet="WalkerNavbarCTAsWrap"></ng-container>
+    </nav>
+    <div class="we-nav-bottom">
+      <ng-container *ngTemplateOutlet="WalkerNavbarContactWrap"></ng-container>
+      <ng-container *ngTemplateOutlet="WalkerNavbarAccountWrap"></ng-container>
     </div>
   </div>
 </header>

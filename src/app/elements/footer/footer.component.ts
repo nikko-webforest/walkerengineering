@@ -34,9 +34,13 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.footermenulist = JSON.parse(this.footermenulist);
+    console.log('this.footermenulist =', this.footermenulist);
     this.contactdetails = JSON.parse(this.contactdetails);
+    console.log('this.contactdetails =', this.contactdetails);
     this.socialmedialist = JSON.parse(this.socialmedialist);
+    console.log('this.socialmedialist =', this.socialmedialist);
     this.policylist = JSON.parse(this.policylist);
+    console.log('this.policylist =', this.policylist);
   }
 
 }

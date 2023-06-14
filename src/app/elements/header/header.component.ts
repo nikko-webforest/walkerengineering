@@ -58,10 +58,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.headernav1 = JSON.parse(this.headernav1);
-    console.log('this.headernav1');
-    console.log(this.headernav1);
+    console.log('this.headernav1 =', this.headernav1);
     this.headernav2 = JSON.parse(this.headernav2);
+    console.log('this.headernav2 =', this.headernav2);
     this.contactdetails = JSON.parse(this.contactdetails);
+    console.log('this.contactdetails =', this.contactdetails);
     this.fetchProducts();
     this.onResize();
   }

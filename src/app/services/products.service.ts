@@ -8,7 +8,9 @@ import { environment } from 'src/environments/environment';
 
 export class ProductsService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient
+  ) {}
 
   getAllProducts() {
     return this.httpClient.request('POST', environment.productsEndpoint, {
