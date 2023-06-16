@@ -42,7 +42,7 @@
                   <div class="we-cart-product-quantity-wrap">
                     <button class="we-cart-product-quantity-minus"
                       type="button"
-                      (click)="updateQuantity(cartItem.id, 'minus');"
+                      (click)="cartItem.quantity > 1 ? cartItem.quantity = cartItem.quantity - 1 : cartItem.quantity;"
                       [innerText]="'-'">
                     </button>
                     <input class="we-cart-product-quantity-input"
@@ -52,17 +52,17 @@
                       [value]="cartItem.quantity">
                     <button class="we-cart-product-quantity-plus"
                       type="button"
-                      (click)="updateQuantity(cartItem.id, 'plus');"
+                      (click)="cartItem.quantity = cartItem.quantity + 1;"
                       [innerText]="'+'">
                     </button>
                   </div>
                 </div>
                 <div class="we-inner-col">
                   <div class="we-cart-product-before-price"
-                    [innerText]="appComponent.getCurrencySymbol(cartData.currency)+cartItem.original_price">
+                    [innerText]="appComponent.getCurrencySymbol(cartData.currency)+((cartItem.original_price * cartItem.quantity) / 100)">
                   </div>
                   <div class="we-cart-product-current-price"
-                    [innerText]="appComponent.getCurrencySymbol(cartData.currency)+cartItem.discounted_price">
+                    [innerText]="appComponent.getCurrencySymbol(cartData.currency)+((cartItem.discounted_price * cartItem.quantity) / 100)">
                   </div>
                 </div>
               </div>

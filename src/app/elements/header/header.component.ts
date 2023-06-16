@@ -22,12 +22,10 @@ export class HeaderComponent implements OnInit {
     main: {
       title: 'AIRSEP Walker Engineering Enterprises',
       url: '/',
-      imgSrc: 'assets/WE_Header_Main_logo-v01.png',
     },
     sub: {
       title: 'WALKER Performance Filtration',
       url: '/',
-      imgSrc: 'assets/WE_Header_Sub_logo-v01.png',
     },
   };
 
@@ -139,7 +137,9 @@ export class HeaderComponent implements OnInit {
   }
 
   calculateDiscount(beforePrice: any, currentPrice: any) {
-    var discount = 100 - (currentPrice / beforePrice) * 100;
+    var calculate = 100 - (currentPrice / beforePrice) * 100;
+    var discount = calculate < 0 ? calculate * -1 : calculate;
+    // console.log('calculateDiscount \n beforePrice =', beforePrice, 'currentPrice =', currentPrice, 'discount =', discount);
     return discount.toFixed(0) + '%';
   }
 

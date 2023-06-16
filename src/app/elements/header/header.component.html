@@ -266,9 +266,9 @@
                       </svg>
                     </div>
                     <div class="we-inner-col">
-                      <ng-container *ngIf="product.variants.nodes[0].compareAtPrice != null && product.variants.nodes[0].compareAtPrice != '0.00'">
+                      <ng-container *ngIf="product.variants.nodes[0].compareAtPrice != null && product.variants.nodes[0].compareAtPrice.amount != 0.0">
                         <div class="product-discount"
-                          [innerText]="calculateDiscount(product.variants.nodes[0].compareAtPrice, product.variants.nodes[0].price.amount)">
+                          [innerText]="calculateDiscount(product.variants.nodes[0].compareAtPrice.amount, product.variants.nodes[0].price.amount)">
                         </div>
                       </ng-container>
                       <div class="product-name"
@@ -360,9 +360,9 @@
                         </svg>
                       </div>
                       <div class="we-inner-col">
-                        <ng-container *ngIf="variant.compareAtPrice != null && variant.compareAtPrice != '0.00'">
+                        <ng-container *ngIf="variant.compareAtPrice != null && variant.compareAtPrice.amount != 0.0">
                           <div class="product-discount"
-                            [innerText]="calculateDiscount(variant.compareAtPrice, variant.price.amount)">
+                            [innerText]="calculateDiscount(variant.compareAtPrice.amount, variant.price.amount)">
                           </div>
                         </ng-container>
                         <div class="product-name"
