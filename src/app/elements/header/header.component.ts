@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
 
   @Input() contactdetails: any;
 
+  @Input() showcart: boolean | undefined;
+
   headerLogos: any = {
     main: {
       title: 'AIRSEP Walker Engineering Enterprises',
@@ -144,7 +146,9 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleCart() {
-    this.appComponent.toggleCart();
+    // this.appComponent.toggleCart();
+    this.showcart = !this.showcart;
+    console.log('this.showcart =', this.showcart);
   }
 
   addToCart() {}

@@ -79,15 +79,27 @@
           &:nth-child(2) {
             width: max-content;
 
+            @media only screen and (max-width: 768px) {
+              width: 100%;
+            }
+
             .form-newsletter {
               width: max-content;
+
+              @media only screen and (max-width: 768px) {
+                width: 100%;
+              }
               
               .form-wrap {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                gap: 0 8px;
+                gap: 8px;
                 width: 100%;
+
+                @media only screen and (max-width: 480px) {
+                  flex-direction: column;
+                }
 
                 .form-group {
                   width: max-content;
@@ -108,6 +120,10 @@
                     padding: 10px 22px;
                     border: 2px solid #B8C5D0;
                     border-radius: 6px;
+
+                    @media only screen and (max-width: 768px) {
+                      max-width: 100%;
+                    }
 
                     &::placeholder {
                       color: #89969F;
@@ -142,6 +158,11 @@
                     max-width: 390px;
                     min-width: 390px;
                     width: 100%;
+
+                    @media only screen and (max-width: 768px) {
+                      max-width: 100%;
+                      min-width: unset;
+                    }
 
                     @media only screen and (max-width: 480px) {
                       min-width: 250px;

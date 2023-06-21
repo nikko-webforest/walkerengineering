@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
 
   title = 'Walker Engineering Group';
 
-  showCart: boolean = false;
+  // showCart: boolean = false;
 
   commonCurrency: any = {
     "USD": {
@@ -1703,6 +1703,7 @@ export class AppComponent implements OnInit {
     }
   ]`;
   @Input() copyrightyear: any = "2023";
+  @Input() showcart: boolean = false;
 
   constructor() {} 
   
@@ -1710,8 +1711,8 @@ export class AppComponent implements OnInit {
     // throw new Error('Method not implemented.');
   }
 
-  toggleCart() {
-    this.showCart = !this.showCart;
-  }
+  // toggleCart() {
+  //   this.showCart = !this.showCart;
+  // }
   
 }
