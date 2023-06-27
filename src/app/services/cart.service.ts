@@ -20,34 +20,26 @@ export class CartService {
 
   constructor(private httpClient: HttpClient) {}
 
-  createCart(): Promise<string> {
-    console.log('createCart');
-    const createCartMutation = `
-      mutation {
-        cartCreate {
-          cart {
-            id
-          }
-        }
-      }
-    `;
-
-    return this.httpClient
-      .post<any>(
-        environment.shopifyEndpoint,
-        {
-          query: createCartMutation,
+  getCartCheckoutUrl(id: string) {
+    return this.httpClient.request('POST', environment.productsEndpoint, {
+      body: {
+        query: `
+            query checkoutURL($cartId: ID!) {
+              cart(id: $cartId) {
+                checkoutUrl
+              }
+            }`,
+        variables: {
+          cartId: `gid://shopify/Cart/${id}`,
         },
-        this.httpOptions
-      )
-      .toPromise()
-      .then((response) => {
-        console.log('createCartMutation =', response);
-        return response.data.cartCreate.cart.id;
-      })
-      .catch((error) => {
-        console.log('createCartMutation =', error);
-      });
+        operationName: 'checkoutURL',
+      },
+      responseType: 'json',
+      headers: {
+        'Content-type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': environment.shopifyAccessToken,
+      },
+    });
   }
 
   getCart(id: string) {
@@ -116,6 +108,41 @@ export class CartService {
           cartId: `gid://shopify/Cart/${id}`,
         },
         operationName: 'GetCart',
+      },
+      responseType: 'json',
+      headers: {
+        'Content-type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': environment.shopifyAccessToken,
+      },
+    });
+  }
+
+  addItemToCart(
+    id: string,
+    lineItems: { quantity: number; merchandiseId: string }[]
+  ) {
+    return this.httpClient.request('POST', environment.productsEndpoint, {
+      body: {
+        query: `
+        mutation addToCart($cartId: ID!, $lines: [CartLineInput!]! ){
+            cartLinesAdd(cartId: $cartId, lines: $lines){
+                cart{
+                    lines(first: 10){
+                    edges{
+                        node{
+                            id
+                            quantity
+                        }
+                    }
+                }
+              }
+            }
+        }`,
+        variables: {
+          cartId: `gid://shopify/Cart/${id}`,
+          lines: lineItems,
+        },
+        operationName: 'addToCart',
       },
       responseType: 'json',
       headers: {

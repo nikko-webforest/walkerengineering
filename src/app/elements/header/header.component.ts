@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService
-      .getCart('c1-eaa607f36464dafe0dd574fdd2d0f5a1')
+      .getCart('c1-eaa607f36464dafe0dd574fdd2d0f5a1') // change this to fetch from local storage
       .subscribe((res: any) => {
         this.cartData2 = res.data.cart;
         this.ready = true;

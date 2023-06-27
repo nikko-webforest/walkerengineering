@@ -14,6 +14,8 @@ export class CartComponent implements OnInit {
   @Input() showcart: boolean | undefined;
   @Input() fetchedCartData: any;
 
+  checkoutUrl: string = '';
+
   cartData: any = {
     token: 'c1-0d7ef28b3b2d7f1cbcaaa037d1ba0a9c',
     note: '',
@@ -179,6 +181,10 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('cart init', this.fetchedCartData);
+    const cartId = 'c1-eaa607f36464dafe0dd574fdd2d0f5a1'; // change this to fetch from local storage
+    this.cartService.getCartCheckoutUrl(cartId).subscribe((res: any) => {
+      this.checkoutUrl = res.data.cart.checkoutUrl;
+    });
   }
 
   toggleCart() {
@@ -191,5 +197,9 @@ export class CartComponent implements OnInit {
   openProductLink(link: any) {
     if (link != '')
       window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
+  }
+
+  redirectToCheckOut() {
+    window.location.href = this.checkoutUrl;
   }
 }
