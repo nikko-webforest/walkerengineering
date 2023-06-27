@@ -65,10 +65,10 @@ export class CartComponent implements OnInit {
   }
 
   formatPrice(currencyCode: any, valuePrice: any) {
-    console.log('currencyCode =', currencyCode);
-    console.log('valuePrice =', valuePrice);
+    // console.log('currencyCode =', currencyCode);
+    // console.log('valuePrice =', valuePrice);
     const amount = Number(valuePrice).toLocaleString('en-US', { style: 'currency', currency: currencyCode });
-    console.log('ammount =', amount);
+    // console.log('ammount =', amount);
     return amount;
   }
 }
