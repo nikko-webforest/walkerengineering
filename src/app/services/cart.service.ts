@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
+
   cartData: any = {
     checkoutID: '',
   };
@@ -18,17 +19,20 @@ export class CartService {
     }),
   };
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient
+  ) {}
 
   getCartCheckoutUrl(id: string) {
     return this.httpClient.request('POST', environment.productsEndpoint, {
       body: {
         query: `
-            query checkoutURL($cartId: ID!) {
-              cart(id: $cartId) {
-                checkoutUrl
-              }
-            }`,
+          query checkoutURL($cartId: ID!) {
+            cart(id: $cartId) {
+              checkoutUrl
+            }
+          }
+        `,
         variables: {
           cartId: `gid://shopify/Cart/${id}`,
         },
@@ -46,64 +50,65 @@ export class CartService {
     return this.httpClient.request('POST', environment.productsEndpoint, {
       body: {
         query: `
-        query GetCart($cartId: ID!){
-        cart(id: $cartId){
-            id
-            lines(first: 10){
-                edges{
-                    node{
-                        id
-                        quantity
-                        discountAllocations{
-                            discountedAmount{
-                                amount
-                                currencyCode
-                            }
-                        }
-                        merchandise {
-                ... on ProductVariant {
-                  id
-                  price{
-                      amount
-                      currencyCode
-                  }
-                  compareAtPrice{
-                      amount
-                      currencyCode
-                  }
-                  product{
-                      title
-                      handle
-                      featuredImage{
-                          id
-                          url
+          query GetCart($cartId: ID!) {
+            cart(id: $cartId) {
+              id
+              lines(first: 10) {
+                edges {
+                  node {
+                    id
+                    quantity
+                    discountAllocations {
+                      discountedAmount {
+                        amount
+                        currencyCode
                       }
-                  }              
+                    }
+                    merchandise {
+                      ... on ProductVariant {
+                        id
+                        price {
+                          amount
+                          currencyCode
+                        }
+                        compareAtPrice {
+                          amount
+                          currencyCode
+                        }
+                        product {
+                          title
+                          handle
+                          featuredImage {
+                            id
+                            url
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
-                    }
+              cost {
+                totalAmount {
+                  amount
+                  currencyCode
                 }
+                subtotalAmount {
+                  amount
+                  currencyCode
+                }
+                totalTaxAmount {
+                  amount
+                  currencyCode
+                }
+                totalDutyAmount {
+                  amount
+                  currencyCode
+                }
+              }
             }
-            cost {
-          totalAmount {
-            amount
-            currencyCode
           }
-          subtotalAmount {
-            amount
-            currencyCode
-          }
-          totalTaxAmount {
-            amount
-            currencyCode
-          }
-          totalDutyAmount {
-            amount
-            currencyCode
-          }
-        }
-        }
-    }`,
+        `,
         variables: {
           cartId: `gid://shopify/Cart/${id}`,
         },
@@ -117,27 +122,25 @@ export class CartService {
     });
   }
 
-  addItemToCart(
-    id: string,
-    lineItems: { quantity: number; merchandiseId: string }[]
-  ) {
+  addItemToCart(id: string, lineItems: { quantity: number; merchandiseId: string }[] ) {
     return this.httpClient.request('POST', environment.productsEndpoint, {
       body: {
         query: `
-        mutation addToCart($cartId: ID!, $lines: [CartLineInput!]! ){
-            cartLinesAdd(cartId: $cartId, lines: $lines){
-                cart{
-                    lines(first: 10){
-                    edges{
-                        node{
-                            id
-                            quantity
-                        }
+          mutation addToCart($cartId: ID!, $lines: [CartLineInput!]! ) {
+            cartLinesAdd(cartId: $cartId, lines: $lines) {
+              cart {
+                lines(first: 10) {
+                  edges {
+                    node {
+                      id
+                      quantity
                     }
+                  }
                 }
               }
             }
-        }`,
+          }
+        `,
         variables: {
           cartId: `gid://shopify/Cart/${id}`,
           lines: lineItems,

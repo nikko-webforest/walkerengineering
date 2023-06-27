@@ -208,6 +208,7 @@
       <ng-container *ngTemplateOutlet="WalkerNavbarAccountWrap"></ng-container>
     </div>
   </div>
+  <ng-container *ngTemplateOutlet="WalkerCartToggleWrap"></ng-container>
 </header>
 
 <ng-template #WalkerNavbarSearchWrap>
@@ -505,6 +506,17 @@
       </div>
     </button>
   </ng-container>
+</ng-template>
+
+<ng-template #WalkerCartToggleWrap>
+  <div class="we-cart-toggles">
+    <button class="we-btn--open-cart"
+      (click)="openCart()">
+    </button>
+    <button class="we-btn--close-cart"
+      (click)="closeCart()">
+    </button>
+  </div>
 </ng-template>
 
 <ng-template #WalkerEngineeringEnterpriseLogo>
@@ -1176,5 +1188,8 @@
   </svg>
 </ng-template>
 
-<app-cart [showcart]="showcart" [fetchedCartData]="cartData2" *ngIf="ready">
+<app-cart *ngIf="ready"
+  [showcart]="showcart"
+  [cartData]="fetchedCartData"
+  [checkoutUrl]="fetchedCheckoutUrl">
 </app-cart>
