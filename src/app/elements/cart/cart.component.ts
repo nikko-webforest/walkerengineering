@@ -195,8 +195,7 @@ export class CartComponent implements OnInit {
   }
 
   openProductLink(link: any) {
-    if (link != '')
-      window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
+    if (link != '') window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
   }
 
   redirectToCheckOut() {

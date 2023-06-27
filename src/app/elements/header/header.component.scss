@@ -357,7 +357,7 @@
             display: none;
           }
 
-          .we-profile-wrap {
+          .we-btn--profile {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -382,7 +382,7 @@
             }
           }
 
-          .we-cart-wrap {
+          .we-btn--cart {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1221,7 +1221,7 @@
         padding: 0 0 0 15px;
         border-left: 1px dashed #86736A;
 
-        .we-profile-wrap {
+        .we-btn--profile {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -1246,7 +1246,7 @@
           }
         }
 
-        .we-cart-wrap {
+        .we-btn--cart {
           display: flex;
           justify-content: center;
           align-items: center;
