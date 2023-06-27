@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class CartService {
-
   cartData: any = {
-    'checkoutID' : '',
+    checkoutID: '',
   };
 
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
       'X-Shopify-Storefront-Access-Token': environment.shopifyAccessToken,
-    })
+    }),
   };
 
-  constructor(
-    private httpClient: HttpClient
-  ) { }
-  
+  constructor(private httpClient: HttpClient) {}
+
   createCart(): Promise<string> {
     console.log('createCart');
     const createCartMutation = `
@@ -35,61 +32,96 @@ export class CartService {
       }
     `;
 
-    return this.httpClient.post<any>(environment.shopifyEndpoint, {
-      query: createCartMutation
-    }, this.httpOptions)
+    return this.httpClient
+      .post<any>(
+        environment.shopifyEndpoint,
+        {
+          query: createCartMutation,
+        },
+        this.httpOptions
+      )
       .toPromise()
-      .then(response => {
+      .then((response) => {
         console.log('createCartMutation =', response);
-        return response.data.cartCreate.cart.id
+        return response.data.cartCreate.cart.id;
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('createCartMutation =', error);
       });
   }
 
-  getCart(cartId: string): Promise<any> {
-    console.log('getCart');
-    const getCartQuery = `
-      query {
-        cart(id: "${cartId}") {
-          id
-          createdAt
-          updatedAt
-          lines(first: 10) {
-            edges {
-              node {
-                id
-                quantity
-                variants {
+  getCart(id: string) {
+    return this.httpClient.request('POST', environment.productsEndpoint, {
+      body: {
+        query: `
+        query GetCart($cartId: ID!){
+        cart(id: $cartId){
+            id
+            lines(first: 10){
+                edges{
+                    node{
+                        id
+                        quantity
+                        discountAllocations{
+                            discountedAmount{
+                                amount
+                                currencyCode
+                            }
+                        }
+                        merchandise {
+                ... on ProductVariant {
                   id
-                  title
-                  product {
-                    
+                  price{
+                      amount
+                      currencyCode
                   }
-                }
-                attributes {
-                  key
-                  value
+                  compareAtPrice{
+                      amount
+                      currencyCode
+                  }
+                  product{
+                      title
+                      handle
+                      featuredImage{
+                          id
+                          url
+                      }
+                  }              
                 }
               }
+                    }
+                }
             }
+            cost {
+          totalAmount {
+            amount
+            currencyCode
+          }
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+          totalTaxAmount {
+            amount
+            currencyCode
+          }
+          totalDutyAmount {
+            amount
+            currencyCode
           }
         }
-      }
-    `;
-
-    return this.httpClient.post<any>(environment.shopifyEndpoint, {
-      query: getCartQuery
-    }, this.httpOptions)
-      .toPromise()
-      .then(response => {
-        console.log('getCartQuery =', response);
-        return response.data.cart;
-      })
-      .catch(error => {
-        console.log('getCartQuery =', error);
-      });
+        }
+    }`,
+        variables: {
+          cartId: `gid://shopify/Cart/${id}`,
+        },
+        operationName: 'GetCart',
+      },
+      responseType: 'json',
+      headers: {
+        'Content-type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': environment.shopifyAccessToken,
+      },
+    });
   }
-
 }
