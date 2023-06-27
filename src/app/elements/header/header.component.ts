@@ -65,13 +65,11 @@ export class HeaderComponent implements OnInit {
   ) {} // private eRef: ElementRef
 
   ngOnInit(): void {
-    this.cartService
-      .getCart('c1-eaa607f36464dafe0dd574fdd2d0f5a1')
-      .subscribe((res: any) => {
-        this.cartData2 = res.data.cart;
-        this.ready = true;
-        console.log('fetched from header component', this.cartData2);
-      });
+    this.cartService.getCart('c1-eaa607f36464dafe0dd574fdd2d0f5a1').subscribe((res: any) => {
+      this.cartData2 = res.data.cart;
+      this.ready = true;
+      console.log('fetched from header component', this.cartData2);
+    });
     this.headernav1 = JSON.parse(this.headernav1);
     console.log('this.headernav1 =', this.headernav1);
     this.headernav2 = JSON.parse(this.headernav2);
@@ -98,14 +96,16 @@ export class HeaderComponent implements OnInit {
     this.headerDesktopNav.hasDropdownItems = false;
     if (this.headerDesktopNav.activeMenuIndex == id + 1) {
       this.headerDesktopNav.showMegaMenu = !this.headerDesktopNav.showMegaMenu;
-    } else {
+    }
+    else {
       this.headerDesktopNav.activeMenuIndex = id + 1;
       this.headerDesktopNav.showMegaMenu = true;
     }
 
     if (dropdownItemsLength != 0) {
       this.headerDesktopNav.hasDropdownItems = true;
-    } else {
+    }
+    else {
       this.headerDesktopNav.hasDropdownItems = false;
     }
 
@@ -128,8 +128,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openProductLink(link: any) {
-    if (link != '')
-      window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
+    if (link != '') window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
   }
 
   fetchProducts() {
@@ -142,12 +141,7 @@ export class HeaderComponent implements OnInit {
     this.productSearch.list = [];
 
     this.fetchedProducts.forEach((item: any, index: any) => {
-      if (
-        item.title
-          .toLowerCase()
-          .includes(this.productSearch.keyword.toLowerCase()) &&
-        this.productSearch.keyword != ''
-      ) {
+      if (item.title.toLowerCase().includes(this.productSearch.keyword.toLowerCase()) && this.productSearch.keyword != '') {
         this.productSearch.list.push(item);
       }
     });
@@ -194,7 +188,8 @@ export class HeaderComponent implements OnInit {
     this.headerMobileNav.activeMainCategoryIndex = 0;
     if (this.headerMobileNav.activeMenuIndex == dropdownIndex) {
       this.headerMobileNav.activeMenuIndex = 0;
-    } else {
+    }
+    else {
       this.headerMobileNav.activeMenuIndex = dropdownIndex;
     }
   }
@@ -202,11 +197,10 @@ export class HeaderComponent implements OnInit {
   toggleMainCategoryDropdown(mainCategoryDropdownIndex: number) {
     // console.log(mainCategoryDropdownIndex);
 
-    if (
-      this.headerMobileNav.activeMainCategoryIndex == mainCategoryDropdownIndex
-    ) {
+    if (this.headerMobileNav.activeMainCategoryIndex == mainCategoryDropdownIndex) {
       this.headerMobileNav.activeMainCategoryIndex = 0;
-    } else {
+    }
+    else {
       this.headerMobileNav.activeMainCategoryIndex = mainCategoryDropdownIndex;
     }
   }
