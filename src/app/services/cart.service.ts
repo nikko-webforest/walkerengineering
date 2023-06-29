@@ -7,7 +7,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-
   cartData: any = {
     checkoutID: '',
   };
@@ -19,9 +18,7 @@ export class CartService {
     }),
   };
 
-  constructor(
-    private httpClient: HttpClient
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   getCartCheckoutUrl(id: string) {
     return this.httpClient.request('POST', environment.productsEndpoint, {
@@ -122,7 +119,10 @@ export class CartService {
     });
   }
 
-  addItemToCart(id: string, lineItems: { quantity: number; merchandiseId: string }[] ) {
+  addItemToCart(
+    id: string,
+    lineItems: { quantity: number; merchandiseId: string }[]
+  ) {
     return this.httpClient.request('POST', environment.productsEndpoint, {
       body: {
         query: `
@@ -146,6 +146,64 @@ export class CartService {
           lines: lineItems,
         },
         operationName: 'addToCart',
+      },
+      responseType: 'json',
+      headers: {
+        'Content-type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': environment.shopifyAccessToken,
+      },
+    });
+  }
+
+  updateCart(id: string, lineItems: any) {
+    return this.httpClient.request('POST', environment.productsEndpoint, {
+      body: {
+        query: `
+        mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+          cartLinesUpdate(cartId: $cartId, lines: $lines) {
+            cart {
+              id
+            }
+            userErrors {
+              field
+              message
+            }
+          }
+        }`,
+        variables: {
+          cartId: `gid://shopify/Cart/${id}`,
+          lines: lineItems,
+        },
+        operationName: 'cartLinesUpdate',
+      },
+      responseType: 'json',
+      headers: {
+        'Content-type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': environment.shopifyAccessToken,
+      },
+    });
+  }
+
+  removeCartLine(id: string, lines: any) {
+    return this.httpClient.request('POST', environment.productsEndpoint, {
+      body: {
+        query: `
+        mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+          cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+            cart {
+              id
+            }
+            userErrors {
+              field
+              message
+            }
+          }
+        }`,
+        variables: {
+          cartId: `gid://shopify/Cart/${id}`,
+          lineIds: [lines],
+        },
+        operationName: 'cartLinesRemove',
       },
       responseType: 'json',
       headers: {

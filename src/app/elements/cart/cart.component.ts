@@ -10,14 +10,14 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./cart.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-
 export class CartComponent implements OnInit {
-
   @Input() showcart: boolean | undefined;
 
   @Input() cartData: any;
 
   @Input() checkoutUrl: string = '';
+
+  @Input() cartToken: string = '';
 
   constructor(
     public appComponent: AppComponent,
@@ -25,8 +25,7 @@ export class CartComponent implements OnInit {
     private cartService: CartService
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleCart() {
     this.headerComponent.toggleCart();
@@ -37,20 +36,36 @@ export class CartComponent implements OnInit {
   }
 
   closeCart() {
+    const updatedList = this.makeCartLineObject();
+    this.cartService
+      .updateCart(this.cartToken, updatedList)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
     this.headerComponent.closeCart();
   }
 
   openProductLink(link: any) {
-    if (link != '') window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
+    if (link != '')
+      window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
   }
 
   minusQuantity(quantity: number, cartIndex: number) {
     this.cartData.lines.edges[cartIndex].node.quantity = quantity - 1;
-    if (this.cartData.lines.edges[cartIndex].node.quantity < 1) this.cartData.lines.edges.splice(cartIndex, 1);
+    if (this.cartData.lines.edges[cartIndex].node.quantity < 1) {
+      const toBeRemoved = this.cartData.lines.edges[cartIndex].node.id;
+      this.cartService
+        .removeCartLine(this.cartToken, toBeRemoved)
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+      this.cartData.lines.edges.splice(cartIndex, 1);
+    }
   }
 
   plusQuantity(quantity: number, cartIndex: number) {
     this.cartData.lines.edges[cartIndex].node.quantity = quantity + 1;
+    console.log('check', this.cartData.lines.edges);
   }
 
   calculateDiscount(beforePrice: any, currentPrice: any) {
@@ -61,14 +76,33 @@ export class CartComponent implements OnInit {
   }
 
   redirectToCheckOut() {
+    const updatedList = this.makeCartLineObject();
+    this.cartService
+      .updateCart(this.cartToken, updatedList)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
     window.location.href = this.checkoutUrl;
   }
 
   formatPrice(currencyCode: any, valuePrice: any) {
-    console.log('currencyCode =', currencyCode);
-    console.log('valuePrice =', valuePrice);
-    const amount = Number(valuePrice).toLocaleString('en-US', { style: 'currency', currency: currencyCode });
-    console.log('ammount =', amount);
+    // console.log('currencyCode =', currencyCode);
+    // console.log('valuePrice =', valuePrice);
+    const amount = Number(valuePrice).toLocaleString('en-US', {
+      style: 'currency',
+      currency: currencyCode,
+    });
+    // console.log('ammount =', amount);
     return amount;
+  }
+
+  makeCartLineObject() {
+    const cartLineObject = this.cartData.lines.edges.map((product: any) => {
+      return {
+        id: product.node.id,
+        quantity: product.node.quantity,
+      };
+    });
+    return cartLineObject;
   }
 }
