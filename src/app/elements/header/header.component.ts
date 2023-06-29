@@ -24,8 +24,7 @@ export class HeaderComponent implements OnInit {
   @Input() contactdetails: any;
 
   @Input() showcart: any;
-
-  @Input() cartToken: string = '';
+  cartToken: string = '';
 
   headerLogos: any = {
     main: {
@@ -71,11 +70,12 @@ export class HeaderComponent implements OnInit {
   ) {} // private eRef: ElementRef
 
   ngOnInit(): void {
-    this.cartService.getCart(this.cartToken).subscribe((res: any) => {
-      this.fetchedCartData = res.data.cart;
-      this.ready = true;
-      console.log('fetched from header component', this.fetchedCartData);
-    });
+    this.createCart();
+    // this.cartService.getCart(this.carttoken).subscribe((res: any) => {
+    //   this.fetchedCartData = res.data.cart;
+    //   this.ready = true;
+    //   console.log('fetched from header component', this.fetchedCartData);
+    // });
     this.headernav1 = JSON.parse(this.headernav1);
     console.log('this.headernav1 =', this.headernav1);
     this.headernav2 = JSON.parse(this.headernav2);
@@ -84,7 +84,6 @@ export class HeaderComponent implements OnInit {
     console.log('this.contactdetails =', this.contactdetails);
     this.fetchProducts();
     this.onResize();
-    this.fetchCheckoutUrl();
   }
 
   screenWidth: any;
@@ -196,7 +195,9 @@ export class HeaderComponent implements OnInit {
     this.cartService
       .getCartCheckoutUrl(this.cartToken)
       .subscribe((res: any) => {
-        this.fetchedCheckoutUrl = res.data.cart.checkoutUrl;
+        console.log(res);
+
+        // this.fetchedCheckoutUrl = res.data.cart.checkoutUrl;
       });
   }
 
@@ -230,5 +231,24 @@ export class HeaderComponent implements OnInit {
     } else {
       this.headerMobileNav.activeMainCategoryIndex = mainCategoryDropdownIndex;
     }
+  }
+
+  createCart() {
+    const fetchedCart = localStorage.getItem('cart_id');
+    if (fetchedCart === null) {
+      this.cartService.createCart().subscribe((res: any) => {
+        console.log(res.data.cartCreate.cart.id);
+        localStorage.setItem(
+          'cart_id',
+          JSON.stringify(res.data.cartCreate.cart.id)
+        );
+        this.cartToken = res.data.cartCreate.cart.id;
+        this.fetchCheckoutUrl();
+      });
+    } else {
+      this.cartToken = fetchedCart;
+      this.fetchCheckoutUrl();
+    }
+    console.log(fetchedCart);
   }
 }

@@ -20,7 +20,37 @@ export class CartService {
 
   constructor(private httpClient: HttpClient) {}
 
+  createCart() {
+    return this.httpClient.request('POST', environment.productsEndpoint, {
+      body: {
+        query: `
+        mutation CreateCart{
+          cartCreate {
+            cart {
+              id
+              createdAt
+              updatedAt
+            }
+            userErrors {
+              field
+              message
+            }
+          }
+        }
+        `,
+        operationName: 'CreateCart',
+      },
+      responseType: 'json',
+      headers: {
+        'Content-type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': environment.shopifyAccessToken,
+      },
+    });
+  }
+
   getCartCheckoutUrl(id: string) {
+    console.log('from service', id);
+
     return this.httpClient.request('POST', environment.productsEndpoint, {
       body: {
         query: `
@@ -31,7 +61,7 @@ export class CartService {
           }
         `,
         variables: {
-          cartId: `gid://shopify/Cart/${id}`,
+          cartId: `${id}`,
         },
         operationName: 'checkoutURL',
       },
