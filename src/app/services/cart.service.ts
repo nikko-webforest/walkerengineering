@@ -242,4 +242,11 @@ export class CartService {
       },
     });
   }
+
+  getCartJson() {
+    return this.httpClient.request(
+      'GET',
+      'https://walkerengineering.co/cart.js'
+    );
+  }
 }

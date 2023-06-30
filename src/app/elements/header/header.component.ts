@@ -76,6 +76,10 @@ export class HeaderComponent implements OnInit {
     //   this.ready = true;
     //   console.log('fetched from header component', this.fetchedCartData);
     // });
+
+    this.cartService.getCartJson().subscribe((res: any) => {
+      console.log('response from cart js', res);
+    });
     this.headernav1 = JSON.parse(this.headernav1);
     console.log('this.headernav1 =', this.headernav1);
     this.headernav2 = JSON.parse(this.headernav2);
