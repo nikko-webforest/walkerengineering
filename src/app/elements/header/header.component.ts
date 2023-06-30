@@ -70,15 +70,11 @@ export class HeaderComponent implements OnInit {
   ) {} // private eRef: ElementRef
 
   ngOnInit(): void {
-    this.createCart();
-    // this.cartService.getCart(this.carttoken).subscribe((res: any) => {
-    //   this.fetchedCartData = res.data.cart;
-    //   this.ready = true;
-    //   console.log('fetched from header component', this.fetchedCartData);
-    // });
-
     this.cartService.getCartJson().subscribe((res: any) => {
-      console.log('response from cart js', res);
+      this.fetchedCartData = res;
+      this.cartToken = res.token;
+      this.fetchCheckoutUrl();
+      this.ready = true;
     });
     this.headernav1 = JSON.parse(this.headernav1);
     console.log('this.headernav1 =', this.headernav1);
@@ -172,6 +168,9 @@ export class HeaderComponent implements OnInit {
   toggleCart() {
     // const cartId = JSON.parse(localStorage.getItem('cart')!);
     // console.log('cart id: ', cartId);
+    if (window.location.origin !== 'https://walkerengineering.co') {
+      window.location.href = 'https://walkerengineering.co/cart';
+    }
     this.showcart = !this.showcart;
     if (this.showcart) this.getCartItems();
   }
@@ -186,9 +185,8 @@ export class HeaderComponent implements OnInit {
   }
 
   getCartItems() {
-    this.cartService.getCart(this.cartToken).subscribe((res: any) => {
-      this.fetchedCartData = res.data.cart;
-      console.log('retrieved cart object = ', res.data.cart.lines.edges);
+    this.cartService.getCartJson().subscribe((res: any) => {
+      this.fetchedCartData = res;
       this.showcart = true;
     });
   }
@@ -196,13 +194,9 @@ export class HeaderComponent implements OnInit {
   updateCartItems() {}
 
   fetchCheckoutUrl() {
-    this.cartService
-      .getCartCheckoutUrl(this.cartToken)
-      .subscribe((res: any) => {
-        console.log(res);
-
-        // this.fetchedCheckoutUrl = res.data.cart.checkoutUrl;
-      });
+    this.fetchedCheckoutUrl = this.cartService.getCartCheckoutUrl(
+      this.cartToken
+    );
   }
 
   addToCart() {}
@@ -235,24 +229,5 @@ export class HeaderComponent implements OnInit {
     } else {
       this.headerMobileNav.activeMainCategoryIndex = mainCategoryDropdownIndex;
     }
-  }
-
-  createCart() {
-    const fetchedCart = localStorage.getItem('cart_id');
-    if (fetchedCart === null) {
-      this.cartService.createCart().subscribe((res: any) => {
-        console.log(res.data.cartCreate.cart.id);
-        localStorage.setItem(
-          'cart_id',
-          JSON.stringify(res.data.cartCreate.cart.id)
-        );
-        this.cartToken = res.data.cartCreate.cart.id;
-        this.fetchCheckoutUrl();
-      });
-    } else {
-      this.cartToken = fetchedCart;
-      this.fetchCheckoutUrl();
-    }
-    console.log(fetchedCart);
   }
 }

@@ -36,12 +36,10 @@ export class CartComponent implements OnInit {
   }
 
   closeCart() {
-    const updatedList = this.makeCartLineObject();
-    this.cartService
-      .updateCart(this.cartToken, updatedList)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+    const updatedList = this.makeUpdateObject();
+    this.cartService.updateQuantities(updatedList).subscribe((res: any) => {
+      console.log(res);
+    });
     this.headerComponent.closeCart();
   }
 
@@ -50,22 +48,26 @@ export class CartComponent implements OnInit {
       window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
   }
 
-  minusQuantity(quantity: number, cartIndex: number) {
-    this.cartData.lines.edges[cartIndex].node.quantity = quantity - 1;
-    if (this.cartData.lines.edges[cartIndex].node.quantity < 1) {
-      const toBeRemoved = this.cartData.lines.edges[cartIndex].node.id;
-      this.cartService
-        .removeCartLine(this.cartToken, toBeRemoved)
-        .subscribe((res: any) => {
-          console.log(res);
-        });
-      this.cartData.lines.edges.splice(cartIndex, 1);
+  minusQuantity(cartIndex: number) {
+    this.cartData.items[cartIndex].quantity =
+      this.cartData.items[cartIndex].quantity - 1;
+
+    if (this.cartData.items[cartIndex].quantity < 1) {
+      const updatedList = this.makeUpdateObject();
+      this.cartService.updateQuantities(updatedList).subscribe((res: any) => {
+        console.log(res);
+        this.cartData.items.splice(cartIndex, 1);
+      });
     }
+    this.cartData.total_price =
+      this.cartData.total_price - this.cartData.items[cartIndex].price;
   }
 
-  plusQuantity(quantity: number, cartIndex: number) {
-    this.cartData.lines.edges[cartIndex].node.quantity = quantity + 1;
-    console.log('check', this.cartData.lines.edges);
+  plusQuantity(cartIndex: number) {
+    this.cartData.items[cartIndex].quantity =
+      this.cartData.items[cartIndex].quantity + 1;
+    this.cartData.total_price =
+      this.cartData.total_price + this.cartData.items[cartIndex].price;
   }
 
   calculateDiscount(beforePrice: any, currentPrice: any) {
@@ -76,33 +78,27 @@ export class CartComponent implements OnInit {
   }
 
   redirectToCheckOut() {
-    const updatedList = this.makeCartLineObject();
-    this.cartService
-      .updateCart(this.cartToken, updatedList)
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+    const updatedList = this.makeUpdateObject();
+    this.cartService.updateQuantities(updatedList).subscribe((res: any) => {
+      console.log(res);
+    });
     window.location.href = this.checkoutUrl;
   }
 
   formatPrice(currencyCode: any, valuePrice: any) {
-    // console.log('currencyCode =', currencyCode);
-    // console.log('valuePrice =', valuePrice);
-    const amount = Number(valuePrice).toLocaleString('en-US', {
+    const amount = Number(valuePrice / 100).toLocaleString('en-US', {
       style: 'currency',
       currency: currencyCode,
     });
-    // console.log('ammount =', amount);
     return amount;
   }
 
-  makeCartLineObject() {
-    const cartLineObject = this.cartData.lines.edges.map((product: any) => {
-      return {
-        id: product.node.id,
-        quantity: product.node.quantity,
-      };
+  makeUpdateObject() {
+    const updateObj: { [id: string]: number } = {};
+
+    this.cartData.items.forEach((item: any) => {
+      updateObj[item.id] = item.quantity;
     });
-    return cartLineObject;
+    return updateObj;
   }
 }
