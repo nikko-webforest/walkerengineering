@@ -1,14 +1,20 @@
-<app-header 
-    *ngIf="type === 'header'"
-    [headernav1]="headernav1"
-    [headernav2]="headernav2"
-    [contactdetails]="contactdetails">
+<app-header
+  *ngIf="type === 'header'"
+  [headernav1]="headernav1"
+  [headernav2]="headernav2"
+  [contactdetails]="contactdetails"
+>
 </app-header>
 
-<app-footer *ngIf="type === 'footer'"
-    [footermenulist]="footermenu1"
-    [contactdetails]="contactdetails"
-    [socialmedialist]="socialmedialist"
-    [policylist]="policylist"
-    [copyrightyear]="copyrightyear">
+<app-footer
+  *ngIf="type === 'footer'"
+  [footermenulist]="footermenu1"
+  [contactdetails]="contactdetails"
+  [socialmedialist]="socialmedialist"
+  [policylist]="policylist"
+  [copyrightyear]="copyrightyear"
+>
 </app-footer>
+<app-featured-products
+  *ngIf="type === 'featured-products'"
+></app-featured-products>
