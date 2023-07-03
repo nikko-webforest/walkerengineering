@@ -1088,7 +1088,7 @@ export class AppComponent implements OnInit {
     return this.commonCurrency[currencyCode].symbol;
   }
 
-  @Input() type: any = 'featured-products';
+  @Input() type: any = 'header';
   @Input() headernav1: any = `[
     {
       "name": "By Category",

@@ -10,7 +10,9 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class HeaderComponent implements OnInit {
+
   @Input() headernav1: any;
 
   @Input() headernav2: any;
@@ -94,16 +96,18 @@ export class HeaderComponent implements OnInit {
     // console.log('this.headerDesktopNav.hasDropdownItems = ' + this.headerDesktopNav.hasDropdownItems);
 
     this.headerDesktopNav.hasDropdownItems = false;
-    if (this.headerDesktopNav.activeMenuIndex == id + 1) {
+    if (this.headerDesktopNav.activeMenuIndex == (id + 1)) {
       this.headerDesktopNav.showMegaMenu = !this.headerDesktopNav.showMegaMenu;
-    } else {
-      this.headerDesktopNav.activeMenuIndex = id + 1;
+    }
+    else {
+      this.headerDesktopNav.activeMenuIndex = (id + 1);
       this.headerDesktopNav.showMegaMenu = true;
     }
 
     if (dropdownItemsLength != 0) {
       this.headerDesktopNav.hasDropdownItems = true;
-    } else {
+    }
+    else {
       this.headerDesktopNav.hasDropdownItems = false;
     }
 
@@ -139,12 +143,7 @@ export class HeaderComponent implements OnInit {
   doProductSearch() {
     this.productSearch.list = [];
     this.fetchedProducts.forEach((item: any, index: any) => {
-      if (
-        item.title
-          .toLowerCase()
-          .includes(this.productSearch.keyword.toLowerCase()) &&
-        this.productSearch.keyword != ''
-      ) {
+      if (item.title.toLowerCase().includes(this.productSearch.keyword.toLowerCase()) && this.productSearch.keyword != '') {
         this.productSearch.list.push(item);
       }
     });
@@ -189,9 +188,7 @@ export class HeaderComponent implements OnInit {
   updateCartItems() {}
 
   fetchCheckoutUrl() {
-    this.fetchedCheckoutUrl = this.cartService.getCartCheckoutUrl(
-      this.cartToken
-    );
+    this.fetchedCheckoutUrl = this.cartService.getCartCheckoutUrl(this.cartToken);
   }
 
   addToCart() {}
@@ -209,7 +206,8 @@ export class HeaderComponent implements OnInit {
     this.headerMobileNav.activeMainCategoryIndex = 0;
     if (this.headerMobileNav.activeMenuIndex == dropdownIndex) {
       this.headerMobileNav.activeMenuIndex = 0;
-    } else {
+    }
+    else {
       this.headerMobileNav.activeMenuIndex = dropdownIndex;
     }
   }
@@ -217,11 +215,10 @@ export class HeaderComponent implements OnInit {
   toggleMainCategoryDropdown(mainCategoryDropdownIndex: number) {
     // console.log(mainCategoryDropdownIndex);
 
-    if (
-      this.headerMobileNav.activeMainCategoryIndex == mainCategoryDropdownIndex
-    ) {
+    if (this.headerMobileNav.activeMainCategoryIndex == mainCategoryDropdownIndex) {
       this.headerMobileNav.activeMainCategoryIndex = 0;
-    } else {
+    }
+    else {
       this.headerMobileNav.activeMainCategoryIndex = mainCategoryDropdownIndex;
     }
   }

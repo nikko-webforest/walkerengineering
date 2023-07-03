@@ -88,7 +88,7 @@
               }
             }
 
-            .we-search-icon {
+            .we-svg-icon-search {
               position: absolute;
               top: 50%;
               right: 20px;
@@ -220,7 +220,7 @@
                               justify-content: flex-start;
                               align-items: center;
 
-                              .product-rating-icon {
+                              .we-svg-icon-rating {
                                 display: block;
                                 margin: 0 5px 0 0;
                               }
@@ -274,10 +274,10 @@
                           margin: 0 13px 0 5px;
                         }
 
-                        .we-button--add-to-cart {
+                        .we-btn--add-to-cart {
                           display: block;
 
-                          .we-icon-cart {
+                          .we-svg-icon-cart {
                             display: block;
                           }
                         }
@@ -307,7 +307,7 @@
             display: none;
           }
 
-          .we-contact-phone-icon {
+          .we-svg-icon-phone {
             display: inline-block;
             vertical-align: middle;
           }
@@ -365,7 +365,7 @@
             padding: 10px;
             cursor: pointer;
 
-            .we-profile-svg {
+            .we-svg-icon-profile {
               display: block;
 
               path {
@@ -375,7 +375,7 @@
             }
 
             &:hover {
-              .we-profile-svg {
+              .we-svg-icon-profile {
                 path {
                   fill: var(--secondaryColor);
                 }
@@ -390,7 +390,7 @@
             padding: 10px;
             cursor: pointer;
 
-            .we-cart-svg {
+            .we-svg-icon-cart {
               display: block;
 
               path {
@@ -400,7 +400,7 @@
             }
 
             &:hover {
-              .we-cart-svg {
+              .we-svg-icon-cart {
                 path {
                   fill: var(--secondaryColor);
                 }
@@ -674,7 +674,7 @@
                         color var(--hoverTransitionDuration) ease-in-out 0ms;
                     }
 
-                    .category-icon {
+                    .we-svg-icon-category {
                       display: block;
                       
                       path {
@@ -779,7 +779,7 @@
           }
         }
 
-        .we-search-icon {
+        .we-svg-icon-search {
           position: absolute;
           top: 50%;
           right: 20px;
@@ -895,7 +895,7 @@
                           justify-content: flex-start;
                           align-items: center;
 
-                          .product-rating-icon {
+                          .we-svg-icon-rating {
                             display: block;
                             margin: 0 5px 0 0;
                           }
@@ -949,10 +949,10 @@
                       margin: 0 13px 0 5px;
                     }
 
-                    .we-button--add-to-cart {
+                    .we-btn--add-to-cart {
                       display: block;
 
-                      .we-icon-cart {
+                      .we-svg-icon-cart {
                         display: block;
                       }
                     }
@@ -1175,7 +1175,7 @@
         max-width: 150px;
         width: 100%;
 
-        .we-contact-phone-icon {
+        .we-svg-icon-phone {
           display: inline-block;
           vertical-align: middle;
         }
@@ -1229,7 +1229,7 @@
           padding: 10px;
           cursor: pointer;
 
-          .we-profile-svg {
+          .we-svg-icon-profile {
             display: block;
 
             path {
@@ -1239,7 +1239,7 @@
           }
 
           &:hover {
-            .we-profile-svg {
+            .we-svg-icon-profile {
               path {
                 fill: var(--secondaryColor);
               }
@@ -1254,7 +1254,7 @@
           padding: 10px;
           cursor: pointer;
 
-          .we-cart-svg {
+          .we-svg-icon-cart {
             display: block;
 
             path {
@@ -1264,7 +1264,7 @@
           }
 
           &:hover {
-            .we-cart-svg {
+            .we-svg-icon-cart {
               path {
                 fill: var(--secondaryColor);
               }
