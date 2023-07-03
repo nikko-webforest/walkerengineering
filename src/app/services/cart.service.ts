@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export class CartService {
 
   cartData: any = {

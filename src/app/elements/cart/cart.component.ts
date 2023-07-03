@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { AppComponent } from 'src/app/app.component';
 import { HeaderComponent } from 'src/app/elements/header/header.component';
 import { CartService } from 'src/app/services/cart.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -54,7 +54,8 @@ export class CartComponent implements OnInit {
   }
 
   calculateDiscount(beforePrice: any, currentPrice: any) {
-    var calculate = 100 - (currentPrice / beforePrice) * 100;
+    if (currentPrice == 0) return '100%';
+    var calculate = 100 - Number(currentPrice / beforePrice) * 100;
     var discount = calculate < 0 ? calculate * -1 : calculate;
     // console.log('calculateDiscount \n beforePrice =', beforePrice, 'currentPrice =', currentPrice, 'discount =', discount);
     return discount.toFixed(0) + '%';

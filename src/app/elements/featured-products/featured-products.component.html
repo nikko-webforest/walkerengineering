@@ -1,68 +1,61 @@
-<div class="we-cart-body">
-  <div class="we-cart-product-list">
-    <ng-container
-      *ngFor="let featuredItem of featuredProducts; let itemIndex = index"
-    >
-      <div class="we-cart-product-item" [attr.data-cart-item-index]="itemIndex">
+<div class="featured-product-wrap">
+  <div class="featured-product-list">
+    <ng-container *ngFor="let productItem of featuredProducts; let productIndex = index">
+      <div class="featured-product-item"
+        (click)="openProductLink(productItem.handle);"
+        [attr.data-product-index]="productIndex">
+        <ng-container *ngIf="productItem.variants.nodes[0].compareAtPrice != null">
+          <div class="product-discount"
+            [innerText]="calculateDiscount(productItem.variants.nodes[0].compareAtPrice.amount, productItem.variants.nodes[0].price.amount)">
+          </div>
+        </ng-container>
         <div class="we-row">
-          <div
-            *ngIf="featuredItem.images.nodes.length != 0"
-            class="we-cart-product-img"
-            [ngStyle]="{
-              'background-image':
-                'url(' + featuredItem.images.nodes[0].url + ')'
-            }"
-          ></div>
-          <svg
-            class="we-svg-placeholder-img we-svg"
-            *ngIf="featuredItem.images.nodes.length == 0"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 525.5 525.5"
-          >
-            <path
-              id="path_01"
-              d="M324.5 212.7H203c-1.6 0-2.8 1.3-2.8 2.8V308c0 1.6 1.3 2.8 2.8 2.8h121.6c1.6 0 2.8-1.3 2.8-2.8v-92.5c0-1.6-1.3-2.8-2.9-2.8zm1.1 95.3c0 .6-.5 1.1-1.1 1.1H203c-.6 0-1.1-.5-1.1-1.1v-92.5c0-.6.5-1.1 1.1-1.1h121.6c.6 0 1.1.5 1.1 1.1V308z"
-            ></path>
-            <path
-              id="path_02"
-              d="M210.4 299.5H240v.1s.1 0 .2-.1h75.2v-76.2h-105v76.2zm1.8-7.2l20-20c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l1.5 1.5 16.8 16.8c-12.9 3.3-20.7 6.3-22.8 7.2h-27.7v-5.5zm101.5-10.1c-20.1 1.7-36.7 4.8-49.1 7.9l-16.9-16.9 26.3-26.3c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l27.5 27.5v7.8zm-68.9 15.5c9.7-3.5 33.9-10.9 68.9-13.8v13.8h-68.9zm68.9-72.7v46.8l-26.2-26.2c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-26.3 26.3-.9-.9c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-18.8 18.8V225h101.4z"
-            ></path>
-            <path
-              id="path_03"
-              d="M232.8 254c4.6 0 8.3-3.7 8.3-8.3s-3.7-8.3-8.3-8.3-8.3 3.7-8.3 8.3 3.7 8.3 8.3 8.3zm0-14.9c3.6 0 6.6 2.9 6.6 6.6s-2.9 6.6-6.6 6.6-6.6-2.9-6.6-6.6 3-6.6 6.6-6.6z"
-            ></path>
-          </svg>
-          <div class="we-inner-row">
-            <div class="we-inner-col">
-              <div
-                class="we-cart-product-title"
-                [innerText]="featuredItem.title"
-              ></div>
+          <div class="we-col">
+            <ng-container *ngIf="productItem.images.nodes.length != 0">
+              <img class="product-img we-img"
+                [alt]="productItem.title"
+                [title]="productItem.title"
+                [src]="productItem.images.nodes[0].url"
+                width=""
+                height=""
+                loading="lazy"/>
+            </ng-container>
+            <ng-container *ngIf="productItem.images.nodes.length == 0">
+              <svg class="we-svg-placeholder-img we-svg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 525.5 525.5">
+                <path id="path_01"
+                  d="M324.5 212.7H203c-1.6 0-2.8 1.3-2.8 2.8V308c0 1.6 1.3 2.8 2.8 2.8h121.6c1.6 0 2.8-1.3 2.8-2.8v-92.5c0-1.6-1.3-2.8-2.9-2.8zm1.1 95.3c0 .6-.5 1.1-1.1 1.1H203c-.6 0-1.1-.5-1.1-1.1v-92.5c0-.6.5-1.1 1.1-1.1h121.6c.6 0 1.1.5 1.1 1.1V308z">
+                </path>
+                <path id="path_02"
+                  d="M210.4 299.5H240v.1s.1 0 .2-.1h75.2v-76.2h-105v76.2zm1.8-7.2l20-20c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l1.5 1.5 16.8 16.8c-12.9 3.3-20.7 6.3-22.8 7.2h-27.7v-5.5zm101.5-10.1c-20.1 1.7-36.7 4.8-49.1 7.9l-16.9-16.9 26.3-26.3c1.6-1.6 3.8-2.5 6.1-2.5s4.5.9 6.1 2.5l27.5 27.5v7.8zm-68.9 15.5c9.7-3.5 33.9-10.9 68.9-13.8v13.8h-68.9zm68.9-72.7v46.8l-26.2-26.2c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-26.3 26.3-.9-.9c-1.9-1.9-4.5-3-7.3-3s-5.4 1.1-7.3 3l-18.8 18.8V225h101.4z">
+                </path>
+                <path id="path_03"
+                  d="M232.8 254c4.6 0 8.3-3.7 8.3-8.3s-3.7-8.3-8.3-8.3-8.3 3.7-8.3 8.3 3.7 8.3 8.3 8.3zm0-14.9c3.6 0 6.6 2.9 6.6 6.6s-2.9 6.6-6.6 6.6-6.6-2.9-6.6-6.6 3-6.6 6.6-6.6z">
+                </path>
+              </svg>
+            </ng-container>
+          </div>
+          <div class="we-col">
+            <div class="product-title"
+              [innerText]="productItem.title">
             </div>
-            <div class="we-inner-col">
-              <div [innerText]="featuredItem.productType"></div>
-            </div>
-            <div class="we-inner-col">
-              <div
-                class="we-cart-product-before-price"
-                *ngIf="featuredItem.variants.nodes[0].compareAtPrice != null"
-                [innerText]="
-                  formatPrice(
-                    featuredItem.variants.nodes[0].price.currencyCode,
-                    featuredItem.variants.nodes[0].price.amount * 1
-                  )
-                "
-              ></div>
-              <div
-                class="we-cart-product-current-price"
-                *ngIf="featuredItem.variants.nodes[0].price.amount"
-                [innerText]="
-                  formatPrice(
-                    featuredItem.variants.nodes[0].price.currencyCode,
-                    featuredItem.variants.nodes[0].price.amount * 1
-                  )
-                "
-              ></div>
+            <ng-container *ngIf="productItem.productType != ''">
+              <div class="product-type"
+                [innerText]="productItem.productType">
+              </div>
+            </ng-container>
+            <div class="we-inner-row">
+              <ng-container *ngIf="productItem.variants.nodes[0].price != null">
+                <div class="product-current-price"
+                  [innerText]="formatPrice(productItem.variants.nodes[0].price.currencyCode, productItem.variants.nodes[0].price.amount)">
+                </div>
+              </ng-container>
+              <ng-container *ngIf="productItem.variants.nodes[0].compareAtPrice != null">
+                <div class="product-before-price"
+                  [innerText]="formatPrice(productItem.variants.nodes[0].compareAtPrice.currencyCode, productItem.variants.nodes[0].compareAtPrice.amount)">
+                </div>
+              </ng-container>
             </div>
           </div>
         </div>

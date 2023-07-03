@@ -2,8 +2,7 @@
   *ngIf="type === 'header'"
   [headernav1]="headernav1"
   [headernav2]="headernav2"
-  [contactdetails]="contactdetails"
->
+  [contactdetails]="contactdetails">
 </app-header>
 
 <app-footer
@@ -12,9 +11,9 @@
   [contactdetails]="contactdetails"
   [socialmedialist]="socialmedialist"
   [policylist]="policylist"
-  [copyrightyear]="copyrightyear"
->
+  [copyrightyear]="copyrightyear">
 </app-footer>
+
 <app-featured-products
-  *ngIf="type === 'featured-products'"
-></app-featured-products>
+  *ngIf="type === 'featured-products'">
+</app-featured-products>

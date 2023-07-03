@@ -5,10 +5,10 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  title = 'Walker Engineering Group';
 
-  // showCart: boolean = false;
+export class AppComponent implements OnInit {
+
+  title = 'Walker Engineering Group';
 
   commonCurrency: any = {
     USD: {
@@ -1708,8 +1708,5 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
-
-  // toggleCart() {
-  //   this.showCart = !this.showCart;
-  // }
+  
 }

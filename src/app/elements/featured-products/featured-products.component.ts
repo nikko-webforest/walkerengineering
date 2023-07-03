@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { ProductsService } from '../../services/products.service';
-import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-featured-products',
   templateUrl: './featured-products.component.html',
   styleUrls: ['./featured-products.component.scss'],
 })
+
 export class FeaturedProductsComponent implements OnInit {
+
   products: any = [];
   featuredProducts: any = [];
   ready: boolean = false;
-  constructor(private productsService: ProductsService) {}
+
+  constructor(
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit(): void {
     this.fetchProductsToFeature();
@@ -55,5 +60,17 @@ export class FeaturedProductsComponent implements OnInit {
     });
     // console.log('ammount =', amount);
     return amount;
+  }
+
+  openProductLink(link: any) {  
+    if (link != '') window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
+  }
+
+  calculateDiscount(beforePrice: any, currentPrice: any) {
+    if (currentPrice == 0) return '100%';
+    var calculate = 100 - Number(currentPrice / beforePrice) * 100;
+    var discount = calculate < 0 ? calculate * -1 : calculate;
+    // console.log('calculateDiscount \n beforePrice =', beforePrice, 'currentPrice =', currentPrice, 'discount =', discount);
+    return discount.toFixed(0) + '%';
   }
 }
