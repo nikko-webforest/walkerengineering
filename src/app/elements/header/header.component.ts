@@ -165,8 +165,10 @@ export class HeaderComponent implements OnInit {
     if (window.location.origin !== 'https://walkerengineering.co') {
       window.location.href = 'https://walkerengineering.co/cart';
     }
-    this.showcart = !this.showcart;
-    if (this.showcart) this.getCartItems();
+    else {
+      this.showcart = !this.showcart;
+      if (this.showcart) this.getCartItems();
+    }
   }
 
   openCart() {

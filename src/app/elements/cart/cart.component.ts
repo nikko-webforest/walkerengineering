@@ -88,7 +88,7 @@ export class CartComponent implements OnInit {
   formatPrice(currencyCode: any, valuePrice: any) {
     // console.log('currencyCode =', currencyCode);
     // console.log('valuePrice =', valuePrice);
-    const amount = Number(valuePrice).toLocaleString('en-US', {
+    const amount = Number(valuePrice / 100).toLocaleString('en-US', {
       style: 'currency',
       currency: currencyCode
     });
