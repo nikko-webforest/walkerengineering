@@ -4,12 +4,10 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'Walker Engineering Group';
-
-  // showCart: boolean = false;
-  cartToken = 'c1-eaa607f36464dafe0dd574fdd2d0f5a1';
 
   commonCurrency: any = {
     USD: {
@@ -1091,7 +1089,7 @@ export class AppComponent implements OnInit {
     return this.commonCurrency[currencyCode].symbol;
   }
 
-  @Input() type: any = 'header';
+  @Input() type: any = 'featured-products';
   @Input() headernav1: any = `[
     {
       "name": "By Category",
@@ -1709,8 +1707,5 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
-
-  // toggleCart() {
-  //   this.showCart = !this.showCart;
-  // }
+  
 }

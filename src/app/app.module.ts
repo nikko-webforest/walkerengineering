@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './elements/header/header.component';
 import { FooterComponent } from './elements/footer/footer.component';
 import { CartComponent } from './elements/cart/cart.component';
+import { FeaturedProductsComponent } from './elements/featured-products/featured-products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    FeaturedProductsComponent
   ],
   imports: [
     BrowserModule,
