@@ -131,7 +131,7 @@
                   }
                   
                   .form-submit {
-                    color: #FFFFFF;
+                    color: var(--whiteColor);
                     font-family: var(--tertiaryFontFamily);
                     font-style: normal;
                     font-weight: 600;
@@ -201,7 +201,12 @@
             'walker-airsep walker-performance'
             'footer-menu footer-menu'
             'social-info contact-info';
-          grid-template-columns: 250px 250px;
+          grid-template-columns: repeat(2, minmax(auto, 250px));
+        }
+
+        @media only screen and (max-width: 768px) {
+          grid-template-columns: repeat(2, minmax(auto, 200px));
+          justify-content: flex-start;
         }
 
         @media only screen and (max-width: 480px) {
@@ -291,57 +296,56 @@
           &:nth-child(3) {
             grid-area: footer-menu;
             display: grid;
-            grid-template-areas:
-              'products service support information'
-              'products applications support information';
+            grid-template-areas: 'column-1 column-2 column-3 column-4';
             grid-template-rows: auto;
-            grid-template-columns: 242px 156px 149px 113px;
+            grid-template-columns: repeat(4, minmax(auto, 150px));
             grid-gap: 24px;
             gap: 24px;
 
             @media only screen and (max-width: 1200px) {
               order: 3;
-              justify-content: center;
+              // justify-content: center;
+              grid-template-areas:
+                'column-1 column-2'
+                'column-3 column-4';
+              grid-template-columns: minmax(auto, 330px) minmax(auto, 250px);
             }
 
-            @media only screen and (max-width: 900px) {
+            @media only screen and (max-width: 768px) {
+              order: 3;
+              // justify-content: center;
               grid-template-areas:
-                'products service'
-                'products applications'
-                'support information'
-                'support information';
-              grid-template-columns: 250px 250px;
-              justify-content: space-between;
+                'column-1 column-2'
+                'column-3 column-4';
+              grid-template-columns: minmax(210px, 210px) minmax(auto, 200px);
             }
 
             @media only screen and (max-width: 480px) {
               grid-template-areas:
-                'products'
-                'service'
-                'applications'
-                'support'
-                'information';
-              grid-template-columns: auto;
-              justify-content: flex-start;
+                'column-1'
+                'column-2'
+                'column-3'
+                'column-4';
+              grid-template-columns: minmax(auto, 250px);
             }
 
             .we-footer-menu-wrap {
               width: max-content;
 
               &:nth-child(1) {
-                grid-area: products;
+                grid-area: column-1;
               }
 
               &:nth-child(2) {
-                grid-area: service;
+                grid-area: column-2;
               }
 
               &:nth-child(3) {
-                grid-area: applications;
+                grid-area: column-3;
               }
 
               &:nth-child(4) {
-                grid-area: support;
+                grid-area: column-4;
               }
 
               &:nth-child(5) {

@@ -62,12 +62,14 @@
         </div>
       </div>
     </div>
-    <div
-      class="we-nav-mega-menu-wrap"
+    <div class="we-nav-mega-menu-wrap"
       [class.--show]="headerDesktopNav.showMegaMenu && headerDesktopNav.hasDropdownItems">
       <div class="we-container">
+        <!-- loop headerNav1 and get level 1 menus -->
         <ng-container *ngFor="let item of headernav1; let i = index">
+          <!-- show if level 1 menu has dropdownItems -->
           <ng-container *ngIf="item.dropdownItems.length">
+            <!-- show if level 1 menu is hovered -->
             <ng-container *ngIf="(i + 1) == headerDesktopNav.activeMenuIndex">
               <div class="we-nav-mega-menu-item"
                 [attr.data-menu]="item.name"
@@ -79,21 +81,24 @@
                         <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories">
                           <li class="main-category-item"
                             [class.--active-main-category]="(i + 1) == headerDesktopNav.activeMenuIndex && mainCategory.name.toLowerCase() == headerDesktopNav.activeMainCategoryLabel"
-                            (mouseenter)="selectMainCategory(mainCategory.name)">
+                            (mouseenter)="selectMainCategory(mainCategory.name)"
+                            (click)="openLink(mainCategory.url)">
                             <div class="category-name"
                               [innerText]="mainCategory.name">
                             </div>
-                            <svg class="we-svg-icon-category we-svg"
-                              width="8"
-                              height="14"
-                              viewBox="0 0 8 14"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <path id="path_01"
-                                d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
-                                fill="#2D3648">
-                              </path>
-                            </svg>
+                            <ng-container *ngIf="mainCategory.subCategories.length">
+                              <svg class="we-svg-icon-category we-svg"
+                                width="8"
+                                height="14"
+                                viewBox="0 0 8 14"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="path_01"
+                                  d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
+                                  fill="#2D3648">
+                                </path>
+                              </svg>
+                            </ng-container>
                           </li>
                         </ng-container>
                       </ng-container>
@@ -105,7 +110,7 @@
                         <ng-container *ngIf="mainCategory.name.toLowerCase() == headerDesktopNav.activeMainCategoryLabel">
                           <ul class="sub-category-list"
                             [attr.data-main-category]="mainCategory.name">
-                            <ng-container *ngFor="let subCategory of mainCategory.subCategories">
+                            <ng-container *ngFor="let subCategory of mainCategory.subCategories.slice(0, 20)">
                               <li class="sub-category-item"
                                 [innerText]="subCategory.name"
                                 (click)="openLink(subCategory.url)">

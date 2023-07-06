@@ -1091,138 +1091,60 @@ export class AppComponent implements OnInit {
   @Input() type: any = 'header';
   @Input() headernav1: any = `[
     {
-      "name": "By Category",
+      "name": "By Vendor",
       "url": "/",
       "dropdownItems": [
         {
           "mainCategories": [
             {
-              "name": "All Categories",
-              "url": "/",
+              "name": "Airsep",
+              "url": "{{ shop.url }}/pages/airsep",
               "subCategories": [
                 {
-                  "name": "Sub-Category 1",
-                  "url": "/"
+                  "name": "Agricultural",
+                  "url": "{{ shop.url }}/collections/agricultural"
                 },
                 {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "Industrial",
+                  "url": "{{ shop.url }}/collections/industrial"
                 },
                 {
-                  "name": "Sub-Category 3",
-                  "url": "/"
+                  "name": "Marine",
+                  "url": "{{ shop.url }}/collections/marine"
                 },
                 {
-                  "name": "Sub-Category 4",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 5",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 6",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 7",
-                  "url": "/"
+                  "name": "Military",
+                  "url": "{{ shop.url }}/collections/military"
                 }
               ]
             },
             {
-              "name": "Marine",
-              "url": "/",
+              "name": "Performance",
+              "url": "{{ shop.url }}/pages/performance",
               "subCategories": [
                 {
-                  "name": "Sub-Category 1",
-                  "url": "/"
+                  "name": "Big Trucks and Commercial Vehicles",
+                  "url": "{{ shop.url }}/collections/big-trucks-and-commercial-vehicles"
                 },
                 {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "Harley Davidson",
+                  "url": "{{ shop.url }}/collections/harley-davidson"
                 },
                 {
-                  "name": "Sub-Category 3",
-                  "url": "/"
-                }
-              ]
-            },
-            {
-              "name": "Over the Road",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Sub-Category 1",
-                  "url": "/"
+                  "name": "Off Road",
+                  "url": "{{ shop.url }}/collections/off-road"
                 },
                 {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "Pick-Up Trucks",
+                  "url": "{{ shop.url }}/collections/pick-up-trucks"
                 },
                 {
-                  "name": "Sub-Category 3",
-                  "url": "/"
+                  "name": "Racing",
+                  "url": "{{ shop.url }}/collections/racing"
                 },
                 {
-                  "name": "Sub-Category 4",
-                  "url": "/"
-                }
-              ]
-            },
-            {
-              "name": "Industrial",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Sub-Category 1",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 2",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 3",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 4",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 5",
-                  "url": "/"
-                }
-              ]
-            },
-            {
-              "name": "Military",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Sub-Category 1",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 2",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 3",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 4",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 5",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 6",
-                  "url": "/"
+                  "name": "RV",
+                  "url": "{{ shop.url }}/collections/rv"
                 }
               ]
             }
@@ -1237,116 +1159,126 @@ export class AppComponent implements OnInit {
         {
           "mainCategories": [
             {
-              "name": "Marine",
-              "url": "/",
+              "name": "Airsep",
+              "url": "{{ shop.url }}/pages/airsep",
               "subCategories": [
                 {
-                  "name": "Sub-Category 1",
-                  "url": "/"
+                  "name": "Caterpillar",
+                  "url": "{{ shop.url }}/pages/airsep"
                 },
                 {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "Cummins",
+                  "url": "{{ shop.url }}/pages/airsep"
                 },
                 {
-                  "name": "Sub-Category 3",
-                  "url": "/"
+                  "name": "Daewoo",
+                  "url": "{{ shop.url }}/pages/airsep"
                 },
                 {
-                  "name": "Sub-Category 4",
-                  "url": "/"
+                  "name": "Daytona Marine (MACK)",
+                  "url": "{{ shop.url }}/pages/airsep"
                 },
                 {
-                  "name": "Sub-Category 5",
-                  "url": "/"
+                  "name": "Detroit Diesel",
+                  "url": "{{ shop.url }}/pages/airsep"
                 },
                 {
-                  "name": "Sub-Category 6",
-                  "url": "/"
+                  "name": "Deutz",
+                  "url": "{{ shop.url }}/pages/airsep"
                 },
                 {
-                  "name": "Sub-Category 7",
-                  "url": "/"
+                  "name": "Isotta Fraschini",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Isuzu",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "John Deere",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Komatsu",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Lugger",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Man",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Mercruiser",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Merlin",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Mitsubishi",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "MTU",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Navistar",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Northern Lights",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Perkins",
+                  "url": "{{ shop.url }}/pages/airsep"
+                },
+                {
+                  "name": "Scania",
+                  "url": "{{ shop.url }}/pages/airsep"
                 }
               ]
             },
             {
-              "name": "Power Generation",
-              "url": "/",
+              "name": "Performance",
+              "url": "{{ shop.url }}/pages/performance",
               "subCategories": [
                 {
-                  "name": "Sub-Category 1",
-                  "url": "/"
+                  "name": "Polaris",
+                  "url": "{{ shop.url }}/pages/performance"
                 },
                 {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "Can-Am",
+                  "url": "{{ shop.url }}/pages/performance"
                 },
                 {
-                  "name": "Sub-Category 3",
-                  "url": "/"
-                }
-              ]
-            },
-            {
-              "name": "Industrial",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Sub-Category 1",
-                  "url": "/"
+                  "name": "Ford Powerstroke 6.7L",
+                  "url": "{{ shop.url }}/pages/performance"
                 },
                 {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "Danzio Performance Engines",
+                  "url": "{{ shop.url }}/pages/performance"
                 },
                 {
-                  "name": "Sub-Category 3",
-                  "url": "/"
+                  "name": "Herbst Chassis",
+                  "url": "{{ shop.url }}/pages/performance"
                 },
                 {
-                  "name": "Sub-Category 4",
-                  "url": "/"
-                }
-              ]
-            },
-            {
-              "name": "Military",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Sub-Category 1",
-                  "url": "/"
+                  "name": "Geiser Bros. Chassis",
+                  "url": "{{ shop.url }}/pages/performance"
                 },
                 {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "Funco",
+                  "url": "{{ shop.url }}/pages/performance"
                 },
                 {
-                  "name": "Sub-Category 3",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 4",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 5",
-                  "url": "/"
-                }
-              ]
-            },
-            {
-              "name": "Racing",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Sub-Category 1",
-                  "url": "/"
-                },
-                {
-                  "name": "Sub-Category 2",
-                  "url": "/"
+                  "name": "“Universal Fit” Off-Road Filters",
+                  "url": "{{ shop.url }}/pages/performance"
                 }
               ]
             }
@@ -1356,66 +1288,13 @@ export class AppComponent implements OnInit {
     },
     {
       "name": "News",
-      "url": "/",
+      "url": "{{ subdomain }}",
       "dropdownItems": []
     },
     {
       "name": "Media",
-      "url": "/",
-      "dropdownItems": [
-        {
-          "mainCategories": [
-            {
-              "name": "Photos",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Photo Gallery 1",
-                  "url": "/"
-                },
-                {
-                  "name": "Photo Gallery 2",
-                  "url": "/"
-                },
-                {
-                  "name": "Photo Gallery 3",
-                  "url": "/"
-                },
-                {
-                  "name": "Photo Gallery 4",
-                  "url": "/"
-                },
-                {
-                  "name": "Photo Gallery 5",
-                  "url": "/"
-                }
-              ]
-            },
-            {
-              "name": "Videos",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "Video Tutorial 1",
-                  "url": "/"
-                },
-                {
-                  "name": "Video Tutorial 2",
-                  "url": "/"
-                },
-                {
-                  "name": "Video Tutorial 3",
-                  "url": "/"
-                },
-                {
-                  "name": "Video Tutorial 4",
-                  "url": "/"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "url": "{{ subdomain }}/medias",
+      "dropdownItems": []
     },
     {
       "name": "Support",
@@ -1425,93 +1304,18 @@ export class AppComponent implements OnInit {
           "mainCategories": [
             {
               "name": "All Resources",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "System Info 1",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 2",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 3",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 4",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 5",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 6",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 7",
-                  "url": "/"
-                }
-              ]
+              "url": "{{ subdomain }}/resources",
+              "subCategories": []
             },
             {
               "name": "Technical Information",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "System Info 1",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 2",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 3",
-                  "url": "/"
-                }
-              ]
+              "url": "{{ subdomain }}/technical-information",
+              "subCategories": []
             },
             {
               "name": "Troubleshooting",
-              "url": "/",
-              "subCategories": [
-                {
-                  "name": "System Info 1",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 2",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 3",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 4",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 5",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 6",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 7",
-                  "url": "/"
-                },
-                {
-                  "name": "System Info 8",
-                  "url": "/"
-                }
-              ]
+              "url": "{{ subdomain }}/troubleshooting",
+              "subCategories": []
             }
           ]
         }
@@ -1519,7 +1323,7 @@ export class AppComponent implements OnInit {
     },
     {
       "name": "Dealers Only",
-      "url": "/",
+      "url": "{{ subdomain }}/dealers",
       "dropdownItems": []
     }
   ]`;
@@ -1535,65 +1339,52 @@ export class AppComponent implements OnInit {
   ]`;
   @Input() footermenu1: any = `[
     {
-      "title": "Products",
+      "title": "Airsep",
       "items": [
         {
-          "name": "Airsep",
-          "url": "/"
-        },
-        {
-          "name": "Everquiet Air Filter Sillencer",
-          "url": "/"
-        },
-        {
-          "name": "AIRSEP High Performance Air Filters",
-          "url": "/"
-        },
-        {
-          "name": "Replacement Filters and Parts",
-          "url": "/"
-        },
-        {
-          "name": "Diesel Engine Accessories",
-          "url": "/"
-        },
-        {
-          "name": "Industrial Process Filters",
-          "url": "/"
-        }
-      ]
-    },
-    {
-      "title": "Service",
-      "items": [
-        {
-          "name": "Custom Filter Request",
-          "url": "/"
-        }
-      ]
-    },
-    {
-      "title": "Applications",
-      "items": [
-        {
-          "name": "Marine",
-          "url": "/"
-        },
-        {
-          "name": "Power Generation",
-          "url": "/"
-        },
-        {
-          "name": "Military",
-          "url": "/"
+          "name": "Agricultural",
+          "url": "{{ shop.url }}/collections/agricultural"
         },
         {
           "name": "Industrial",
-          "url": "/"
+          "url": "{{ shop.url }}/collections/industrial"
+        },
+        {
+          "name": "Marine",
+          "url": "{{ shop.url }}/collections/marine"
+        },
+        {
+          "name": "Military",
+          "url": "{{ shop.url }}/collections/military"
+        }
+      ]
+    },
+    {
+      "title": "Performance",
+      "items": [
+        {
+          "name": "Big Trucks and Commercial Vehicles",
+          "url": "{{ shop.url }}/collections/big-trucks-and-commercial-vehicles"
+        },
+        {
+          "name": "Harley Davidson",
+          "url": "{{ shop.url }}/collections/harley-davidson"
+        },
+        {
+          "name": "Off Road",
+          "url": "{{ shop.url }}/collections/off-road"
+        },
+        {
+          "name": "Pick-Up Trucks",
+          "url": "{{ shop.url }}/collections/pick-up-trucks"
         },
         {
           "name": "Racing",
-          "url": "/"
+          "url": "{{ shop.url }}/collections/racing"
+        },
+        {
+          "name": "RV",
+          "url": "{{ shop.url }}/collections/rv"
         }
       ]
     },
@@ -1601,28 +1392,20 @@ export class AppComponent implements OnInit {
       "title": "Support",
       "items": [
         {
-          "name": "Contact Us",
-          "url": "/"
+          "name": "FAQ",
+          "url": "{{ shop.url }}/pages/faq"
         },
         {
-          "name": "FAQ",
-          "url": "/"
+          "name": "Resources",
+          "url": "{{ subdomain }}/resources"
         },
         {
           "name": "Technical Information",
-          "url": "/"
+          "url": "{{ subdomain }}/technical-information/"
         },
         {
           "name": "Troubleshooting",
-          "url": "/"
-        },
-        {
-          "name": "Limited Warranty",
-          "url": "/"
-        },
-        {
-          "name": "Warning",
-          "url": "/"
+          "url": "{{ subdomain }}/troubleshooting/"
         }
       ]
     },
@@ -1631,23 +1414,19 @@ export class AppComponent implements OnInit {
       "items": [
         {
           "name": "About Us",
-          "url": "/"
+          "url": "{{ subdomain }}/about-us/"
         },
         {
           "name": "Quality IS09001",
-          "url": "/"
+          "url": "{{ subdomain }}/quality-is09001/"
         },
         {
           "name": "News",
-          "url": "/"
+          "url": "{{ subdomain }}"
         },
         {
           "name": "Videos",
-          "url": "/"
-        },
-        {
-          "name": "Ad Library",
-          "url": "/"
+          "url": "{{ subdomain }}/media/identify-your-walker-airsep-air-filter-for-easy-ordering/"
         }
       ]
     }
