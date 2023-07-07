@@ -30,6 +30,8 @@ export class FooterComponent implements OnInit {
     }
   };
 
+  isNewsletterSubmitted: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -41,6 +43,21 @@ export class FooterComponent implements OnInit {
     console.log('this.socialmedialist =', this.socialmedialist);
     this.policylist = JSON.parse(this.policylist);
     console.log('this.policylist =', this.policylist);
+
+    this.newsletterSubmitted();
+  }
+
+  newsletterSubmitted() {
+    const queryString = window.location.search;
+    console.log(queryString);
+
+    const urlParams = new URLSearchParams(queryString);
+    const customer_posted = urlParams.get('customer_posted');
+
+    if (customer_posted == 'true' || customer_posted ) {
+      this.isNewsletterSubmitted = true;
+      document.querySelector('.we-footer-newsletter')?.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
 }

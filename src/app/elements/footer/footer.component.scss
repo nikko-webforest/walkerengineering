@@ -43,7 +43,7 @@
               font-style: normal;
               font-weight: 700;
               font-size: 24px;
-              line-height: 0.75em;
+              line-height: 1.25em;
               letter-spacing: -0.01em;
               width: max-content;
               margin: 0 0 14px;
@@ -60,7 +60,7 @@
               font-style: normal;
               font-weight: 600;
               font-size: 15px;
-              line-height: 1.1em;
+              line-height: 1.25em;
               width: max-content;
 
               @media only screen and (max-width: 1200px) {
@@ -84,10 +84,12 @@
             }
 
             .form-newsletter {
+              max-width: 500px;
               width: max-content;
 
               @media only screen and (max-width: 768px) {
                 width: 100%;
+                margin: 0 auto;
               }
               
               .form-wrap {
@@ -171,6 +173,30 @@
                 }
               }
             }
+
+            .form-newsletter-submitted {
+              color: var(--blackColor);
+              font-family: var(--tertiaryFontFamily);
+              font-style: normal;
+              font-weight: 600;
+              font-size: 15px;
+              line-height: 1.25em;
+              text-align: center;
+              display: block;
+              background-color: var(--whiteColor);
+              max-width: 500px;
+              min-width: 500px;
+              width: 100%;
+              padding: 8px 22px;
+              border: 2px solid #B8C5D0;
+              border-radius: 6px;
+
+              @media only screen and (max-width: 768px) {
+                min-width: unset;
+                width: 100%;
+                margin: 0 auto;
+              }
+            }
           }
         }
       }
@@ -206,7 +232,9 @@
 
         @media only screen and (max-width: 768px) {
           grid-template-columns: repeat(2, minmax(auto, 200px));
-          justify-content: flex-start;
+          justify-content: center;
+          grid-gap: 15px;
+          gap: 15px;
         }
 
         @media only screen and (max-width: 480px) {
@@ -215,7 +243,7 @@
             'footer-menu footer-menu'
             'social-info social-info'
             'contact-info contact-info';
-          grid-template-columns: repeat(2, 50%);
+          grid-template-columns: repeat(2, calc(50% - (15px / 2)));
         }
 
         .we-main-grid-item {
@@ -317,7 +345,9 @@
               grid-template-areas:
                 'column-1 column-2'
                 'column-3 column-4';
-              grid-template-columns: minmax(210px, 210px) minmax(auto, 200px);
+              grid-template-columns: repeat(2, minmax(auto, 100%));
+              grid-gap: 15px;
+              gap: 15px;
             }
 
             @media only screen and (max-width: 480px) {
@@ -326,11 +356,15 @@
                 'column-2'
                 'column-3'
                 'column-4';
-              grid-template-columns: minmax(auto, 250px);
+              grid-template-columns: minmax(auto, 100%);
             }
 
             .we-footer-menu-wrap {
               width: max-content;
+
+              @media only screen and (max-width: 768px) {
+                width: 100%;
+              }
 
               &:nth-child(1) {
                 grid-area: column-1;
@@ -367,7 +401,7 @@
                     font-style: normal;
                     font-weight: 600;
                     font-size: 14px;
-                    line-height: 1.15em;
+                    line-height: 1.25em;
 
                     @media only screen and (max-width: 480px) {
                       font-size: 12px;

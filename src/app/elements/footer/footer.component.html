@@ -11,22 +11,40 @@
           </h4>
         </div>
         <div class="we-col">
-          <form class="form-newsletter"
-            action="">
-            <div class="form-wrap">
-              <div class="form-group">
-                <label class="form-label"></label>
-                <input class="form-input"
-                  type="email"
-                  placeholder="Enter your email address"/>
+          <ng-container *ngIf="!isNewsletterSubmitted">
+            <form class="form-newsletter"
+              method="post"
+              action="https://walkerengineering.co/contact#contact_form"
+              accept-charset="UTF-8">
+              <div class="form-wrap">
+                <div class="form-group">
+                  <label class="form-label"></label>
+                  <input type="hidden"
+                    name="form_type"
+                    value="customer"/>
+                  <input type="hidden"
+                    name="utf8"
+                    value="✓"/>
+                  <input type="hidden"
+                    name="contact[tags]"
+                    value="prospect, newsletter"/>
+                  <input class="form-input"
+                    type="email"
+                    name="contact[email]"
+                    aria-label="Email address"
+                    placeholder="Enter your email address"/>
+                </div>
+                <div class="form-group">
+                  <input class="form-submit"
+                    type="submit"
+                    value="Subscribe"/>
+                </div>
               </div>
-              <div class="form-group">
-                <input class="form-submit"
-                  type="submit"
-                  value="Subscribe"/>
-              </div>
-            </div>
-          </form>
+            </form>
+          </ng-container>
+          <ng-container *ngIf="isNewsletterSubmitted">
+            <div class="form-newsletter-submitted">Thanks for Signing Up!</div>
+          </ng-container>
         </div>
       </div>
     </div>
