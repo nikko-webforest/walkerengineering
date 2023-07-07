@@ -60,11 +60,13 @@
                   </div>
                 </div>
                 <div class="we-inner-col">
+                  <!--
                   <ng-container *ngIf="cartItem.original_price">
                     <div class="we-cart-product-before-price"
                       [innerText]="formatPrice(cartData.currency, cartItem.original_price * cartItem.quantity)">
                     </div>
                   </ng-container>
+                  -->
                   <ng-container *ngIf="cartItem.discounted_price">
                     <div class="we-cart-product-current-price"
                       [innerText]="formatPrice(cartData.currency, cartItem.discounted_price * cartItem.quantity)">
