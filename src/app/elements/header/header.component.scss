@@ -507,7 +507,7 @@
               width: max-content;
               cursor: pointer;
 
-              .we-nav-item-label {
+              .we-nav-item-link {
                 --textColor: #09244F;
                 display: flex;
                 justify-content: center;
@@ -515,7 +515,7 @@
                 gap: 0 8px;
                 padding: 12px 0;
 
-                .we-nav-item-name {
+                .we-nav-item-label {
                   color: var(--textColor);
                   font-family: var(--primaryFontFamily);
                   font-style: normal;
@@ -546,13 +546,13 @@
 
               &.--active,
               &:hover {
-                .we-nav-item-label {
+                .we-nav-item-link {
                   --textColor: #F2234B;
                 }
               }
 
               &.--active {
-                .we-nav-item-label {
+                .we-nav-item-link {
                   .we-nav-item-icon {
                     rotate: 180deg;
                   }
@@ -567,7 +567,7 @@
             align-items: center;
             gap: 0 10px;
 
-            .we-nav-item {
+            .we-nav-item-link {
               display: flex;
               justify-content: center;
               align-items: center;
@@ -974,6 +974,7 @@
       margin: 0 auto 25px;
 
       .we-nav-item {
+        .we-nav-item-link,
         .we-nav-item-wrap {
           --textColor: #09244F;
           --bgColor: transparent;
@@ -1026,6 +1027,7 @@
 
         .we-nav-main-category-list {
           .we-nav-main-category-item {
+            .we-nav-main-category-link,
             .we-nav-main-category-wrap {
               --textColor: #09244F;
               --bgColor: transparent;
@@ -1075,11 +1077,12 @@
 
             .we-nav-sub-category-list {
               .we-nav-sub-category-item {
-                .we-nav-sub-category-wrap {
+                .we-nav-sub-category-link {
                   --textColor: #09244F;
                   --bgColor: transparent;
                   background-color: var(--bgColor);
                   padding: 15px 25px 15px 75px;
+                  cursor: pointer;
 
                   .we-nav-sub-category-label {
                     color: var(--textColor);
@@ -1115,7 +1118,7 @@
       margin: 0 auto 25px;
       padding: 0 25px;
 
-      .we-nav-item {
+      .we-nav-item-link {
         display: flex;
         justify-content: center;
         align-items: center;

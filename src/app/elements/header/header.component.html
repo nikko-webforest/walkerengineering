@@ -34,9 +34,10 @@
                 [class.--active]="(i + 1) == headerDesktopNav.activeMenuIndex && headerDesktopNav.showMegaMenu"
                 [id]="i + 1"
                 (mouseenter)="toggleMegaMenu(i, item.dropdownItems.length)">
-                <div class="we-nav-item-label"
-                  (click)="openLink(item.url)">
-                  <div class="we-nav-item-name"
+                <a class="we-nav-item-link"
+                  [title]="item.name"
+                  [href]="item.url">
+                  <div class="we-nav-item-label"
                     [innerText]="item.name">
                   </div>
                   <ng-container *ngIf="item.dropdownItems.length">
@@ -52,7 +53,7 @@
                       </path>
                     </svg>
                   </ng-container>
-                </div>
+                </a>
               </div>
             </ng-container>
           </nav>
@@ -137,13 +138,22 @@
           <div class="we-nav-item"
             [attr.data-index]="dropdownIndex + 1"
             [attr.data-dropdown-items-length]="item.dropdownItems.length">
-            <div class="we-nav-item-wrap"
-              [class.--active]="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex"
-              (click)="toggleMobileDropdown(dropdownIndex + 1)">
-              <div class="we-nav-item-label"
-                [innerText]="item.name">
-              </div>
-              <ng-container *ngIf="item.dropdownItems.length">
+            <ng-container *ngIf="!item.dropdownItems.length;">
+              <a class="we-nav-item-link"
+                [title]="item.name"
+                [href]="item.url">
+                <div class="we-nav-item-label"
+                  [innerText]="item.name">
+                </div>
+              </a>
+            </ng-container>
+            <ng-container *ngIf="item.dropdownItems.length">
+              <div class="we-nav-item-wrap"
+                [class.--active]="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex"
+                (click)="toggleMobileDropdown(dropdownIndex + 1)">
+                <div class="we-nav-item-label"
+                  [innerText]="item.name">
+                </div>
                 <svg class="we-nav-item-icon we-svg"
                   width="14"
                   height="8"
@@ -155,22 +165,31 @@
                     fill="#09244F">
                   </path>
                 </svg>
-              </ng-container>
-            </div>
-            <ng-container *ngIf="dropdownIndex + 1 == headerMobileNav.activeMenuIndex">
+              </div>
+            </ng-container>
+            <ng-container *ngIf="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex">
               <div class="we-nav-main-category-list">
                 <ng-container *ngFor="let dropdownItems of item.dropdownItems">
                   <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories; let mainCategoryIndex = index">
                     <div class="we-nav-main-category-item"
-                      [attr.data-main-category-index]="mainCategoryIndex + 1"
+                      [attr.data-main-category-index]="(mainCategoryIndex + 1)"
                       [attr.data-main-category-length]="mainCategory.length">
-                      <div class="we-nav-main-category-wrap"
-                        [class.--active]="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex"
-                        (click)="toggleMainCategoryDropdown(mainCategoryIndex + 1)">
-                        <div class="we-nav-main-category-label"
-                          [innerText]="mainCategory.name">
-                        </div>
-                        <ng-container *ngIf="mainCategory.subCategories.length">
+                      <ng-container *ngIf="!mainCategory.subCategories.length">
+                        <a class="we-nav-main-category-link"
+                          [title]="mainCategory.name"
+                          [href]="mainCategory.url">
+                          <div class="we-nav-main-category-label"
+                            [innerText]="mainCategory.name">
+                          </div>
+                        </a>
+                      </ng-container>
+                      <ng-container *ngIf="mainCategory.subCategories.length">
+                        <div class="we-nav-main-category-wrap"
+                          [class.--active]="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex"
+                          (click)="toggleMainCategoryDropdown(mainCategoryIndex + 1)">
+                          <div class="we-nav-main-category-label"
+                            [innerText]="mainCategory.name">
+                          </div>
                           <svg class="we-nav-item-icon we-svg"
                             width="14"
                             height="8"
@@ -182,17 +201,18 @@
                               fill="#09244F">
                             </path>
                           </svg>
-                        </ng-container>
-                      </div>
+                        </div>
+                      </ng-container>
                       <ng-container *ngIf="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex">
                         <div class="we-nav-sub-category-list">
                           <ng-container *ngFor="let subCategory of mainCategory.subCategories">
                             <div class="we-nav-sub-category-item">
-                              <div class="we-nav-sub-category-wrap">
+                              <a class="we-nav-sub-category-link"
+                                [href]="subCategory.url">
                                 <div class="we-nav-sub-category-label"
                                   [innerText]="subCategory.name">
                                 </div>
-                              </div>
+                              </a>
                             </div>
                           </ng-container>
                         </div>
@@ -484,7 +504,8 @@
 
 <ng-template #WalkerNavbarAccountWrap>
   <div class="we-account-wrap">
-    <button class="we-btn--profile">
+    <button class="we-btn--profile"
+      (click)="openLink('https://walkerengineering.co/account')">
       <svg class="we-svg-icon-profile we-svg"
         width="28"
         height="28"
@@ -516,12 +537,13 @@
 
 <ng-template #WalkerNavbarCTAsWrap>
   <ng-container *ngFor="let item of headernav2">
-    <button class="we-nav-item">
+    <a class="we-nav-item-link"
+      [title]="item.name"
+      [href]="item.url">
       <div class="we-nav-item-label"
-        (click)="openLink(item.url)"
         [innerText]="item.name">
       </div>
-    </button>
+    </a>
   </ng-container>
 </ng-template>
 

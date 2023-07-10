@@ -1098,53 +1098,53 @@ export class AppComponent implements OnInit {
           "mainCategories": [
             {
               "name": "Airsep",
-              "url": "{{ shop.url }}/pages/airsep",
+              "url": "https://walkerengineering.co/pages/airsep",
               "subCategories": [
                 {
                   "name": "Agricultural",
-                  "url": "{{ shop.url }}/collections/agricultural"
+                  "url": "https://walkerengineering.co/collections/agricultural"
                 },
                 {
                   "name": "Industrial",
-                  "url": "{{ shop.url }}/collections/industrial"
+                  "url": "https://walkerengineering.co/collections/industrial"
                 },
                 {
                   "name": "Marine",
-                  "url": "{{ shop.url }}/collections/marine"
+                  "url": "https://walkerengineering.co/collections/marine"
                 },
                 {
                   "name": "Military",
-                  "url": "{{ shop.url }}/collections/military"
+                  "url": "https://walkerengineering.co/collections/military"
                 }
               ]
             },
             {
               "name": "Performance",
-              "url": "{{ shop.url }}/pages/performance",
+              "url": "https://walkerengineering.co/pages/performance",
               "subCategories": [
                 {
                   "name": "Big Trucks and Commercial Vehicles",
-                  "url": "{{ shop.url }}/collections/big-trucks-and-commercial-vehicles"
+                  "url": "https://walkerengineering.co/collections/big-trucks-and-commercial-vehicles"
                 },
                 {
                   "name": "Harley Davidson",
-                  "url": "{{ shop.url }}/collections/harley-davidson"
+                  "url": "https://walkerengineering.co/collections/harley-davidson"
                 },
                 {
                   "name": "Off Road",
-                  "url": "{{ shop.url }}/collections/off-road"
+                  "url": "https://walkerengineering.co/collections/off-road"
                 },
                 {
                   "name": "Pick-Up Trucks",
-                  "url": "{{ shop.url }}/collections/pick-up-trucks"
+                  "url": "https://walkerengineering.co/collections/pick-up-trucks"
                 },
                 {
                   "name": "Racing",
-                  "url": "{{ shop.url }}/collections/racing"
+                  "url": "https://walkerengineering.co/collections/racing"
                 },
                 {
                   "name": "RV",
-                  "url": "{{ shop.url }}/collections/rv"
+                  "url": "https://walkerengineering.co/collections/rv"
                 }
               ]
             }
@@ -1160,125 +1160,125 @@ export class AppComponent implements OnInit {
           "mainCategories": [
             {
               "name": "Airsep",
-              "url": "{{ shop.url }}/pages/airsep",
+              "url": "https://walkerengineering.co/pages/airsep",
               "subCategories": [
                 {
                   "name": "Caterpillar",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Cummins",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Daewoo",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Daytona Marine (MACK)",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Detroit Diesel",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Deutz",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Isotta Fraschini",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Isuzu",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "John Deere",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Komatsu",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Lugger",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Man",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Mercruiser",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Merlin",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Mitsubishi",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "MTU",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Navistar",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Northern Lights",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Perkins",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 },
                 {
                   "name": "Scania",
-                  "url": "{{ shop.url }}/pages/airsep"
+                  "url": "https://walkerengineering.co/pages/airsep"
                 }
               ]
             },
             {
               "name": "Performance",
-              "url": "{{ shop.url }}/pages/performance",
+              "url": "https://walkerengineering.co/pages/performance",
               "subCategories": [
                 {
                   "name": "Polaris",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 },
                 {
                   "name": "Can-Am",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 },
                 {
                   "name": "Ford Powerstroke 6.7L",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 },
                 {
                   "name": "Danzio Performance Engines",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 },
                 {
                   "name": "Herbst Chassis",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 },
                 {
                   "name": "Geiser Bros. Chassis",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 },
                 {
                   "name": "Funco",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 },
                 {
                   "name": "“Universal Fit” Off-Road Filters",
-                  "url": "{{ shop.url }}/pages/performance"
+                  "url": "https://walkerengineering.co/pages/performance"
                 }
               ]
             }
@@ -1288,12 +1288,12 @@ export class AppComponent implements OnInit {
     },
     {
       "name": "News",
-      "url": "{{ subdomain }}",
+      "url": "https://blog.walkerengineering.co",
       "dropdownItems": []
     },
     {
       "name": "Media",
-      "url": "{{ subdomain }}/medias",
+      "url": "https://blog.walkerengineering.co/medias",
       "dropdownItems": []
     },
     {
@@ -1304,17 +1304,17 @@ export class AppComponent implements OnInit {
           "mainCategories": [
             {
               "name": "All Resources",
-              "url": "{{ subdomain }}/resources",
+              "url": "https://blog.walkerengineering.co/resources",
               "subCategories": []
             },
             {
               "name": "Technical Information",
-              "url": "{{ subdomain }}/technical-information",
+              "url": "https://blog.walkerengineering.co/technical-information",
               "subCategories": []
             },
             {
               "name": "Troubleshooting",
-              "url": "{{ subdomain }}/troubleshooting",
+              "url": "https://blog.walkerengineering.co/troubleshooting",
               "subCategories": []
             }
           ]
@@ -1323,18 +1323,18 @@ export class AppComponent implements OnInit {
     },
     {
       "name": "Dealers Only",
-      "url": "{{ subdomain }}/dealers",
+      "url": "https://blog.walkerengineering.co/dealers",
       "dropdownItems": []
     }
   ]`;
   @Input() headernav2: any = `[
     {
       "name": "Shop AIRSEP",
-      "url": "/"
+      "url": "https://walkerengineering.co/pages/airsep"
     },
     {
       "name": "Shop PERFORMANCE",
-      "url": "/"
+      "url": "https://walkerengineering.co/pages/performance"
     }
   ]`;
   @Input() footermenu1: any = `[
@@ -1343,19 +1343,19 @@ export class AppComponent implements OnInit {
       "items": [
         {
           "name": "Agricultural",
-          "url": "{{ shop.url }}/collections/agricultural"
+          "url": "https://walkerengineering.co/collections/agricultural"
         },
         {
           "name": "Industrial",
-          "url": "{{ shop.url }}/collections/industrial"
+          "url": "https://walkerengineering.co/collections/industrial"
         },
         {
           "name": "Marine",
-          "url": "{{ shop.url }}/collections/marine"
+          "url": "https://walkerengineering.co/collections/marine"
         },
         {
           "name": "Military",
-          "url": "{{ shop.url }}/collections/military"
+          "url": "https://walkerengineering.co/collections/military"
         }
       ]
     },
@@ -1364,27 +1364,27 @@ export class AppComponent implements OnInit {
       "items": [
         {
           "name": "Big Trucks and Commercial Vehicles",
-          "url": "{{ shop.url }}/collections/big-trucks-and-commercial-vehicles"
+          "url": "https://walkerengineering.co/collections/big-trucks-and-commercial-vehicles"
         },
         {
           "name": "Harley Davidson",
-          "url": "{{ shop.url }}/collections/harley-davidson"
+          "url": "https://walkerengineering.co/collections/harley-davidson"
         },
         {
           "name": "Off Road",
-          "url": "{{ shop.url }}/collections/off-road"
+          "url": "https://walkerengineering.co/collections/off-road"
         },
         {
           "name": "Pick-Up Trucks",
-          "url": "{{ shop.url }}/collections/pick-up-trucks"
+          "url": "https://walkerengineering.co/collections/pick-up-trucks"
         },
         {
           "name": "Racing",
-          "url": "{{ shop.url }}/collections/racing"
+          "url": "https://walkerengineering.co/collections/racing"
         },
         {
           "name": "RV",
-          "url": "{{ shop.url }}/collections/rv"
+          "url": "https://walkerengineering.co/collections/rv"
         }
       ]
     },
@@ -1393,19 +1393,19 @@ export class AppComponent implements OnInit {
       "items": [
         {
           "name": "FAQ",
-          "url": "{{ shop.url }}/pages/faq"
+          "url": "https://walkerengineering.co/pages/faq"
         },
         {
           "name": "Resources",
-          "url": "{{ subdomain }}/resources"
+          "url": "https://blog.walkerengineering.co/resources"
         },
         {
           "name": "Technical Information",
-          "url": "{{ subdomain }}/technical-information/"
+          "url": "https://blog.walkerengineering.co/technical-information/"
         },
         {
           "name": "Troubleshooting",
-          "url": "{{ subdomain }}/troubleshooting/"
+          "url": "https://blog.walkerengineering.co/troubleshooting/"
         }
       ]
     },
@@ -1414,19 +1414,19 @@ export class AppComponent implements OnInit {
       "items": [
         {
           "name": "About Us",
-          "url": "{{ subdomain }}/about-us/"
+          "url": "https://blog.walkerengineering.co/about-us/"
         },
         {
           "name": "Quality IS09001",
-          "url": "{{ subdomain }}/quality-is09001/"
+          "url": "https://blog.walkerengineering.co/quality-is09001/"
         },
         {
           "name": "News",
-          "url": "{{ subdomain }}"
+          "url": "https://blog.walkerengineering.co"
         },
         {
           "name": "Videos",
-          "url": "{{ subdomain }}/media/identify-your-walker-airsep-air-filter-for-easy-ordering/"
+          "url": "https://blog.walkerengineering.co/media/identify-your-walker-airsep-air-filter-for-easy-ordering/"
         }
       ]
     }
@@ -1466,15 +1466,15 @@ export class AppComponent implements OnInit {
   @Input() policylist: any = `[
     {
       "name": "Privacy Policy",
-      "url": "/"
+      "url": "https://cdn.shopify.com/s/files/1/0752/6635/9613/files/Walker_Privacy_Policy_V2.pdf?v=1688745095"
     },
     {
       "name": "Cookie Policy",
-      "url": "/"
+      "url": "https://walkerengineering.co/pages/cookie-policy"
     },
     {
       "name": "Terms and Condition",
-      "url": "/"
+      "url": "https://cdn.shopify.com/s/files/1/0752/6635/9613/files/Walker_Terms_of_Use_V2.pdf?v=1688745095"
     }
   ]`;
   @Input() copyrightyear: any = '2023';

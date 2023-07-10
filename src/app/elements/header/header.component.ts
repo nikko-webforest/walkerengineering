@@ -130,8 +130,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openProductLink(link: any) {
-    if (link != '')
-      window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
+    if (link != '') window.location.href = `${environment.stagingShopifyDomain}/products/${link}`;
   }
 
   fetchProducts() {
@@ -143,8 +142,37 @@ export class HeaderComponent implements OnInit {
   doProductSearch() {
     this.productSearch.list = [];
     this.fetchedProducts.forEach((item: any, index: any) => {
-      if (item.title.toLowerCase().includes(this.productSearch.keyword.toLowerCase()) && this.productSearch.keyword != '') {
-        this.productSearch.list.push(item);
+      // console.log('item.title =', item.title);
+      // console.log('item.tags =', item.tags);
+
+      var isProductSearch = {
+        title: false,
+        tag: false
+      };
+
+      if (item.title.toLowerCase().includes(this.productSearch.keyword.toLowerCase())) {
+        isProductSearch.title = true;
+      }
+      else {
+        isProductSearch.title = false;
+      }
+
+      item.tags.forEach((tagItem: any) => {
+        if (tagItem.toLowerCase().includes(this.productSearch.keyword.toLowerCase())) {
+          isProductSearch.tag = true;
+          // console.log('tagItem =', tagItem);
+          return;
+        }
+      });
+
+      // console.log('isProductSearch =', isProductSearch);
+      if (this.productSearch.keyword != '') {
+        if (isProductSearch.title || isProductSearch.tag) {
+          this.productSearch.list.push(item);
+        }
+      }
+      else {
+        this.productSearch.list = [];
       }
     });
 
