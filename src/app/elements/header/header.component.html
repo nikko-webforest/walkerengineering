@@ -5,7 +5,8 @@
       <div class="we-row">
         <a class="we-main-logo-link"
           [title]="headerLogos.main.title"
-          [href]="headerLogos.main.url">
+          [href]="headerLogos.main.url"
+          [target]="'_self'">
           <ng-container *ngTemplateOutlet="WalkerEngineeringEnterpriseLogo"></ng-container>
         </a>
         <ng-container *ngTemplateOutlet="WalkerNavbarSearchWrap"></ng-container>
@@ -36,7 +37,8 @@
                 (mouseenter)="toggleMegaMenu(i, item.dropdownItems.length)">
                 <a class="we-nav-item-link"
                   [title]="item.name"
-                  [href]="item.url">
+                  [href]="item.url"
+                  [target]="item.newTab ? '_blank' : '_self'">
                   <div class="we-nav-item-label"
                     [innerText]="item.name">
                   </div>
@@ -81,25 +83,29 @@
                       <ng-container *ngFor="let dropdownItems of item.dropdownItems; let j = index">
                         <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories">
                           <li class="main-category-item"
-                            [class.--active-main-category]="(i + 1) == headerDesktopNav.activeMenuIndex && mainCategory.name.toLowerCase() == headerDesktopNav.activeMainCategoryLabel"
-                            (mouseenter)="selectMainCategory(mainCategory.name)"
-                            (click)="openLink(mainCategory.url)">
-                            <div class="category-name"
-                              [innerText]="mainCategory.name">
-                            </div>
-                            <ng-container *ngIf="mainCategory.subCategories.length">
-                              <svg class="we-svg-icon-category we-svg"
-                                width="8"
-                                height="14"
-                                viewBox="0 0 8 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path id="path_01"
-                                  d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
-                                  fill="#2D3648">
-                                </path>
-                              </svg>
-                            </ng-container>
+                            [class.--active-main-category]="(i + 1) == headerDesktopNav.activeMenuIndex && mainCategory.name.toLowerCase() == headerDesktopNav.activeMainCategoryLabel">
+                            <a class="main-category-link"
+                              [title]="mainCategory.name"
+                              [href]="mainCategory.url"
+                              [target]="mainCategory.newTab ? '_blank' : '_self'"
+                              (mouseenter)="selectMainCategory(mainCategory.name)">
+                              <div class="category-name"
+                                [innerText]="mainCategory.name">
+                              </div>
+                              <ng-container *ngIf="mainCategory.subCategories.length">
+                                <svg class="we-svg-icon-category we-svg"
+                                  width="8"
+                                  height="14"
+                                  viewBox="0 0 8 14"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <path id="path_01"
+                                    d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
+                                    fill="#2D3648">
+                                  </path>
+                                </svg>
+                              </ng-container>
+                            </a>
                           </li>
                         </ng-container>
                       </ng-container>
@@ -112,9 +118,13 @@
                           <ul class="sub-category-list"
                             [attr.data-main-category]="mainCategory.name">
                             <ng-container *ngFor="let subCategory of mainCategory.subCategories.slice(0, 20)">
-                              <li class="sub-category-item"
-                                [innerText]="subCategory.name"
-                                (click)="openLink(subCategory.url)">
+                              <li class="sub-category-item">
+                                <a class="sub-category-link"
+                                  [title]="subCategory.name"
+                                  [href]="subCategory.url"
+                                  [target]="subCategory.newTab ? '_blank' : '_self'"
+                                  [innerText]="subCategory.name"> 
+                                </a>
                               </li>
                             </ng-container>
                           </ul>
@@ -141,7 +151,8 @@
             <ng-container *ngIf="!item.dropdownItems.length;">
               <a class="we-nav-item-link"
                 [title]="item.name"
-                [href]="item.url">
+                [href]="item.url"
+                [target]="item.newTab ? '_blank' : '_self'">
                 <div class="we-nav-item-label"
                   [innerText]="item.name">
                 </div>
@@ -177,7 +188,8 @@
                       <ng-container *ngIf="!mainCategory.subCategories.length">
                         <a class="we-nav-main-category-link"
                           [title]="mainCategory.name"
-                          [href]="mainCategory.url">
+                          [href]="mainCategory.url"
+                          [target]="mainCategory.url ? '_blank' : '_self'">
                           <div class="we-nav-main-category-label"
                             [innerText]="mainCategory.name">
                           </div>
@@ -539,7 +551,8 @@
   <ng-container *ngFor="let item of headernav2">
     <a class="we-nav-item-link"
       [title]="item.name"
-      [href]="item.url">
+      [href]="item.url"
+      [target]="item.newTab ? '_blank' : '_self'">
       <div class="we-nav-item-label"
         [innerText]="item.name">
       </div>
