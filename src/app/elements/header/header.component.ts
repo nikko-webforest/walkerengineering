@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   @Input() contactdetails: any;
 
   @Input() showcart: any;
+  
   cartToken: string = '';
 
   headerLogos: any = {
@@ -50,8 +51,6 @@ export class HeaderComponent implements OnInit {
 
   fetchedCartData: any;
 
-  fetchedCheckoutUrl: any = '';
-
   ready: boolean = false;
 
   productSearch: any = {
@@ -69,8 +68,10 @@ export class HeaderComponent implements OnInit {
     this.cartService.getCartJson().subscribe((res: any) => {
       this.fetchedCartData = res;
       this.cartToken = res.token;
-      this.fetchCheckoutUrl();
       this.ready = true;
+      // console.log('this.fetchedCartData =', this.fetchedCartData);
+      // console.log('this.cartToken =', this.cartToken);
+      // console.log('this.ready =', this.ready);
     });
     this.headernav1 = JSON.parse(this.headernav1);
     console.log('this.headernav1 =', this.headernav1);
@@ -216,10 +217,6 @@ export class HeaderComponent implements OnInit {
   }
 
   updateCartItems() {}
-
-  fetchCheckoutUrl() {
-    this.fetchedCheckoutUrl = this.cartService.getCartCheckoutUrl(this.cartToken);
-  }
 
   addToCart() {}
 

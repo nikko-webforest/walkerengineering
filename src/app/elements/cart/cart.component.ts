@@ -15,8 +15,6 @@ export class CartComponent implements OnInit {
 
   @Input() cartData: any;
 
-  @Input() checkoutUrl: string = '';
-
   @Input() cartToken: string = '';
 
   constructor(
@@ -38,7 +36,7 @@ export class CartComponent implements OnInit {
   closeCart() {
     const updatedList = this.makeUpdateObject();
     this.cartService.updateQuantities(updatedList).subscribe((res: any) => {
-      console.log(res);
+      // console.log('updateQuantities =', res);
     });
     this.headerComponent.closeCart();
   }
@@ -48,25 +46,22 @@ export class CartComponent implements OnInit {
   }
 
   minusQuantity(cartIndex: number) {
-    this.cartData.items[cartIndex].quantity =
-      this.cartData.items[cartIndex].quantity - 1;
+    this.cartData.items[cartIndex].quantity = this.cartData.items[cartIndex].quantity - 1;
 
     if (this.cartData.items[cartIndex].quantity < 1) {
       const updatedList = this.makeUpdateObject();
       this.cartService.updateQuantities(updatedList).subscribe((res: any) => {
-        console.log(res);
+        // console.log('updateQuantities =', res);
         this.cartData.items.splice(cartIndex, 1);
       });
     }
-    this.cartData.total_price =
-      this.cartData.total_price - this.cartData.items[cartIndex].price;
+
+    this.cartData.total_price = this.cartData.total_price - this.cartData.items[cartIndex].price;
   }
 
   plusQuantity(cartIndex: number) {
-    this.cartData.items[cartIndex].quantity =
-      this.cartData.items[cartIndex].quantity + 1;
-    this.cartData.total_price =
-      this.cartData.total_price + this.cartData.items[cartIndex].price;
+    this.cartData.items[cartIndex].quantity = this.cartData.items[cartIndex].quantity + 1;
+    this.cartData.total_price = this.cartData.total_price + this.cartData.items[cartIndex].price;
   }
 
   calculateDiscount(beforePrice: any, currentPrice: any) {
@@ -78,11 +73,7 @@ export class CartComponent implements OnInit {
   }
 
   redirectToCheckOut() {
-    const updatedList = this.makeUpdateObject();
-    this.cartService.updateQuantities(updatedList).subscribe((res: any) => {
-      console.log(res);
-    });
-    window.location.href = this.checkoutUrl;
+    window.location.href = '/checkout';
   }
 
   formatPrice(currencyCode: any, valuePrice: any) {
