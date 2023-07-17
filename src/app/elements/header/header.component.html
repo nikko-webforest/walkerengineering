@@ -489,9 +489,9 @@
 <ng-template #WalkerNavbarContactWrap>
   <ng-container *ngFor="let item of contactdetails">
     <ng-container *ngIf="item.title.toLowerCase() == 'phone'">
-      <a class="we-contact-number-wrap"
+      <a class="we-contact-number-link"
         title="Contact Phone"
-        [href]="'tel:' + item.phone">
+        [href]="item.url">
         <svg class="we-svg-icon-phone we-svg"
           width="16"
           height="16"
