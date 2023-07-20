@@ -1090,6 +1090,10 @@ export class AppComponent implements OnInit {
   }
 
   @Input() type: any = 'header';
+  @Input() headerlogos: any = `{
+    "title": "Walker Engineering Enterprises",
+    "url": "https://google.com"
+  }`;
   @Input() headernav1: any = `[
     {
       "name": "By Vendor",

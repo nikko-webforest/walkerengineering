@@ -13,6 +13,8 @@ import { CartService } from 'src/app/services/cart.service';
 
 export class HeaderComponent implements OnInit {
 
+  @Input() headerlogos: any;
+
   @Input() headernav1: any;
 
   @Input() headernav2: any;
@@ -22,17 +24,6 @@ export class HeaderComponent implements OnInit {
   @Input() showcart: any;
   
   cartToken: string = '';
-
-  headerLogos: any = {
-    main: {
-      title: 'AIRSEP Walker Engineering Enterprises',
-      url: '/',
-    },
-    sub: {
-      title: 'WALKER Performance Filtration',
-      url: '/',
-    },
-  };
 
   headerDesktopNav: any = {
     activeMenuIndex: 0,
@@ -73,6 +64,8 @@ export class HeaderComponent implements OnInit {
       // console.log('this.cartToken =', this.cartToken);
       // console.log('this.ready =', this.ready);
     });
+    this.headerlogos = JSON.parse(this.headerlogos);
+    console.log('this.headerlogos =', this.headerlogos);
     this.headernav1 = JSON.parse(this.headernav1);
     console.log('this.headernav1 =', this.headernav1);
     this.headernav2 = JSON.parse(this.headernav2);
