@@ -26,16 +26,15 @@ export class HeaderComponent implements OnInit {
   cartToken: string = '';
 
   headerDesktopNav: any = {
-    activeMenuIndex: 0,
-    hasDropdownItems: 0,
-    activeMainCategoryLabel: '',
     showMegaMenu: false,
+    menuItemLvl1ID: 0,
+    menuItemLvl2ID: 0,
   };
 
   headerMobileNav: any = {
     showMenu: false,
-    activeMenuIndex: 0,
-    activeMainCategoryIndex: 0,
+    menuItemLvl1ID: 0,
+    menuItemLvl2ID: 0,
   };
 
   fetchedProducts: any = [];
@@ -83,40 +82,32 @@ export class HeaderComponent implements OnInit {
     this.screenWidth = window.innerWidth;
     // console.log('screenWidth = '+this.screenWidth);
   }
-
-  toggleMegaMenu(id: any, dropdownItemsLength: any) {
-    // console.log('this.headerDesktopNav.activeMenuIndex = ' + this.headerDesktopNav.activeMenuIndex);
-    // console.log('this.headerDesktopNav.activeMainCategoryLabel = ' + this.headerDesktopNav.activeMainCategoryLabel);
-    // console.log('this.headerDesktopNav.hasDropdownItems = ' + this.headerDesktopNav.hasDropdownItems);
-
-    this.headerDesktopNav.hasDropdownItems = false;
-    if (this.headerDesktopNav.activeMenuIndex == (id + 1)) {
-      this.headerDesktopNav.showMegaMenu = !this.headerDesktopNav.showMegaMenu;
-    }
-    else {
-      this.headerDesktopNav.activeMenuIndex = (id + 1);
-      this.headerDesktopNav.showMegaMenu = true;
-    }
-
-    if (dropdownItemsLength != 0) {
-      this.headerDesktopNav.hasDropdownItems = true;
-    }
-    else {
-      this.headerDesktopNav.hasDropdownItems = false;
-    }
-
-    this.headerDesktopNav.activeMainCategoryLabel = '';
-  }
-
+  
   hideMegaMenu() {
     // console.log('outside');
-    this.headerDesktopNav.activeMenuIndex = 0;
-    this.headerDesktopNav.activeMainCategoryLabel = '';
+    // this.headerDesktopNav.activeMenuIndex = 0;
+    // this.headerDesktopNav.activeMainCategoryLabel = '';
     this.headerDesktopNav.showMegaMenu = false;
   }
 
-  selectMainCategory(category: string) {
-    this.headerDesktopNav.activeMainCategoryLabel = category.toLowerCase();
+  showDesktopMenuItemLvl1 (menuItemLvl1ID: number, hasDropdownItems: any) {
+    console.log('menuItemLvl1ID =', menuItemLvl1ID);
+    console.log('hasDropdownItems =', hasDropdownItems);
+    
+    this.headerDesktopNav.menuItemLvl1ID = menuItemLvl1ID;
+    if (hasDropdownItems != 0) {
+      this.headerDesktopNav.showMegaMenu = true;
+    }
+    else {
+      this.headerDesktopNav.showMegaMenu = false;
+    }
+
+    console.log('this.headerDesktopNav.showMegaMenu =', this.headerDesktopNav.showMegaMenu);
+  }
+
+  showDesktopMenuItemLvl2(menuItemLvl2ID: number) {
+    console.log('menuItemLvl2ID =', menuItemLvl2ID);
+    this.headerDesktopNav.menuItemLvl2ID = menuItemLvl2ID;
   }
 
   openLink(link: any) {
@@ -220,26 +211,23 @@ export class HeaderComponent implements OnInit {
     this.headerMobileNav.activeMainCategoryIndex = 0;
   }
 
-  toggleMobileDropdown(dropdownIndex: number) {
-    // console.log(dropdownIndex);
-
-    this.headerMobileNav.activeMainCategoryIndex = 0;
-    if (this.headerMobileNav.activeMenuIndex == dropdownIndex) {
-      this.headerMobileNav.activeMenuIndex = 0;
+  showMobileMenuItemLvl1(menuItemLvl1ID: number) {
+    // console.log('menuItemLvl1ID =', menuItemLvl1ID);
+    if (this.headerMobileNav.menuItemlvl1ID == menuItemLvl1ID) {
+      this.headerMobileNav.menuItemlvl1ID = 0;
     }
     else {
-      this.headerMobileNav.activeMenuIndex = dropdownIndex;
+      this.headerMobileNav.menuItemlvl1ID = menuItemLvl1ID;
     }
   }
 
-  toggleMainCategoryDropdown(mainCategoryDropdownIndex: number) {
-    // console.log(mainCategoryDropdownIndex);
-
-    if (this.headerMobileNav.activeMainCategoryIndex == mainCategoryDropdownIndex) {
-      this.headerMobileNav.activeMainCategoryIndex = 0;
+  showMobileMenuItemLvl2(menuItemLvl2ID: number) {
+    // console.log('menuItemLvl2ID =', menuItemLvl2ID);
+    if (this.headerMobileNav.menuItemlvl2ID == menuItemLvl2ID) {
+      this.headerMobileNav.menuItemlvl2ID = 0;
     }
     else {
-      this.headerMobileNav.activeMainCategoryIndex = mainCategoryDropdownIndex;
+      this.headerMobileNav.menuItemlvl2ID = menuItemLvl2ID;
     }
   }
 }

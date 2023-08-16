@@ -502,12 +502,12 @@
             align-items: center;
             gap: 0 25px;
 
-            .we-nav-item {
+            .we-nav-menu-item-lvl1 {
               position: relative;
               width: max-content;
               cursor: pointer;
 
-              .we-nav-item-link {
+              .we-nav-menu-item-lvl1-link {
                 --textColor: #09244F;
                 display: flex;
                 justify-content: center;
@@ -515,7 +515,7 @@
                 gap: 0 8px;
                 padding: 12px 0;
 
-                .we-nav-item-label {
+                .we-nav-menu-item-lvl1-label {
                   color: var(--textColor);
                   font-family: var(--primaryFontFamily);
                   font-style: normal;
@@ -530,7 +530,7 @@
                     color var(--hoverTransitionDuration) ease-in-out 0ms;
                 }
 
-                .we-nav-item-icon {
+                .we-nav-menu-item-lvl1-icon {
                   display: block;
                   rotate: 0deg;
                   transition:
@@ -546,14 +546,14 @@
 
               &.--active,
               &:hover {
-                .we-nav-item-link {
+                .we-nav-menu-item-lvl1-link {
                   --textColor: #F2234B;
                 }
               }
 
               &.--active {
-                .we-nav-item-link {
-                  .we-nav-item-icon {
+                .we-nav-menu-item-lvl1-link {
+                  .we-nav-menu-item-lvl1-icon {
                     rotate: 180deg;
                   }
                 }
@@ -644,12 +644,12 @@
               &:nth-child(1) {
                 max-width: 240px;
 
-                .main-category-list {
+                .we-nav-menu-item-lvl2-list {
                   display: flex;
                   flex-direction: column;
 
-                  .main-category-item {
-                    .main-category-link {
+                  .we-nav-menu-item-lvl2-item {
+                    .we-nav-menu-item-lvl2-link {
                       --textColor: #1B1B1B;
                       --bgColor: transparent;
                       display: flex;
@@ -661,7 +661,7 @@
                       transition:
                         background-color var(--hoverTransitionDuration) ease-in-out 0ms;
 
-                      .category-name {
+                      .we-nav-menu-item-lvl2-title {
                         color: var(--textColor);
                         font-family: var(--secondaryFontFamily);
                         font-style: normal;
@@ -696,17 +696,17 @@
               }
 
               &:nth-child(2) {
-                .sub-category-list {
+                .we-nav-menu-item-lvl3-list {
                   display: inline-block;
                   column-count: auto;
                   column-width: 200px;
                   column-gap: 0;
                   height: 190px;
 
-                  .sub-category-item {
+                  .we-nav-menu-item-lvl3-item {
                     width: 200px;
 
-                    .sub-category-link {
+                    .we-nav-menu-item-lvl3-link {
                       --textColor: #1B1B1B;
                       color: var(--textColor);
                       font-family: var(--secondaryFontFamily);
@@ -720,7 +720,7 @@
                     }
 
                     &:hover {
-                      .sub-category-link {
+                      .we-nav-menu-item-lvl3-link {
                         --textColor: #F2234B;
                       }
                     }
@@ -977,9 +977,9 @@
       width: 100%;
       margin: 0 auto 25px;
 
-      .we-nav-item {
-        .we-nav-item-link,
-        .we-nav-item-wrap {
+      .we-nav-menu-item-lvl1 {
+        .we-nav-menu-item-lvl1-link,
+        .we-nav-menu-item-lvl1-wrap {
           --textColor: #09244F;
           --bgColor: transparent;
           display: flex;
@@ -990,7 +990,7 @@
           user-select: none;
           cursor: pointer;
 
-          .we-nav-item-label {
+          .we-nav-menu-item-lvl1-title {
             color: var(--textColor);
             font-family: var(--primaryFontFamily);
             font-style: normal;
@@ -1004,7 +1004,7 @@
               color var(--hoverTransitionDuration) ease-in-out 0ms;
           }
 
-          .we-nav-item-icon {
+          .we-nav-menu-item-lvl1-icon {
             rotate: 0deg;
             transition:
               rotate var(--hoverTransitionDuration) ease-in-out 0ms;
@@ -1018,7 +1018,7 @@
             --textColor: #F2234B;
             --bgColor: #F1F1F1;
 
-            .we-nav-item-icon {
+            .we-nav-menu-item-lvl1-icon {
               rotate: 180deg;
             }
           }
@@ -1029,10 +1029,10 @@
           }
         }
 
-        .we-nav-main-category-list {
-          .we-nav-main-category-item {
-            .we-nav-main-category-link,
-            .we-nav-main-category-wrap {
+        .we-nav-menu-item-lvl2-list {
+          .we-nav-menu-item-lvl2-item {
+            .we-nav-menu-item-lvl2-link,
+            .we-nav-menu-item-lvl2-wrap {
               --textColor: #09244F;
               --bgColor: transparent;
               display: flex;
@@ -1042,7 +1042,7 @@
               padding: 15px 25px 15px 50px;
               cursor: pointer;
 
-              .we-nav-main-category-label {
+              .we-nav-menu-item-lvl2-title {
                 color: var(--textColor);
                 font-family: var(--primaryFontFamily);
                 font-style: normal;
@@ -1079,16 +1079,16 @@
               }
             }
 
-            .we-nav-sub-category-list {
-              .we-nav-sub-category-item {
-                .we-nav-sub-category-link {
+            .we-nav-menu-item-lvl3-list {
+              .we-nav-menu-item-lvl3-item {
+                .we-nav-menu-item-lvl3-link {
                   --textColor: #09244F;
                   --bgColor: transparent;
                   background-color: var(--bgColor);
                   padding: 15px 25px 15px 75px;
                   cursor: pointer;
 
-                  .we-nav-sub-category-label {
+                  .we-nav-menu-item-lvl3-label {
                     color: var(--textColor);
                     font-family: var(--primaryFontFamily);
                     font-style: normal;

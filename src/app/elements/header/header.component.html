@@ -1,5 +1,5 @@
 <header class="we-header"
-  (mouseleave)="hideMegaMenu()">
+  (mouseenter)="hideMegaMenu()">
   <div class="we-header-primary">
     <div class="we-container">
       <div class="we-row">
@@ -29,21 +29,19 @@
       <div class="we-container">
         <div class="we-row">
           <nav class="we-nav01-list">
-            <ng-container *ngFor="let item of headernav1; let i = index">
-              <div class="we-nav-item"
-                [class.--has-dropdown]="item.dropdownItems.length"
-                [class.--active]="(i + 1) == headerDesktopNav.activeMenuIndex && headerDesktopNav.showMegaMenu"
-                [id]="i + 1"
-                (mouseenter)="toggleMegaMenu(i, item.dropdownItems.length)">
-                <a class="we-nav-item-link"
-                  [title]="item.name"
-                  [href]="item.url"
-                  [target]="item.newTab ? '_blank' : '_self'">
-                  <div class="we-nav-item-label"
-                    [innerText]="item.name">
+            <ng-container *ngFor="let menuItemLvl1 of headernav1; let menuIndexLvl1 = index">
+              <div class="we-nav-menu-item-lvl1"
+                [id]="menuItemLvl1.id">
+                <a class="we-nav-menu-item-lvl1-link"
+                  [title]="menuItemLvl1.attr_title"
+                  [href]="menuItemLvl1.url"
+                  [target]="menuItemLvl1.target"
+                  (mouseenter)="showDesktopMenuItemLvl1(menuItemLvl1.id, menuItemLvl1.child.length)">
+                  <div class="we-nav-menu-item-lvl1-label"
+                    [innerText]="menuItemLvl1.title">
                   </div>
-                  <ng-container *ngIf="item.dropdownItems.length">
-                    <svg class="we-nav-item-icon we-svg"
+                  <ng-container *ngIf="menuItemLvl1.child.length">
+                    <svg class="we-nav-menu-item-lvl1-icon we-svg"
                       width="14"
                       height="8"
                       viewBox="0 0 14 8"
@@ -66,69 +64,62 @@
       </div>
     </div>
     <div class="we-nav-mega-menu-wrap"
-      [class.--show]="headerDesktopNav.showMegaMenu && headerDesktopNav.hasDropdownItems">
+      [class.--show]="headerDesktopNav.showMegaMenu"
+      (mouseleave)="hideMegaMenu()">
       <div class="we-container">
-        <!-- loop headerNav1 and get level 1 menus -->
-        <ng-container *ngFor="let item of headernav1; let i = index">
-          <!-- show if level 1 menu has dropdownItems -->
-          <ng-container *ngIf="item.dropdownItems.length">
-            <!-- show if level 1 menu is hovered -->
-            <ng-container *ngIf="(i + 1) == headerDesktopNav.activeMenuIndex">
+        <ng-container *ngFor="let menuItemLvl1 of headernav1; let menuIndexLvl1= index">
+          <ng-container *ngIf="menuItemLvl1.id == headerDesktopNav.menuItemLvl1ID">
+            <ng-container *ngIf="menuItemLvl1.child.length">
               <div class="we-nav-mega-menu-item"
-                [attr.data-menu]="item.name"
-                [id]="(i + 1)">
+                [id]="menuItemLvl1.id"
+                [attr.data-menu]="menuItemLvl1.name">
                 <div class="we-row">
                   <div class="we-col">
-                    <ul class="main-category-list">
-                      <ng-container *ngFor="let dropdownItems of item.dropdownItems; let j = index">
-                        <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories">
-                          <li class="main-category-item"
-                            [class.--active-main-category]="(i + 1) == headerDesktopNav.activeMenuIndex && mainCategory.name.toLowerCase() == headerDesktopNav.activeMainCategoryLabel">
-                            <a class="main-category-link"
-                              [title]="mainCategory.name"
-                              [href]="mainCategory.url"
-                              [target]="mainCategory.newTab ? '_blank' : '_self'"
-                              (mouseenter)="selectMainCategory(mainCategory.name)">
-                              <div class="category-name"
-                                [innerText]="mainCategory.name">
-                              </div>
-                              <ng-container *ngIf="mainCategory.subCategories.length">
-                                <svg class="we-svg-icon-category we-svg"
-                                  width="8"
-                                  height="14"
-                                  viewBox="0 0 8 14"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg">
-                                  <path id="path_01"
-                                    d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
-                                    fill="#2D3648">
-                                  </path>
-                                </svg>
-                              </ng-container>
-                            </a>
-                          </li>
-                        </ng-container>
+                    <ul class="we-nav-menu-item-lvl2-list">
+                      <ng-container *ngFor="let menuItemLvl2 of menuItemLvl1.child; let menuIndexLvl2 = index">
+                        <li class="we-nav-menu-item-lvl2-item"
+                          [id]="menuItemLvl2.id">
+                          <a class="we-nav-menu-item-lvl2-link"
+                            [title]="menuItemLvl2.attr_title"
+                            [href]="menuItemLvl2.url"
+                            [target]="menuItemLvl2.target"
+                            (mouseenter)="showDesktopMenuItemLvl2(menuItemLvl2.id)">
+                            <div class="we-nav-menu-item-lvl2-title"
+                              [innerText]="menuItemLvl2.title">
+                            </div>
+                            <ng-container *ngIf="menuItemLvl2.child.length">
+                              <svg class="we-svg-icon-category we-svg"
+                                width="8"
+                                height="14"
+                                viewBox="0 0 8 14"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path id="path_01"
+                                  d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7.70711 7.70711C8.09763 7.31658 8.09763 6.68342 7.70711 6.29289L1.70711 0.292893Z"
+                                  fill="#2D3648">
+                                </path>
+                              </svg>
+                            </ng-container>
+                          </a>
+                        </li>
                       </ng-container>
                     </ul>
                   </div>
                   <div class="we-col">
-                    <ng-container *ngFor="let dropdownItems of item.dropdownItems">
-                      <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories">
-                        <ng-container *ngIf="mainCategory.name.toLowerCase() == headerDesktopNav.activeMainCategoryLabel">
-                          <ul class="sub-category-list"
-                            [attr.data-main-category]="mainCategory.name">
-                            <ng-container *ngFor="let subCategory of mainCategory.subCategories.slice(0, 20)">
-                              <li class="sub-category-item">
-                                <a class="sub-category-link"
-                                  [title]="subCategory.name"
-                                  [href]="subCategory.url"
-                                  [target]="subCategory.newTab ? '_blank' : '_self'"
-                                  [innerText]="subCategory.name"> 
-                                </a>
-                              </li>
-                            </ng-container>
-                          </ul>
-                        </ng-container>
+                    <ng-container *ngFor="let menuItemLvl2 of menuItemLvl1.child">
+                      <ng-container *ngIf="menuItemLvl2.id == headerDesktopNav.menuItemLvl2ID">
+                        <ul class="we-nav-menu-item-lvl3-list">
+                          <ng-container *ngFor="let menuItemLvl3 of menuItemLvl2.child.slice(0, 20)">
+                            <li class="we-nav-menu-item-lvl3-item">
+                              <a class="we-nav-menu-item-lvl3-link"
+                                [title]="menuItemLvl3.attr_title"
+                                [href]="menuItemLvl3.url"
+                                [target]="menuItemLvl3.target"
+                                [innerText]="menuItemLvl3.title"> 
+                              </a>
+                            </li>
+                          </ng-container>
+                        </ul>
                       </ng-container>
                     </ng-container>
                   </div>
@@ -144,28 +135,26 @@
     <div class="we-nav-mobile-menu we-scroll-bar">
       <ng-container *ngTemplateOutlet="WalkerNavbarSearchWrap"></ng-container>
       <nav class="we-nav01-list">
-        <ng-container *ngFor="let item of headernav1; let dropdownIndex = index">
-          <div class="we-nav-item"
-            [attr.data-index]="dropdownIndex + 1"
-            [attr.data-dropdown-items-length]="item.dropdownItems.length">
-            <ng-container *ngIf="!item.dropdownItems.length;">
-              <a class="we-nav-item-link"
-                [title]="item.name"
-                [href]="item.url"
-                [target]="item.newTab ? '_blank' : '_self'">
-                <div class="we-nav-item-label"
-                  [innerText]="item.name">
+        <ng-container *ngFor="let menuItemLvl1 of headernav1; let menuIndexLvl1 = index;">
+          <div class="we-nav-menu-item-lvl1">
+            <ng-container *ngIf="!menuItemLvl1.child.length;">
+              <a class="we-nav-menu-item-lvl1-link"
+                [title]="menuItemLvl1.title"
+                [href]="menuItemLvl1.url"
+                [target]="menuItemLvl1.target">
+                <div class="we-nav-menu-item-lvl1-title"
+                  [innerText]="menuItemLvl1.title">
                 </div>
               </a>
             </ng-container>
-            <ng-container *ngIf="item.dropdownItems.length">
-              <div class="we-nav-item-wrap"
-                [class.--active]="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex"
-                (click)="toggleMobileDropdown(dropdownIndex + 1)">
-                <div class="we-nav-item-label"
-                  [innerText]="item.name">
+            <ng-container *ngIf="menuItemLvl1.child.length">
+              <div class="we-nav-menu-item-lvl1-wrap"
+                [class.--active]="menuItemLvl1.id == headerMobileNav.menuItemlvl1ID"
+                (click)="showMobileMenuItemLvl1(menuItemLvl1.id)">
+                <div class="we-nav-menu-item-lvl1-title"
+                  [innerText]="menuItemLvl1.title">
                 </div>
-                <svg class="we-nav-item-icon we-svg"
+                <svg class="we-nav-menu-item-lvl1-icon we-svg"
                   width="14"
                   height="8"
                   viewBox="0 0 14 8"
@@ -178,59 +167,58 @@
                 </svg>
               </div>
             </ng-container>
-            <ng-container *ngIf="(dropdownIndex + 1) == headerMobileNav.activeMenuIndex">
-              <div class="we-nav-main-category-list">
-                <ng-container *ngFor="let dropdownItems of item.dropdownItems">
-                  <ng-container *ngFor="let mainCategory of dropdownItems.mainCategories; let mainCategoryIndex = index">
-                    <div class="we-nav-main-category-item"
-                      [attr.data-main-category-index]="(mainCategoryIndex + 1)"
-                      [attr.data-main-category-length]="mainCategory.length">
-                      <ng-container *ngIf="!mainCategory.subCategories.length">
-                        <a class="we-nav-main-category-link"
-                          [title]="mainCategory.name"
-                          [href]="mainCategory.url"
-                          [target]="mainCategory.url ? '_blank' : '_self'">
-                          <div class="we-nav-main-category-label"
-                            [innerText]="mainCategory.name">
-                          </div>
-                        </a>
-                      </ng-container>
-                      <ng-container *ngIf="mainCategory.subCategories.length">
-                        <div class="we-nav-main-category-wrap"
-                          [class.--active]="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex"
-                          (click)="toggleMainCategoryDropdown(mainCategoryIndex + 1)">
-                          <div class="we-nav-main-category-label"
-                            [innerText]="mainCategory.name">
-                          </div>
-                          <svg class="we-nav-item-icon we-svg"
-                            width="14"
-                            height="8"
-                            viewBox="0 0 14 8"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path id="path_01"
-                              d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
-                              fill="#09244F">
-                            </path>
-                          </svg>
+            <ng-container *ngIf="menuItemLvl1.id == headerMobileNav.menuItemlvl1ID">
+              <div class="we-nav-menu-item-lvl2-list">
+                <ng-container *ngFor="let menuItemLvl2 of menuItemLvl1.child; let menuIndexLvl2 = index;">
+                  <div class="we-nav-menu-item-lvl2-item">
+                    <ng-container *ngIf="!menuItemLvl2.child.length">
+                      <a class="we-nav-menu-item-lvl2-link"
+                        [title]="menuItemLvl2.attr_title"
+                        [target]="menuItemLvl2.target"
+                        [href]="menuItemLvl2.url">
+                        <div class="we-nav-menu-item-lvl2-title"
+                          [innerText]="menuItemLvl2.title">
                         </div>
-                      </ng-container>
-                      <ng-container *ngIf="(mainCategoryIndex + 1) == headerMobileNav.activeMainCategoryIndex">
-                        <div class="we-nav-sub-category-list">
-                          <ng-container *ngFor="let subCategory of mainCategory.subCategories">
-                            <div class="we-nav-sub-category-item">
-                              <a class="we-nav-sub-category-link"
-                                [href]="subCategory.url">
-                                <div class="we-nav-sub-category-label"
-                                  [innerText]="subCategory.name">
-                                </div>
-                              </a>
-                            </div>
-                          </ng-container>
+                      </a>
+                    </ng-container>
+                    <ng-container *ngIf="menuItemLvl2.child.length">
+                      <div class="we-nav-menu-item-lvl2-wrap"
+                        [class.--active]="menuItemLvl2.id == headerMobileNav.menuItemlvl2ID"
+                        [title]="menuItemLvl2.attr_title"
+                        (click)="showMobileMenuItemLvl2(menuItemLvl2.id)">
+                        <div class="we-nav-menu-item-lvl2-title"
+                          [innerText]="menuItemLvl2.title">
                         </div>
-                      </ng-container>
-                    </div>
-                  </ng-container>
+                        <svg class="we-nav-item-icon we-svg"
+                          width="14"
+                          height="8"
+                          viewBox="0 0 14 8"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path id="path_01"
+                            d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L6.29289 7.70711C6.68342 8.09763 7.31658 8.09763 7.70711 7.70711L13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893Z"
+                            fill="#09244F">
+                          </path>
+                        </svg>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="menuItemLvl2.id == headerMobileNav.menuItemlvl2ID">
+                      <div class="we-nav-menu-item-lvl3-list">
+                        <ng-container *ngFor="let menuItemLvl3 of menuItemLvl2.child; let menuIndexLvl3 = index;">
+                          <div class="we-nav-menu-item-lvl3-item">
+                            <a class="we-nav-menu-item-lvl3-link"
+                              [title]="menuItemLvl3.attr_title"
+                              [target]="menuItemLvl3.target"
+                              [href]="menuItemLvl3.url">
+                              <div class="we-nav-menu-item-lvl3-label"
+                                [innerText]="menuItemLvl3.title">
+                              </div>
+                            </a>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </ng-container>
+                  </div>
                 </ng-container>
               </div>
             </ng-container>
