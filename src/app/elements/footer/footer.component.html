@@ -70,19 +70,22 @@
           <ng-container *ngTemplateOutlet="WalkerFooterSocialMediaWrap"></ng-container>
         </div>
         <div class="we-main-grid-item">
-          <ng-container *ngFor="let item of footermenulist">
-            <div class="we-footer-menu-wrap">
+          <ng-container *ngFor="let menuItemLvl1 of footermenulist; let menuIndexLvl1 = index;">
+            <div class="we-footer-menu-wrap"
+              [id]="menuItemLvl1.id"
+              [attr.data-index]="menuIndexLvl1"
+              [attr.data-description]="menuItemLvl1.description">
               <h4 class="we-footer-menu-title"
-                [innerText]="item.title">
+                [innerText]="menuItemLvl1.title">
               </h4>
               <ul class="we-footer-menu-list">
-                <ng-container *ngFor="let menuItem of item.items">
+                <ng-container *ngFor="let menuItemLvl2 of menuItemLvl1.child; let menuIndexLvl2 = index;">
                   <li class="we-footer-menu-item">
                     <a class="we-footer-menu-link"
-                      [title]="menuItem.name"
-                      [href]="menuItem.url"
-                      [target]="menuItem.newTab ? '_blank' : '_self'"
-                      [innerText]="menuItem.name">
+                      [title]="menuItemLvl2.attr_title"
+                      [target]="menuItemLvl2.target"
+                      [href]="menuItemLvl2.url"
+                      [innerText]="menuItemLvl2.title">
                     </a>
                   </li>
                 </ng-container>

@@ -7,6 +7,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
+  
   title = 'Walker Engineering Group';
 
   commonCurrency: any = {
@@ -1089,7 +1090,7 @@ export class AppComponent implements OnInit {
     return this.commonCurrency[currencyCode].symbol;
   }
 
-  @Input() type: any = 'header';
+  @Input() type: any = 'footer';
   @Input() headerlogos: any = `{
     "title": "Walker Engineering Enterprises",
     "url": "https://google.com"
@@ -1538,112 +1539,212 @@ export class AppComponent implements OnInit {
   ]`;
   @Input() footermenu1: any = `[
     {
+      "id": 378,
+      "post_title": "",
       "title": "Airsep",
-      "items": [
+      "description": "",
+      "url": "",
+      "target": "",
+      "attr_title": "",
+      "child": [
         {
-          "name": "Agricultural",
+          "id": 379,
+          "post_title": "",
+          "title": "Agricultural",
+          "description": "",
           "url": "{{ shop.url }}/collections/agricultural",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         },
         {
-          "name": "Industrial",
+          "id": 379,
+          "post_title": "",
+          "title": "Industrial",
+          "description": "",
           "url": "{{ shop.url }}/collections/industrial",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         },
         {
-          "name": "Marine",
+          "id": 379,
+          "post_title": "",
+          "title": "Marine",
+          "description": "",
           "url": "{{ shop.url }}/collections/marine",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         },
         {
-          "name": "Military",
+          "id": 379,
+          "post_title": "",
+          "title": "Military",
+          "description": "",
           "url": "{{ shop.url }}/collections/military",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         }
       ]
     },
     {
+      "id": 378,
+      "post_title": "",
       "title": "Performance",
-      "items": [
+      "description": "",
+      "url": "",
+      "target": "",
+      "attr_title": "",
+      "child": [
         {
-          "name": "Big Trucks and Commercial Vehicles",
+          "id": 379,
+          "post_title": "",
+          "title": "Big Trucks and Commercial Vehicles",
+          "description": "",
           "url": "{{ shop.url }}/collections/big-trucks-and-commercial-vehicles",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "Harley Davidson",
+          "id": 379,
+          "post_title": "",
+          "title": "Harley Davidson",
+          "description": "",
           "url": "{{ shop.url }}/collections/harley-davidson",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "Off Road",
+          "id": 379,
+          "post_title": "",
+          "title": "Off Road",
+          "description": "",
           "url": "{{ shop.url }}/collections/off-road",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "Pick-Up Trucks",
+          "id": 379,
+          "post_title": "",
+          "title": "Pick-Up Trucks",
+          "description": "",
           "url": "{{ shop.url }}/collections/pick-up-trucks",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "Racing",
+          "id": 379,
+          "post_title": "",
+          "title": "Racing",
+          "description": "",
           "url": "{{ shop.url }}/collections/racing",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "RV",
+          "id": 379,
+          "post_title": "",
+          "title": "RV",
+          "description": "",
           "url": "{{ shop.url }}/collections/rv",
-          "newTab": false
+          "target": "",
+          "child": []
         }
       ]
     },
     {
+      "id": 378,
+      "post_title": "",
       "title": "Support",
-      "items": [
+      "description": "",
+      "url": "",
+      "target": "",
+      "attr_title": "",
+      "child": [
         {
-          "name": "FAQ",
+          "id": 379,
+          "post_title": "",
+          "title": "FAQ",
+          "description": "",
           "url": "{{ shop.url }}/pages/faq",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "Resources",
+          "id": 379,
+          "post_title": "",
+          "title": "Resources",
+          "description": "",
           "url": "{{ subdomain }}/resources",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "Technical Information",
+          "id": 379,
+          "post_title": "",
+          "title": "Technical Information",
+          "description": "",
           "url": "{{ subdomain }}/technical-information",
-          "newTab": false
+          "target": "",
+          "child": []
         },
         {
-          "name": "Troubleshooting",
+          "id": 379,
+          "post_title": "",
+          "title": "Troubleshooting",
+          "description": "",
           "url": "{{ subdomain }}/troubleshooting",
-          "newTab": false
+          "target": "",
+          "child": []
         }
       ]
     },
     {
+      "id": 378,
+      "post_title": "",
       "title": "Information",
-      "items": [
+      "description": "",
+      "url": "",
+      "target": "",
+      "attr_title": "",
+      "child": [
         {
-          "name": "About Us",
+          "id": 379,
+          "title": "About Us",
+          "description": "",
           "url": "{{ subdomain }}/about-us",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         },
         {
-          "name": "Quality IS09001",
+          "id": 379,
+          "title": "Quality IS09001",
+          "description": "",
           "url": "{{ subdomain }}/quality-is09001",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         },
         {
-          "name": "News",
+          "id": 379,
+          "title": "News",
+          "description": "",
           "url": "{{ subdomain }}",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         },
         {
-          "name": "Videos",
+          "id": 379,
+          "title": "Videos",
+          "description": "",
           "url": "{{ subdomain }}/media/identify-your-walker-airsep-air-filter-for-easy-ordering",
-          "newTab": false
+          "target": "",
+          "attr_title": "",
+          "child": []
         }
       ]
     }
