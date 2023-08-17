@@ -1101,16 +1101,18 @@ export class AppComponent implements OnInit {
       "post_title": "By Vendor",
       "title": "By Vendor",
       "description": "",
-      "url": "",
-      "attr_title": "",
+      "url": "\/",
+      "target": "",
+      "attr_title": "By Vendor",
       "child": [
         {
           "id": 379,
           "post_title": "Airsep",
           "title": "Airsep",
           "description": "",
-          "url": "",
-          "attr_title": "",
+          "url": "\/",
+          "target": "",
+          "attr_title": "Airsep",
           "child": [
             {
               "id": 381,
@@ -1118,7 +1120,9 @@ export class AppComponent implements OnInit {
               "title": "Agricultural",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/agricultural",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Agricultural",
+              "child": []
             },
             {
               "id": 382,
@@ -1126,7 +1130,9 @@ export class AppComponent implements OnInit {
               "title": "Industrial",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/industrial",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Industrial",
+              "child": []
             },
             {
               "id": 383,
@@ -1134,7 +1140,9 @@ export class AppComponent implements OnInit {
               "title": "Marine",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/marine",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Marine",
+              "child": []
             },
             {
               "id": 384,
@@ -1142,7 +1150,9 @@ export class AppComponent implements OnInit {
               "title": "Military",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/military",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Military",
+              "child": []
             }
           ]
         },
@@ -1152,6 +1162,7 @@ export class AppComponent implements OnInit {
           "title": "Performance",
           "description": "",
           "url": "",
+          "target": "",
           "attr_title": "",
           "child": [
             {
@@ -1160,7 +1171,9 @@ export class AppComponent implements OnInit {
               "title": "Big Trucks and Commercial Vehicles",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/big-trucks-and-commercial-vehicles",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Big Trucks and Commercial Vehicles",
+              "child": []
             },
             {
               "id": 386,
@@ -1168,7 +1181,9 @@ export class AppComponent implements OnInit {
               "title": "Harley Davidson",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/harley-davidson",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Harley Davidson",
+              "child": []
             },
             {
               "id": 387,
@@ -1176,7 +1191,9 @@ export class AppComponent implements OnInit {
               "title": "Off Road",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/off-road",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Off Road",
+              "child": []
             },
             {
               "id": 388,
@@ -1184,7 +1201,9 @@ export class AppComponent implements OnInit {
               "title": "Pick-Up Trucks",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/pick-up-trucks",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Pick-Up Trucks",
+              "child": []
             },
             {
               "id": 389,
@@ -1192,7 +1211,9 @@ export class AppComponent implements OnInit {
               "title": "Racing",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/racing",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Racing",
+              "child": []
             },
             {
               "id": 390,
@@ -1200,7 +1221,9 @@ export class AppComponent implements OnInit {
               "title": "RV",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/collections\/rv",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "RV",
+              "child": []
             }
           ]
         }
@@ -1212,6 +1235,7 @@ export class AppComponent implements OnInit {
       "title": "Applications",
       "description": "",
       "url": "",
+      "target": "",
       "attr_title": "",
       "child": [
         {
@@ -1220,7 +1244,8 @@ export class AppComponent implements OnInit {
           "title": "Airsep",
           "description": "",
           "url": "",
-          "attr_title": "",
+          "target": "",
+          "attr_title": "Airsep",
           "child": [
             {
               "id": 395,
@@ -1228,7 +1253,9 @@ export class AppComponent implements OnInit {
               "title": "Caterpillar",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=Caterpillar",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Caterpillar",
+              "child": []
             },
             {
               "id": 396,
@@ -1236,7 +1263,9 @@ export class AppComponent implements OnInit {
               "title": "Cummins",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=Cummins",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Cummins",
+              "child": []
             },
             {
               "id": 397,
@@ -1244,7 +1273,9 @@ export class AppComponent implements OnInit {
               "title": "Daewoo",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=Daewoo",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Daewoo",
+              "child": []
             },
             {
               "id": 398,
@@ -1252,7 +1283,9 @@ export class AppComponent implements OnInit {
               "title": "Daytona Marine (MACK)",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=Daytona%20Marine%20(mack)",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Daytona Marine (MACK)",
+              "child": []
             },
             {
               "id": 399,
@@ -1260,7 +1293,9 @@ export class AppComponent implements OnInit {
               "title": "Detroit Diesel",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=Detroit%20Diesel",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Detroit Diesel",
+              "child": []
             },
             {
               "id": 400,
@@ -1268,7 +1303,9 @@ export class AppComponent implements OnInit {
               "title": "Deutz",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=Deutz",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Deutz",
+              "child": []
             },
             {
               "id": 401,
@@ -1276,7 +1313,9 @@ export class AppComponent implements OnInit {
               "title": "Isotta Fraschini",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=isotta-fraschini",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Isotta Fraschini",
+              "child": []
             },
             {
               "id": 402,
@@ -1284,7 +1323,9 @@ export class AppComponent implements OnInit {
               "title": "Isuzu",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=isuzu",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Isuzu",
+              "child": []
             },
             {
               "id": 403,
@@ -1292,7 +1333,9 @@ export class AppComponent implements OnInit {
               "title": "John Deere",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=john-deere",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "John Deere",
+              "child": []
             },
             {
               "id": 404,
@@ -1300,7 +1343,9 @@ export class AppComponent implements OnInit {
               "title": "Komatsu",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=komatsu",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Komatsu",
+              "child": []
             },
             {
               "id": 405,
@@ -1308,7 +1353,9 @@ export class AppComponent implements OnInit {
               "title": "Lugger",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=lugger",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Lugger",
+              "child": []
             },
             {
               "id": 406,
@@ -1316,7 +1363,9 @@ export class AppComponent implements OnInit {
               "title": "Man",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=man",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Man",
+              "child": []
             },
             {
               "id": 407,
@@ -1324,7 +1373,9 @@ export class AppComponent implements OnInit {
               "title": "Mecruiser",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=mercruiser",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Mecruiser",
+              "child": []
             },
             {
               "id": 408,
@@ -1332,7 +1383,9 @@ export class AppComponent implements OnInit {
               "title": "Merlin",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=merlin",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Merlin",
+              "child": []
             },
             {
               "id": 409,
@@ -1340,7 +1393,9 @@ export class AppComponent implements OnInit {
               "title": "Mitsubishi",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=mitsubishi",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Mitsubishi",
+              "child": []
             },
             {
               "id": 410,
@@ -1348,7 +1403,9 @@ export class AppComponent implements OnInit {
               "title": "MTU",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=mtu",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "MTU",
+              "child": []
             },
             {
               "id": 411,
@@ -1356,7 +1413,9 @@ export class AppComponent implements OnInit {
               "title": "Navistar",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=navistar",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Navistar",
+              "child": []
             },
             {
               "id": 412,
@@ -1364,7 +1423,9 @@ export class AppComponent implements OnInit {
               "title": "Northern Lights",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=norther-lights",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Northern Lights",
+              "child": []
             },
             {
               "id": 413,
@@ -1372,7 +1433,9 @@ export class AppComponent implements OnInit {
               "title": "Perkins",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=perkins",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Perkins",
+              "child": []
             },
             {
               "id": 414,
@@ -1380,7 +1443,9 @@ export class AppComponent implements OnInit {
               "title": "Scania",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/airsep?tags=scania",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Scania",
+              "child": []
             }
           ]
         },
@@ -1390,6 +1455,7 @@ export class AppComponent implements OnInit {
           "title": "Performance",
           "description": "",
           "url": "",
+          "target": "",
           "attr_title": "",
           "child": [
             {
@@ -1398,7 +1464,9 @@ export class AppComponent implements OnInit {
               "title": "Polaris",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=polaris",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Polaris",
+              "child": []
             },
             {
               "id": 416,
@@ -1406,7 +1474,9 @@ export class AppComponent implements OnInit {
               "title": "Can-Am",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=can-am",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Can-Am",
+              "child": []
             },
             {
               "id": 417,
@@ -1414,7 +1484,9 @@ export class AppComponent implements OnInit {
               "title": "Ford Powerstroke 6.7L",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=ford-powerstroke%206.7L",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Ford Powerstroke 6.7L",
+              "child": []
             },
             {
               "id": 418,
@@ -1422,7 +1494,9 @@ export class AppComponent implements OnInit {
               "title": "Danzio Performance Engines",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=danzio-performance-engines",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Danzio Performance Engines",
+              "child": []
             },
             {
               "id": 419,
@@ -1430,7 +1504,9 @@ export class AppComponent implements OnInit {
               "title": "Herbst Chassis",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=herbst-chassis",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Herbst Chassis",
+              "child": []
             },
             {
               "id": 420,
@@ -1438,7 +1514,9 @@ export class AppComponent implements OnInit {
               "title": "Geiser Bros. Chassis",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=geiser-bros-chassis",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Geiser Bros. Chassis",
+              "child": []
             },
             {
               "id": 421,
@@ -1446,7 +1524,9 @@ export class AppComponent implements OnInit {
               "title": "Funco",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=funco",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Funco",
+              "child": []
             },
             {
               "id": 422,
@@ -1454,7 +1534,9 @@ export class AppComponent implements OnInit {
               "title": "Universal Fit Off Road Filters",
               "description": "",
               "url": "https:\/\/walkerengineering.co\/pages\/performance?tags=universal-fit-off-road-filters",
-              "attr_title": ""
+              "target": "",
+              "attr_title": "Universal Fit Off Road Filters",
+              "child": []
             }
           ]
         }
@@ -1466,7 +1548,8 @@ export class AppComponent implements OnInit {
       "title": "News",
       "description": "",
       "url": "http:\/\/walkerengineeringenterprise.local\/news-2\/",
-      "attr_title": "",
+      "target": "",
+      "attr_title": "News",
       "child": []
     },
     {
@@ -1475,7 +1558,8 @@ export class AppComponent implements OnInit {
       "title": "Media",
       "description": "",
       "url": "http:\/\/walkerengineeringenterprise.local\/medias-2\/",
-      "attr_title": "",
+      "target": "",
+      "attr_title": "Media",
       "child": []
     },
     {
@@ -1484,7 +1568,8 @@ export class AppComponent implements OnInit {
       "title": "Support",
       "description": "",
       "url": "https:\/\/walkerengineering.co\/",
-      "attr_title": "",
+      "target": "",
+      "attr_title": "Support",
       "child": [
         {
           "id": 375,
@@ -1492,7 +1577,8 @@ export class AppComponent implements OnInit {
           "title": "All Resources",
           "description": "",
           "url": "http:\/\/walkerengineeringenterprise.local\/resources-2\/",
-          "attr_title": "",
+          "target": "",
+          "attr_title": "All Resources",
           "child": []
         },
         {
@@ -1501,7 +1587,8 @@ export class AppComponent implements OnInit {
           "title": "Technical Information",
           "description": "",
           "url": "http:\/\/walkerengineeringenterprise.local\/technical-information-2\/",
-          "attr_title": "",
+          "target": "",
+          "attr_title": "Technical Information",
           "child": []
         },
         {
@@ -1510,7 +1597,8 @@ export class AppComponent implements OnInit {
           "title": "Troubleshooting",
           "description": "",
           "url": "http:\/\/walkerengineeringenterprise.local\/troubleshooting-2\/",
-          "attr_title": "",
+          "target": "",
+          "attr_title": "Troubleshooting",
           "child": []
         }
       ]
@@ -1521,7 +1609,8 @@ export class AppComponent implements OnInit {
       "title": "Dealers",
       "description": "",
       "url": "http:\/\/walkerengineeringenterprise.local\/dealers-2\/",
-      "attr_title": "",
+      "target": "",
+      "attr_title": "Dealers",
       "child": []
     }
   ]`;
@@ -1764,8 +1853,8 @@ export class AppComponent implements OnInit {
     },
     {
       "title": "Fax",
-      "label": "1-818-252-7788",
-      "url": "tel:1-818-252-7788",
+      "label": "818-252-7788",
+      "url": "tel:818-252-7788",
       "newTab": false
     },
     {
@@ -1795,6 +1884,7 @@ export class AppComponent implements OnInit {
       "attr_title": ""
     }
   ]`;
+  @Input() copyrightyear: any = '2023';
   @Input() policylist: any = `[
     {
       "name": "Privacy Policy",
@@ -1812,7 +1902,7 @@ export class AppComponent implements OnInit {
       "newTab": true
     }
   ]`;
-  @Input() copyrightyear: any = '2023';
+  @Input() disclaimertext: any = 'Our products, including racing filters, are expressly designed and intended solely for off-road and racing applications. These products are not certified for use on public roads or in any jurisdiction requiring emissions compliance. By purchasing and using our products, you acknowledge that they are not suitable for street use and accept any associated legal and regulatory risks. We do not assume responsibility for any unauthorized or non-compliant use of our products. It is your responsibility to adhere to local laws and regulations governing vehicle modifications. Using our products in non-compliant areas may result in legal consequences and void any warranties.';
   @Input() showcart: boolean = false;
 
   constructor() {}

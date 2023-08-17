@@ -113,15 +113,26 @@
         [innerText]="'© '+ copyrightyear +' All Rights Reserved'">
       </p>
       <div class="we-row">
-        <ng-container *ngFor="let item of policylist; let i = index;">
-          <a class="we-link"
-            [title]="item.name"
-            [href]="item.url"
-            [target]="item.newTab ? '_blank' : '_self'"
-            [innerText]="item.name">
-          </a>
-          <hr *ngIf="(i + 1) != policylist.length">
-        </ng-container>
+        <div class="we-col">
+          <ul class="we-policy-list">
+            <ng-container *ngFor="let policyItem of policylist; let policyIndex = index;">
+              <li class="we-policy-item">
+                <a class="we-policy-link we-link"
+                  [title]="policyItem.name"
+                  [href]="policyItem.url"
+                  [target]="policyItem.newTab ? '_blank' : '_self'"
+                  [innerText]="policyItem.name">
+                </a>
+              </li>
+              <hr *ngIf="(policyIndex + 1) != policylist.length">
+            </ng-container>
+          </ul>
+        </div>
+        <div class="we-col">
+          <p class="we-disclaimer-text"
+            [innerText]="disclaimertext">
+          </p>
+        </div>
       </div>
     </div>
   </div>

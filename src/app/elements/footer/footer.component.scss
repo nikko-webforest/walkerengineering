@@ -512,34 +512,66 @@
 
       .we-row {
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
+        gap: 20px 50px;
 
-        .we-link {
-          --textColor: #191D32;
-          color: var(--textColor);
-          font-family: var(--tertiaryFontFamily);
-          font-style: normal;
-          font-weight: 700;
-          font-size: 14px;
-          line-height: 0.9em;
-          padding: 5px 0;
-
-          @media only screen and (max-width: 480px) {
-            font-size: 12px;
-          }
-
-          &:hover {
-            --textColor: #F2234B;
-          }
+        @media only screen and (max-width: 1200px) {
+          flex-direction: column;
         }
 
-        hr {
-          display: block;
-          background-color: #191D32;
-          width: 2px;
-          height: 16px;
-          margin: 0 10px;
-          border: none;
+        .we-col {
+          &:nth-child(1) {
+            width: max-content;
+
+            .we-policy-list {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+
+              .we-policy-item {
+                .we-policy-link {
+                  --textColor: #191D32;
+                  color: var(--textColor);
+                  font-family: var(--tertiaryFontFamily);
+                  font-style: normal;
+                  font-weight: 700;
+                  font-size: 14px;
+                  line-height: 1em;
+                  white-space: nowrap;
+                  padding: 5px 0;
+
+                  @media only screen and (max-width: 480px) {
+                    font-size: 12px;
+                  }
+
+                  &:hover {
+                    --textColor: #F2234B;
+                  }
+                }
+              }
+              
+              hr {
+                display: block;
+                background-color: #191D32;
+                width: 2px;
+                height: 16px;
+                margin: 0 10px;
+                border: none;
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            .we-disclaimer-text {
+              color: #191D32;
+              font-family: var(--tertiaryFontFamily);
+              font-style: normal;
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 1.5em;
+              margin: 0;
+            }
+          }
         }
       }
     }

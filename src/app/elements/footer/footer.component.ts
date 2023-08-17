@@ -15,9 +15,11 @@ export class FooterComponent implements OnInit {
 
   @Input() socialmedialist: any;
 
+  @Input() copyrightyear: any;
+
   @Input() policylist: any;
 
-  @Input() copyrightyear: any;
+  @Input() disclaimertext: any;
 
   footerLogos: any = {
     airsep: {
