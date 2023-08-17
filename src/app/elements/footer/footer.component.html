@@ -129,15 +129,15 @@
 
 <ng-template #WalkerFooterSocialMediaWrap>
   <ul class="we-social-media-list">
-    <ng-container *ngFor="let item of socialmedialist;">
-      <li class="we-social-media-item --{{ item.platform }}">
+    <ng-container *ngFor="let socialMediaItem of socialmedialist; let socialMediaIndex = index;">
+      <li class="we-social-media-item --{{ socialMediaItem.title }}">
         <a class="we-social-media-link"
-          title="{{ item.platform | titlecase }}"
-          [href]="item.url"
-          [target]="item.newTab ? '_blank' : '_self'">
+          title="{{ socialMediaItem.attr_title | titlecase }}"
+          [href]="socialMediaItem.url"
+          [target]="socialMediaItem.target">
           <!-- SVG Facebook Icon -->
           <svg class="we-svg-icon-social-media we-svg"
-            *ngIf="item.platform.toLowerCase() == 'facebook'"
+            *ngIf="socialMediaItem.title.toLowerCase() == 'facebook'"
             width="42"
             height="42"
             viewBox="0 0 42 42"
@@ -148,7 +148,7 @@
           </svg>
           <!-- SVG Twitter Icon -->
           <svg class="we-svg-icon-social-media we-svg"
-            *ngIf="item.platform.toLowerCase() == 'twitter'"
+            *ngIf="socialMediaItem.title.toLowerCase() == 'twitter'"
             width="42"
             height="42"
             viewBox="0 0 42 42"

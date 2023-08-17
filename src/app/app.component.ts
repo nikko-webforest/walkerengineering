@@ -1777,14 +1777,22 @@ export class AppComponent implements OnInit {
   ]`;
   @Input() socialmedialist: any = `[
     {
-      "platform": "facebook",
-      "url": "https://www.facebook.com/",
-      "newTab": false
+      "id": 447,
+      "post_title": "Facebook",
+      "title": "Facebook",
+      "description": "",
+      "url": "\/",
+      "target": "",
+      "attr_title": ""
     },
     {
-      "platform": "twitter",
-      "url": "https://twitter.com/",
-      "newTab": false
+      "id": 448,
+      "post_title": "Twitter",
+      "title": "Twitter",
+      "description": "",
+      "url": "\/",
+      "target": "",
+      "attr_title": ""
     }
   ]`;
   @Input() policylist: any = `[
