@@ -1090,7 +1090,7 @@ export class AppComponent implements OnInit {
     return this.commonCurrency[currencyCode].symbol;
   }
 
-  @Input() type: any = 'footer';
+  @Input() type: any = 'header';
   @Input() headerlogos: any = `{
     "title": "Walker Engineering Enterprises",
     "url": "https://google.com"

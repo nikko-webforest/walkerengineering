@@ -84,15 +84,12 @@ export class HeaderComponent implements OnInit {
   }
   
   hideMegaMenu() {
-    // console.log('outside');
-    // this.headerDesktopNav.activeMenuIndex = 0;
-    // this.headerDesktopNav.activeMainCategoryLabel = '';
     this.headerDesktopNav.showMegaMenu = false;
   }
 
   showDesktopMenuItemLvl1 (menuItemLvl1ID: number, hasDropdownItems: any) {
-    console.log('menuItemLvl1ID =', menuItemLvl1ID);
-    console.log('hasDropdownItems =', hasDropdownItems);
+    // console.log('menuItemLvl1ID =', menuItemLvl1ID);
+    // console.log('hasDropdownItems =', hasDropdownItems);
     
     this.headerDesktopNav.menuItemLvl1ID = menuItemLvl1ID;
     if (hasDropdownItems != 0) {
@@ -102,11 +99,11 @@ export class HeaderComponent implements OnInit {
       this.headerDesktopNav.showMegaMenu = false;
     }
 
-    console.log('this.headerDesktopNav.showMegaMenu =', this.headerDesktopNav.showMegaMenu);
+    // console.log('this.headerDesktopNav.showMegaMenu =', this.headerDesktopNav.showMegaMenu);
   }
 
   showDesktopMenuItemLvl2(menuItemLvl2ID: number) {
-    console.log('menuItemLvl2ID =', menuItemLvl2ID);
+    // console.log('menuItemLvl2ID =', menuItemLvl2ID);
     this.headerDesktopNav.menuItemLvl2ID = menuItemLvl2ID;
   }
 
