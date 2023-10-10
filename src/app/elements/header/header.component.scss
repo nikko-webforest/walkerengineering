@@ -714,9 +714,11 @@
                       font-weight: 500;
                       font-size: 16px;
                       font-feature-settings: 'calt' off;
-                      line-height: 24px;
+                      line-height: 1.25em;
                       letter-spacing: -0.01em;
-                      padding: 7px 0;
+                      height: 1.25em;
+                      overflow: hidden;
+                      margin: 0 0 21px;
                     }
 
                     &:hover {
