@@ -564,7 +564,7 @@
           .we-nav02-list {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
             gap: 0 10px;
 
             .we-nav-item-link {
@@ -591,7 +591,7 @@
 
               &:nth-child(1) {
                 background-color: var(--secondaryColor);
-                max-width: 130px;
+                max-width: 50%;
                 min-width: 130px;
 
                 &:hover {
@@ -601,7 +601,7 @@
 
               &:nth-child(2) {
                 background-color: var(--primaryColor);
-                max-width: 160px;
+                max-width: 50%;
                 min-width: 160px;
 
                 &:hover {
